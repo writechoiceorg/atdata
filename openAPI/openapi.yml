@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  title: AtData Fraud Prevention API
+  version: 1.0.0
+  description: Provides detailed information about email addresses and their risk and fraud correlation.
+  contact:
+    email: emailexperts@atdata.com
+servers:
+  - url: https://api.atdata.com/fr
+
+paths:
+  /fr:
+    get:
+      tags: 
+        - Fraud Risk
+      description: Retrieves fraud risk information based on the provided email and optional personal data.
+      summary: Retrieve Fraud Risk Information
+      parameters:
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+          description: The email address to be evaluated for fraud. Must be URL encoded.
+        - in: query
+          name: reference_id
+          schema:
+            type: string
+          description: Internal identifier for the email or transaction. Must be URL encoded.
+        - in: query
+          name: first
+          schema:
+            type: string
+          description: First name of the individual.
+        - in: query
+          name: last
+          schema:
+            type: string
+          description: Last name of the individual.
+        - in: query
+          name: street
+          schema:
+            type: string
+          description: First line of the postal address.
+        - in: query
+          name: city
+          schema:
+            type: string
+          description: City of the postal address.
+        - in: query
+          name: state
+          schema:
+            type: string
+          description: State of the postal address.
+        - in: query
+          name: zip
+          schema:
+            type: string
+          description: ZIP or postcode of the postal address.
+        - in: query
+          name: country
+          schema:
+            type: string
+          description: 2 letter country code, ISO 3166 standard alpha-2 code.
+        - in: query
+          name: phone
+          schema:
+            type: string
+          description: Phone number, including country code.
+        - in: query
+          name: ip
+          schema:
+            type: string
+          description: User's IP address.
+        - in: query
+          name: user_agent
+          schema:
+            type: string
+          description: User agent of the client.
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: API key for accessing the service.
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  risk:
+                    type: object
+                    description: Details about the risk assessment.
+                    properties:
+                      score:
+                        type: integer
+                        format: int32
+                        description: Risk score from 0-100, assessing email risk based on historical data.
+                      tumbling_risk:
+                        type: integer
+                        format: int32
+                        description: Score indicating variations of the same email address, 0-3 scale.
+                      ip:
+                        type: object
+                        properties:
+                          routing_type:
+                            type: string
+                            description: Type of routing, could be 'fixed', 'mobile', etc.
+                          proxy_type:
+                            type: string
+                            description: Type of proxy used, if any.
+                  eam:
+                    type: object
+                    description: Email Activity Metrics, evaluating email addresses.
+                  dam:
+                    type: object
+                    description: Domain Activity Metrics, reflecting domain-level activities.
+                  email_validation:
+                    type: object
+                    description: Validation results for the queried email address.
+
+  /feedback/v1:
+    post:
+      tags: 
+        - Fraud Risk
+      summary: Submit Feedback
+      description: Submits feedback about identified fraud through a tab-separated file.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: A tab-separated file containing feedback data.
+      responses:
+        200:
+          description: Feedback submitted successfully.
