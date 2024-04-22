@@ -129,113 +129,107 @@ components:
       properties:
         risk:
           type: object
+          description: Risk related data for the given query based on the provided email and associated details.
           properties:
             query_id:
               type: string
+              description: Unique identifier for the response provided, can be used for referencing in subsequent queries or for troubleshooting.
               example: "2744dd5d0acb475b81687d366fff4c48"
             score:
               type: integer
+              description: A machine learning-based score from 0 to 100 that assesses the risk associated with the email, with higher scores indicating higher risk.
               example: 50
             tumbling_risk:
               type: integer
+              description: A score from 0 to 3 indicating the presence of multiple variations of the same email address, with higher scores indicating more variations detected.
               example: 0
             ip:
               type: object
+              description: Details about the IP address associated with the email query, providing insights into the location and network characteristics.
               properties:
                 routing_type:
                   type: string
+                  description: Specifies how the connection is routed through the Internet, which can indicate the proximity of the user to the public IP address.
                   example: "fixed"
                 organization:
                   type: string
+                  description: Name of the organization managing the IP, often indicating the type of entity, such as a corporation, government, or educational institution.
                   example: "atdata"
                 proxy_type:
                   type: string
+                  description: Type of proxy used, if any, providing insights into the anonymity or masking techniques that may be employed.
                   example: "tor"
                 hosting_facility:
                   type: boolean
+                  description: Indicates whether the IP address is associated with a hosting facility, which can suggest usage by cloud services or data centers.
                   example: true
                 latitude:
                   type: number
                   format: double
+                  description: Geographical latitude of the identified IP location.
                   example: 38.89768
                 longitude:
                   type: number
                   format: double
+                  description: Geographical longitude of the identified IP location.
                   example: -77.03651
             domain:
               type: object
+              description: Information pertaining to the domain of the email used in the query, providing a risk assessment of the domain itself.
               properties:
                 domain_risk_score:
                   type: integer
+                  description: A score from 0 to 10 assessing the risk associated with the email domain, with higher scores indicating higher risk.
                   example: 5
             postal:
               type: object
+              description: Details about the postal information provided in the query and its correlation with the email address data.
               properties:
                 first_name_match:
                   type: string
+                  description: Indicates if the provided first name matches records associated with the email.
                   example: "match"
                 last_name_match:
                   type: string
+                  description: Indicates if the provided last name matches records associated with the email.
                   example: "no_match"
                 street_match:
                   type: string
+                  description: Indicates if the provided street address matches records associated with the email.
                   example: "no_data"
                 city_match:
                   type: string
+                  description: Indicates if the provided city matches records associated with the email.
                   example: "no_data"
                 zip_match:
                   type: string
+                  description: Indicates if the provided zip code matches records associated with the email.
                   example: "no_data"
                 deliverability:
                   type: string
+                  description: Indicates the deliverability status of the postal address as determined by postal services.
                   example: "undeliverable"
                 deliverability_substatus:
                   type: string
+                  description: Provides further details on the primary reason for the deliverability status.
                   example: "missing_primary"
                 address_type:
                   type: string
+                  description: Describes the type of the address provided, such as Street, PO Box, Rural Route, etc.
                   example: "Street"
         eam:
           type: object
+          description: Email Activity Metrics, which evaluate the history and usage patterns of the email address.
           properties:
             date_first_seen:
               type: string
               format: date
+              description: The first date the email address was observed by AtData's systems.
               example: "2016-08-09"
             longevity:
               type: integer
+              description: A score from 0 to 3 indicating how long the email address has been known, with higher values indicating a longer history.
               example: 3
             velocity:
               type: integer
-              example: 10
-            popularity:
-              type: integer
-              example: 10
-        dam:
-          type: object
-          properties:
-            date_first_seen:
-              type: string
-              format: date
-              example: "2002-11-09"
-            longevity:
-              type: integer
-              example: 3
-            velocity:
-              type: integer
-              example: 10
-            popularity:
-              type: integer
-              example: 10
-        email_validation:
-          type: object
-          properties:
-            status:
-              type: string
-              example: "valid"
-            status_code:
-              type: integer
-              example: 50
-            domain_type:
-              type: string
-              example: "freeisp"
+              description: A score from 0
