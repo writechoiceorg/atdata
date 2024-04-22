@@ -21,12 +21,12 @@ paths:
           required: true
           schema:
             type: string
-          description: The email address to be evaluated for fraud. ⚠️ **Must be URL encoded**. ⚠️
+          description: The email address to be evaluated for fraud. ⚠️ **URL encoding required**. ⚠️
         - in: query
           name: reference_id
           schema:
             type: string
-          description: Internal identifier for the email or transaction. ⚠️ **Must be URL encoded**. ⚠️
+          description: Internal identifier for the email or transaction. ⚠️ **URL encoding required**. ⚠️
         - in: query
           name: first
           schema:
@@ -41,7 +41,7 @@ paths:
           name: street
           schema:
             type: string
-          description: First line of the postal address.
+          description: First line of the postal address, including number.
         - in: query
           name: city
           schema:
@@ -61,7 +61,7 @@ paths:
           name: country
           schema:
             type: string
-          description: 2 letter country code, ISO 3166 standard alpha-2 code.
+          description: 2 letter country code, [ISO 3166 standard alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
         - in: query
           name: phone
           schema:
