@@ -97,44 +97,12 @@ paths:
           description: User agent of the client.
           example: python-requests F2.27.1
       responses:
-        200:
-          description: Successful response
+        '200':
+          description: Successful Response
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  risk:
-                    type: object
-                    description: Details about the risk assessment.
-                    properties:
-                      score:
-                        type: integer
-                        format: int32
-                        description: Risk score from 0-100, assessing email risk based on historical data.
-                      tumbling_risk:
-                        type: integer
-                        format: int32
-                        description: Score indicating variations of the same email address, 0-3 scale.
-                      ip:
-                        type: object
-                        properties:
-                          routing_type:
-                            type: string
-                            description: Type of routing, could be 'fixed', 'mobile', etc.
-                          proxy_type:
-                            type: string
-                            description: Type of proxy used, if any.
-                  eam:
-                    type: object
-                    description: Email Activity Metrics, evaluating email addresses.
-                  dam:
-                    type: object
-                    description: Domain Activity Metrics, reflecting domain-level activities.
-                  email_validation:
-                    type: object
-                    description: Validation results for the queried email address.
-
+                $ref: '#/components/schemas/FraudRetrieveResponse'
   /feedback/v1:
     post:
       tags: 
@@ -154,3 +122,120 @@ paths:
       responses:
         200:
           description: Feedback submitted successfully.
+components:
+  schemas:
+    FraudRetrieveResponse:
+      type: object
+      properties:
+        risk:
+          type: object
+          properties:
+            query_id:
+              type: string
+              example: "2744dd5d0acb475b81687d366fff4c48"
+            score:
+              type: integer
+              example: 50
+            tumbling_risk:
+              type: integer
+              example: 0
+            ip:
+              type: object
+              properties:
+                routing_type:
+                  type: string
+                  example: "fixed"
+                organization:
+                  type: string
+                  example: "atdata"
+                proxy_type:
+                  type: string
+                  example: "tor"
+                hosting_facility:
+                  type: boolean
+                  example: true
+                latitude:
+                  type: number
+                  format: double
+                  example: 38.89768
+                longitude:
+                  type: number
+                  format: double
+                  example: -77.03651
+            domain:
+              type: object
+              properties:
+                domain_risk_score:
+                  type: integer
+                  example: 5
+            postal:
+              type: object
+              properties:
+                first_name_match:
+                  type: string
+                  example: "match"
+                last_name_match:
+                  type: string
+                  example: "no_match"
+                street_match:
+                  type: string
+                  example: "no_data"
+                city_match:
+                  type: string
+                  example: "no_data"
+                zip_match:
+                  type: string
+                  example: "no_data"
+                deliverability:
+                  type: string
+                  example: "undeliverable"
+                deliverability_substatus:
+                  type: string
+                  example: "missing_primary"
+                address_type:
+                  type: string
+                  example: "Street"
+        eam:
+          type: object
+          properties:
+            date_first_seen:
+              type: string
+              format: date
+              example: "2016-08-09"
+            longevity:
+              type: integer
+              example: 3
+            velocity:
+              type: integer
+              example: 10
+            popularity:
+              type: integer
+              example: 10
+        dam:
+          type: object
+          properties:
+            date_first_seen:
+              type: string
+              format: date
+              example: "2002-11-09"
+            longevity:
+              type: integer
+              example: 3
+            velocity:
+              type: integer
+              example: 10
+            popularity:
+              type: integer
+              example: 10
+        email_validation:
+          type: object
+          properties:
+            status:
+              type: string
+              example: "valid"
+            status_code:
+              type: integer
+              example: 50
+            domain_type:
+              type: string
+              example: "freeisp"
