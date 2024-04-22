@@ -12,7 +12,7 @@ paths:
   /fr:
     get:
       tags: 
-        - Fraud Risk
+        - Fraud Prevention
       description: Retrieves fraud risk information based on the provided email and optional personal data.
       summary: Retrieve Fraud Risk Information
       parameters:
@@ -125,7 +125,7 @@ paths:
   /feedback/v1:
     post:
       tags: 
-        - Fraud Risk
+        - Fraud Prevention
       summary: Submit Feedback
       description: Submits feedback about identified fraud through a tab-separated file.
       requestBody:
