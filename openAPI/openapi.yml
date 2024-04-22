@@ -11,8 +11,9 @@ servers:
 paths:
   /fr:
     get:
-      tags: 
+      tags:
         - Fraud Prevention
+      operationId: retrieve-fraud-risk
       description: Retrieves fraud risk information based on the provided email and optional personal data.
       summary: Retrieve Fraud Risk Information
       parameters:
@@ -107,6 +108,7 @@ paths:
     post:
       tags: 
         - Fraud Prevention
+      operationId: submit-feedback
       summary: Submit Feedback
       description: Submits feedback about identified fraud through a tab-separated file.
       requestBody:
@@ -133,7 +135,7 @@ components:
           properties:
             query_id:
               type: string
-              description: Unique identifier for the response provided, can be used for referencing in subsequent queries or for troubleshooting.
+              description: Unique identifier for the response provided. Can be used with our [Feedback API](https://atdata-fraud.readme.io/reference/submit-feedback) or for troubleshooting.
               example: "2744dd5d0acb475b81687d366fff4c48"
             score:
               type: integer
