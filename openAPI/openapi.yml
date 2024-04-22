@@ -17,72 +17,85 @@ paths:
       summary: Retrieve Fraud Risk Information
       parameters:
         - in: query
-          name: email
-          required: true
-          schema:
-            type: string
-          description: The email address to be evaluated for fraud. ⚠️ **URL encoding required**. ⚠️
-        - in: query
-          name: reference_id
-          schema:
-            type: string
-          description: Internal identifier for the email or transaction. ⚠️ **URL encoding required**. ⚠️
-        - in: query
-          name: first
-          schema:
-            type: string
-          description: First name of the individual.
-        - in: query
-          name: last
-          schema:
-            type: string
-          description: Last name of the individual.
-        - in: query
-          name: street
-          schema:
-            type: string
-          description: First line of the postal address, including number.
-        - in: query
-          name: city
-          schema:
-            type: string
-          description: City of the postal address.
-        - in: query
-          name: state
-          schema:
-            type: string
-          description: State of the postal address.
-        - in: query
-          name: zip
-          schema:
-            type: string
-          description: ZIP or postcode of the postal address.
-        - in: query
-          name: country
-          schema:
-            type: string
-          description: 2 letter country code, [ISO 3166 standard alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-        - in: query
-          name: phone
-          schema:
-            type: string
-          description: Phone number, including country code.
-        - in: query
-          name: ip
-          schema:
-            type: string
-          description: User's IP address.
-        - in: query
-          name: user_agent
-          schema:
-            type: string
-          description: User agent of the client.
-        - in: query
           name: api_key
           required: true
           schema:
             type: string
           description: API key for accessing the service.
+          example: 1234567890abcdef
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+          description: The email address to be evaluated for fraud. ⚠️ **URL encoding required**. ⚠️
+          example: demo@atdata.com
+        - in: query
+          name: reference_id
+          schema:
+            type: string
+          description: Internal identifier for the email or transaction. ⚠️ **URL encoding required**. ⚠️
+          example: a4840850-98be-46de-b391-3d52732d27c4
+        - in: query
+          name: first
+          schema:
+            type: string
+          description: First name of the individual.
+          example: Joe
+        - in: query
+          name: last
+          schema:
+            type: string
+          description: Last name of the individual.
+          example: Bloggs
+        - in: query
+          name: street
+          schema:
+            type: string
+          description: First line of the postal address, including number.
+          example: 123 Main St
+        - in: query
+          name: city
+          schema:
+            type: string
+          description: City of the postal address.
+          example: New York
+        - in: query
+          name: state
+          schema:
+            type: string
+          description: State of the postal address.
+          example: NY
+        - in: query
+          name: zip
+          schema:
+            type: string
+          description: ZIP or postcode of the postal address.
+          example: P2P6B3P
+        - in: query
+          name: country
+          schema:
+            type: string
+          description: 2 letter country code, [ISO 3166 standard alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+          example: US
+        - in: query
+          name: phone
+          schema:
+            type: string
+          description: Phone number, including country code.
+          example: '16467421771'
+        - in: query
+          name: ip
+          schema:
+            type: string
+          description: User's IP address.
+          example: '1.2.3.4'
+        - in: query
+          name: user_agent
+          schema:
+            type: string
+          description: User agent of the client.
+          example: python-requests F2.27.1
       responses:
         200:
           description: Successful response
