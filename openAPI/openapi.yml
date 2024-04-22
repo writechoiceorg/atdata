@@ -168,12 +168,12 @@ components:
                 latitude:
                   type: number
                   format: double
-                  description: Geographical latitude of the identified IP location.
+                  description: Geographical latitude of the identified IP location, expressed as a floating point number with range of -90 to 90, with positive numbers representing North and negative numbers representing South.
                   example: 38.89768
                 longitude:
                   type: number
                   format: double
-                  description: Geographical longitude of the identified IP location.
+                  description: Geographical longitude of the identified IP location, expressed as a floating point number with range of -180 to 180, with positive numbers representing East and negative numbers representing West.
                   example: -77.03651
             domain:
               type: object
@@ -234,4 +234,46 @@ components:
               example: 3
             velocity:
               type: integer
-              description: A score from 0
+              description: A score from 0 to 10 reflecting the activity level of the email address over recent months, with higher scores indicating more activity.
+              example: 10
+            popularity:
+              type: integer
+              description: A score from 0 to 10 gauging the email address's exposure across different sources and networks, with higher scores indicating wider recognition.
+              example: 10
+        dam:
+          type: object
+          description: Domain Activity Metrics, reflecting activity at the domain level rather than individual email addresses.
+          properties:
+            date_first_seen:
+              type: string
+              format: date
+              description: The first date the domain was observed in AtData's records.
+              example: "2002-11-09"
+            longevity:
+              type: integer
+              description: A score from 0 to 3 indicating when AtData first encountered the domain, with higher values indicating a longer recognition.
+              example: 3
+            velocity:
+              type: integer
+              description: A score reflecting the activity of the domain over the last six months, from 0 (no activity) to 10 (most active).
+              example: 10
+            popularity:
+              type: integer
+              description: A score gauging the popularity of the domain over the last year based on the number of sources from which AtData has received the domain.
+              example: 10
+        email_validation:
+          type: object
+          description: Validation results for the queried email address, assessing its validity for sending emails.
+          properties:
+            status:
+              type: string
+              description: The overall status of the email validation attempt, indicating if the email is valid, invalid, risky, or unknown.
+              example: "valid"
+            status_code:
+              type: integer
+              description: A detailed status code providing more specific results of the email validation.
+              example: 50
+            domain_type:
+              type: string
+              description: Type of the domain of the email address, such as free ISP, disposable, corporate, etc.
+              example: "freeisp"
