@@ -21,12 +21,12 @@ paths:
           required: true
           schema:
             type: string
-          description: The email address to be evaluated for fraud. Must be URL encoded.
+          description: The email address to be evaluated for fraud. ⚠️ **Must be URL encoded**. ⚠️
         - in: query
           name: reference_id
           schema:
             type: string
-          description: Internal identifier for the email or transaction. Must be URL encoded.
+          description: Internal identifier for the email or transaction. ⚠️ **Must be URL encoded**. ⚠️
         - in: query
           name: first
           schema:
