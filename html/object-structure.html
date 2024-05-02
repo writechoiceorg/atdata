@@ -1,0 +1,436 @@
+<div>
+
+  <details class="card">
+    <summary><strong>risk</strong> <small>object</small>
+      <br />
+      <p>Contains information about the risk assessment of the email address.</p>
+    </summary>
+    <div>
+      <div class="card">
+        <p><strong>query_id</strong> <small>string</small>
+          <br />AtData’s unique identifier for the response provided. Can be used with our Feedback API or
+          for troubleshooting.
+          <br /><small> Example: 2744dd5d0acb475b81687d366fff4c48 </small>
+        </p>
+      </div>
+      <div class="card">
+        <p><strong>score</strong> <small>integer</small>
+          <br />A machine learning-based score of 0 – 100 using AtData’s metadata, of which the API
+          response is only a part, to identify high risk and fraudulent profiles. A score of 0 being low
+          risk and 100 being very high risk. The average risk threshold is from 70 – 80 but depends on
+          customer requirements.
+          <br /><small> Example: 50 </small>
+        </p>
+      </div>
+      <div class="card">
+        <p><strong>tumbling_risk</strong> <small>integer</small>
+          <br />A score indicating multiple variations of the same email address (e.g. jondoe@gmail.com
+          and jon.doe+123@gmail.com are identical to gmail). 0 indicates no tumbling detected, while values
+          of 1, 2 and 3 indicated a linear risk of tumbling detected. Tumbling is evaluated
+          across AtData’s entire network, not just your own activity.
+          <br /><small> Example: 0 </small>
+        </p>
+      </div>
+
+      <details class="card">
+        <summary><strong>ip</strong> <small>object</small>
+          <br />
+          <p>Information related to the IP address associated with the email query.</p>
+        </summary>
+        <div>
+
+          <div class="card">
+            <p><strong>routing_type</strong> <small>string</small>
+              <br />The IP Routing Type (IPRT) specifies how the connection is routed through the Internet
+              and can be used to determine how close the user is to the public IP address. For example,
+              a user connecting through a fixed connection is likely very close to the connection. A user
+              connecting through a regional proxy is probably in the same country as the connection,
+              whereas a user connecting through a satellite connection could be anywhere.
+              <br /><small> IP Routing Types:
+                <ul>
+                  <li><strong>fixed</strong>: The user is connecting through a fixed-line connection, such as cable,
+                    DSL, T1, and fiber. The user is likely to be at or near the location assigned to the IP.</li>
+                  <li><strong>aol, aolpop, aoldialup, aolproxy</strong>: The user is part of the AOL network. AtData can
+                    identify the user country in most cases. However, establishing the user location below country is
+                    not possible.</li>
+                  <li><strong>pop</strong>: The user is dialing into a regional ISP (Internet Service Provider) and is
+                    likely to be near the IP location.</li>
+                  <li><strong>satellite</strong>: The user is connecting to the Internet through a consumer satellite or
+                    a backbone satellite provider, where no information about the terrestrial connection is available.
+                    The user can be anywhere within the beam pattern of the satellite, which can span a continent or
+                    more.</li>
+                  <li><strong>cache proxy</strong>: The user is using a proxy connection, either through an Internet
+                    accelerator or a content distribution service. It is possible the user is located in a different
+                    country from the IP location.</li>
+                  <li><strong>international proxy</strong>: The user is connecting through a proxy (not an anonymizer)
+                    that routes traffic from multiple countries. It is possible the user is located in a different
+                    country from the IP location.</li>
+                  <li><strong>regional proxy</strong>: The user is connecting through a proxy (not an anonymizer) that
+                    routes traffic from multiple states within a single country. It is possible the user is located in a
+                    different state from the IP location.</li>
+                  <li><strong>corp proxy</strong>: The user is connecting through a proxy (not an anonymizer) that
+                    routes traffic through edge nodes, or nexus points for traffic entering and exiting a corporate
+                    network.</li>
+                  <li><strong>mobile gateway</strong>: The user is using a gateway to connect mobile devices to the
+                    public Internet. Many mobile operators, especially in Europe, serve more than one country and
+                    backhaul traffic through centralized network hubs. Therefore, it is possible the user is located in
+                    a different country from the IP location.</li>
+                </ul>
+              </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>organization</strong> <small>string</small>
+              <br />Registering Organizations include many types of entities, including corporate, government,
+              or educational entities, and ISPs managing the allocation and use of network blocks.
+              <br /><small> Example: atdata </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>proxy_type</strong> <small>string</small>
+              <br />The network or protocol utilized by the server to proxy the user connection is identified.
+              Proxy type classifications include the use of http, Tor, web and SOCKS.
+              <br /><small> Examples: http, service, socks, socks http, tor, unknown, web, privacy proxy</small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>hosting_facility</strong> <small>boolean</small>
+              <br />Hosting facility includes the following type of service providers: colocation, cloud
+              computing, dedicated hosting, virtual private servers and web hosting.
+              A value of “true” indicates that the IP address is associated with a hosting facility;
+              otherwise the value is “false”.
+              <br /><small> Example: true </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>latitude</strong> <small>float</small>
+              <br />Latitude of the identified location, expressed as a floating point number with range of - 90
+              to 90, with positive numbers representing North and negative numbers representing South.
+              <br /><small> Example: 38.89768 </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>longitude</strong> <small>float</small>
+              <br />Longitude of the identified location, expressed as a floating point number with range of -180
+              to 180, with positive numbers representing East and negative numbers representing West.
+              <br /><small> Example: -77.03651 </small>
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><strong>domain</strong> <small>object</small>
+          <br />
+          <p>Details about the domain of the email address.</p>
+        </summary>
+        <div>
+          <div class="card">
+            <p><strong>domain_risk_score</strong> <small>integer</small>
+              <br />The domain risk score allows users to identify high risk email domains the moment
+              they first appear rather than waiting for industry classification. It encompasses
+              different types of risky domains and their behaviour derived from the AtData network.
+              Score of 0 means there is no risk associated with the domain, a score of 10 indicates
+              that the domain poses a significant threat due to multiple variables.
+              <br /><small> Example: 5 </small>
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary>postal<strong></strong> <small>object</small>
+          <br />
+          <p>Contains information related to the postal data provided in the API request and its validation results.</p>
+        </summary>
+        <div>
+          <div class="card">
+            <p><strong>first_name_match</strong> <small>string</small>
+              <br />Indicates if the first name matches with previously known data.
+              <br /><small> Possible results:
+                <ul>
+                  <li><b>match</b>: First name supplied matches first name previously associated with email.</li>
+                  <li><b>no_match</b>: First name supplied does NOT match first name previously associated with email.
+                  </li>
+                  <li><b>no_data</b>: No first name records associated with that email.</li>
+                </ul>
+              </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>last_name_match</strong> <small>string</small>
+              <br />Indicates if the last name does not match with previously known data.
+              <br /><small> Possible results:
+                <ul>
+                  <li><b>match</b>: Last name supplied matches last name previously associated with email.</li>
+                  <li><b>no_match</b>: Last name supplied does NOT match last name previously associated with email.
+                  </li>
+                  <li><b>no_data</b>: No last name records associated with that email.</li>
+                </ul>
+              </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>street_match</strong> <small>string</small>
+              <br />Indicates if street data is available and matches with known records.
+              <br /><small> Possible results:
+                <ul>
+                  <li><b>match</b>: Street supplied matches previously associated with email.</li>
+                  <li><b>no_match</b>: Street supplied does NOT match street previously associated with email.
+                  </li>
+                  <li><b>no_data</b>: No Street records associated with that email.</li>
+                </ul>
+              </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>city_match</strong> <small>string</small>
+              <br />Indicates if city data is available and matches with known records.
+              <br /><small> Possible results:
+                <ul>
+                  <li><b>match</b>: City supplied matches previously associated with email.</li>
+                  <li><b>no_match</b>: City supplied does NOT match city previously associated with email.
+                  </li>
+                  <li><b>no_data</b>: No City records associated with that email.</li>
+                </ul>
+              </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>zip_match</strong> <small>string</small>
+              <br />Indicates if zip code data is available and matches with known records.
+              <br /><small> Possible results:
+                <ul>
+                  <li><b>match</b>: Zip supplied matches previously associated with email.</li>
+                  <li><b>no_match</b>: Zip supplied does NOT match zip previously associated with email.
+                  </li>
+                  <li><b>no_data</b>: No Zip records associated with that email.</li>
+                </ul>
+              </small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>address_type</strong> <small>string</small>
+              <br />Indicates the type of address, such as Street, PO Box, etc.
+              <br /><small> Values: Alias, Firm, General, Delivery, Highrise, PO Box, Rural, Route, Street.</small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>deliverability</strong> <small>string</small>
+              <br />Indicates the deliverability status of the postal address.
+              <br /><small> Values: <code>deliverable</code>, <code>undeliverable</code>,
+                <code>possibly_deliverable</code>, <code>probably_deliverable</code>.</small>
+            </p>
+          </div>
+
+          <div class="card">
+            <p><strong>deliverability_substatus</strong> <small>string</small>
+              <br />Provides more details on the primary reason for the deliverability status.
+              <br /><small> 23+ possible values.
+                The most common 5 are: <code>deliverable</code> (deliverable), <code>missing_secondary</code>
+                (<code>possibly_deliverable</code>),
+                <code>missing_primary</code> (<code>undeliverable</code>), <code>maildrop_or_inactive</code>
+                (<code>probably_deliverable</code>), <code>invalid_street</code> (<code>undeliverable</code>).</small>
+            </p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><strong>eam</strong> <small>object</small>
+      <br />
+      <p>Email Activity Metrics that provide insights into the activity and history of the email address.</p>
+    </summary>
+    <div>
+      <div class="card">
+        <p><strong>date_first_seen</strong> <small>string</small>
+          <br />The date the email address first appeared in AtData's records. The value “now” will
+          be returned if the email address is new to AtData
+          <br /><small> Example: 2016-08-09 </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>longevity</strong> <small>integer</small>
+          <br />A score from 0 to 3 indicating how long the email has been known, with 3 representing a longer period.
+          <br /><small> Values:
+            <ul>
+              <li><b>0</b>: AtData has not encountered this email address before.</li>
+              <li><b>1</b>: AtData first encountered this email within the last month.</li>
+              <li><b>2</b>: AtData first encountered this email within the last year.</li>
+              <li><b>3</b>: AtData first encountered this email over a year ago.</li>
+            </ul>
+          </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>velocity</strong> <small>integer</small>
+          <br />A score reflecting the activity of the email address over the last 6 months, from 0
+          (no activity) to 10 (most active).
+          <br /><small> Example: 10 </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>popularity</strong> <small>integer</small>
+          <br />A score gauging the popularity of the email address over the last 12 months based
+          on the number of sources from which AtData has received the address, from 0 (no
+          sources in 12 months) to 10 (most sources).
+          <br /><small> Example: 10 </small>
+        </p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><strong>dam</strong> <small>object</small>
+      <br />
+      <p>Domain Activity Metrics that provide insights into the activity and history of the domain of the email address.
+      </p>
+    </summary>
+    <div>
+      <div class="card">
+        <p><strong>date_first_seen</strong> <small>string</small>
+          <br />The date the domain first appeared in AtData's records. The value “now” will be
+          returned if the domain is new to our database.
+          <br /><small> Example: 2002-11-09 </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>longevity</strong> <small>integer</small>
+          <br />A score from 0-3 indicating when AtData first encountered the domain.
+          <br /><small> Example: 3 </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>velocity</strong> <small>integer</small>
+          <br />A score reflecting the activity of the domain over the last 6 months, from 0 (no
+          activity) to 10 (most active).
+          <br /><small> Example: 10 </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>popularity</strong> <small>integer</small>
+          <br />A score gauging the popularity of the domain over the last 12 months based on
+          the number of sources from which AtData has received the address, from 0 (no
+          sources in 12 months) to 10 (most sources).
+          <br /><small> Example: 10 </small>
+        </p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><strong>email_validation</strong> <small>object</small>
+      <br />
+      <p>Results of the validation checks performed on the email address.</p>
+    </summary>
+    <div>
+      <div class="card">
+        <p><strong>address</strong> <small>string</small>
+          <br />Contains the email address you queried with in a standardized format.
+          <br /><small> Example: email@example.com</small>
+        </p>
+      </div>
+      <div class="card">
+        <p><strong>status</strong> <small>string</small>
+          <br />The summary status of the email validation result.
+          <br /><small> Values:
+            <ul>
+              <li><b>valid</b>: The email address passed all checks and is safe to mail.</li>
+              <li><b>invalid</b>: Do not mail. The email does not have proper syntax, the domain is dead or the mailbox
+                doesn't exist.</li>
+              <li><b>risky</b>: The email address is valid but it may cause delivery issues (e.g. spamtrap, honeypot or
+                complainer). If you’re having deliverability issues, don’t send email to risky addresses.</li>
+              <li><b>unverifiable</b>: The domain doesn’t support a mailbox level check. Also known as an "accept all"
+                or "catch all" domain. Expect some bounces from these addresses should you choose to mail them.</li>
+              <li><b>unknown</b>: The syntax and the domain of the email are valid, but we could not confirm the mailbox
+                in the time allowed. Messages to these addresses may see bounces. Repeating the query later may deliver
+                a valid/invalid status.
+              </li>
+            </ul>
+          </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>status_code</strong> <small>integer</small>
+          <br />A range from 5-999 will always be returned and describes the detailed results of the
+          validation within the "status" categorization.
+          <br /><small> Example: 50 </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>domain_type</strong> <small>string</small>
+          <br />An optional field, indicates the type of the domain.
+          <br /><small> Values:
+            <ul>
+              <li><strong>biz</strong>: The domain of a corporation or business.</li>
+              <li><strong>disposable</strong>: The domain is used to create temporary email addresses. AtData assigns
+                these domains an “invalid” status.</li>
+              <li><strong>edu</strong>: An educational institution.</li>
+              <li><strong>freeisp</strong>: A free Internet Service Provider.</li>
+              <li><strong>gov</strong>: A governmental institution.</li>
+              <li><strong>paidisp</strong>: An Internet Service Provider that requires a paid subscription to create an
+                email address.</li>
+              <li><strong>parked</strong>: The domain does not have an active website.</li>
+              <li><strong>privacy</strong>: The domain is used to protect the privacy of the user, e.g., Apple’s Mail
+                Privacy Protection.</li>
+              <li><strong>wireless</strong>: Domains for wireless devices that must not be sent unsolicited emails, as
+                per the FCC.</li>
+            </ul>
+          </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>role_account</strong> <small>boolean</small>
+          <br />An optional field, role_account is returned if the email address is identified as the
+          role related email account. A role account is an email address for a business job
+          role or a group of people in a company such as sales, info, support, marketing or
+          customer service (e.g. info@abc.com).
+          <br /><small> Example: true </small>
+        </p>
+      </div>
+    </div>
+  </details>
+
+</div>
+
+<style>
+  details {
+    display: flex;
+    overflow: hidden;
+  }
+
+  p {
+    margin-left: 20px;
+  }
+
+  .card {
+    border: 1px solid #d7d7d7;
+    background: #f3f3f3ba;
+    margin: 1.5em;
+    border-radius: 5px;
+    border-left: 10px solid black;
+    padding: 0.25em;
+  }
+</style>
