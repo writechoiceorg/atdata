@@ -111,6 +111,14 @@ paths:
       operationId: submit-feedback
       summary: Submit Feedback
       description: Submits feedback about identified fraud through a tab-separated file.
+      parameters:
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: API key for accessing the service.
+          example: 1234567890abcdef
       requestBody:
         content:
           multipart/form-data:
