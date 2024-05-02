@@ -6,7 +6,7 @@ info:
   contact:
     email: emailexperts@atdata.com
 servers:
-  - url: https://api.atdata.com/fr
+  - url: https://api.atdata.com
 
 paths:
   /fr:
