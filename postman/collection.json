@@ -1,0 +1,138 @@
+{
+  "info": {
+    "name": "AtData Fraud Prevention API",
+    "description": "Provides detailed information about email addresses and their risk and fraud correlation.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Retrieve Fraud Risk Information",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/fr?api_key={{api_key}}&email={{email}}&reference_id={{reference_id}}&first={{first}}&last={{last}}&street={{street}}&city={{city}}&state={{state}}&zip={{zip}}&country={{country}}&phone={{phone}}&ip={{ip}}&user_agent={{user_agent}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "fr"
+          ],
+          "query": [
+            {
+              "key": "api_key",
+              "value": "{{api_key}}",
+              "description": "API key for accessing the service."
+            },
+            {
+              "key": "email",
+              "value": "",
+              "description": "The email address to be evaluated for fraud. ⚠️ URL encoding required. ⚠️"
+            },
+            {
+              "key": "reference_id",
+              "value": "",
+              "disabled": true,
+              "description": "Internal identifier for the email or transaction. ⚠️ URL encoding required ⚠️."
+            },
+            {
+              "key": "first",
+              "value": "",
+              "disabled": true,
+              "description": "First name of the individual."
+            },
+            {
+              "key": "last",
+              "value": "",
+              "disabled": true,
+              "description": "Last name of the individual."
+            },
+            {
+              "key": "street",
+              "value": "",
+              "disabled": true,
+              "description": "First line of the postal address, including number."
+            },
+            {
+              "key": "city",
+              "value": "",
+              "disabled": true,
+              "description": "City of the postal address."
+            },
+            {
+              "key": "state",
+              "value": "",
+              "disabled": true,
+              "description": "State of the postal address."
+            },
+            {
+              "key": "zip",
+              "value": "",
+              "disabled": true,
+              "description": "ZIP or postcode of the postal address."
+            },
+            {
+              "key": "country",
+              "value": "",
+              "disabled": true,
+              "description": "2 letter country code."
+            },
+            {
+              "key": "phone",
+              "value": "",
+              "disabled": true,
+              "description": "hone number, including country code."
+            },
+            {
+              "key": "ip",
+              "value": "",
+              "disabled": true,
+              "description": "User's IP address."
+            },
+            {
+              "key": "user_agent",
+              "value": "",
+              "disabled": true,
+              "description": "User agent of the client."
+            }
+          ]
+        },
+        "description": "Retrieves fraud risk information based on the provided email and optional personal data."
+      }
+    },
+    {
+      "name": "Submit Feedback",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "description": "A tab-separated file containing feedback data."
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/feedback/v1?api_key={{api_key}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "feedback/v1"
+          ],
+          "query": [
+            {
+              "key": "api_key",
+              "value": "{{api_key}}",
+              "description": "API key for accessing the service."
+            }
+          ]
+        },
+        "description": "Submits feedback about identified fraud through a tab-separated file."
+      }
+    }
+  ]
+}
