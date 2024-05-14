@@ -131,9 +131,24 @@ paths:
                   description: A tab-separated file containing feedback data.
       responses:
         200:
-          description: Feedback submitted successfully.
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubmitFeedbackResponse'
 components:
   schemas:
+    SubmitFeedbackResponse:
+      type: object
+      properties:
+        total_records:
+          type: integer
+          description: Total number of records processed.
+          example: 2
+        skipped_records:
+          type: integer
+          description: Number of records skipped.
+          example: 0
     FraudRetrieveResponse:
       type: object
       properties:
