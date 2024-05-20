@@ -1,0 +1,2409 @@
+---
+openapi: 3.1.0
+info:
+  title: Customer API
+  version: '1.0'
+servers:
+- url: https://api-sandbox.y.uno/v1
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: public-api-key
+      x-default: "<Your public-api-key>"
+    sec1:
+      type: apiKey
+      in: header
+      name: private-secret-key
+      x-default: "<Your private-secret-key>"
+security:
+- sec0: []
+  sec1: []
+paths:
+  "/customers":
+    post:
+      summary: Create Customer
+      description: ''
+      operationId: create-customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - merchant_customer_id
+              - first_name
+              - last_name
+              - email
+              properties:
+                merchant_customer_id:
+                  type: string
+                  description: The unique identifier of the customer in the external
+                    merchant (MAX 255; MIN 3).
+                merchant_customer_created_at:
+                  type: string
+                  description: Customer´s registration date on the merchants platform
+                    (ISO 8601 MAX 27; MIN 27)
+                  format: date-time
+                first_name:
+                  type: string
+                  description: The customer's first name (MAX 255; MIN 1).
+                last_name:
+                  type: string
+                  description: The customer's last name (MAX 255; MIN 1).
+                gender:
+                  type: string
+                  description: The customer's gender (MAX 2, MIN 1).
+                  enum:
+                  - M
+                  - F
+                  - NB
+                date_of_birth:
+                  type: string
+                  description: The customer's date of birth in the YYYY-MM-DD format
+                    (MAX 10; MIN 10).
+                email:
+                  type: string
+                  description: The customer's e-mail (MAX 255; MIN 3).
+                nationality:
+                  type: string
+                  description: The customer's nationality (MAX 2; MIN 2; [ISO 3166-1](country-reference)).
+                  enum:
+                  - AR
+                  - BO
+                  - BR
+                  - CL
+                  - CO
+                  - CR
+                  - EC
+                  - SV
+                  - GT
+                  - HN
+                  - MX
+                  - NI
+                  - PA
+                  - PY
+                  - PE
+                  - US
+                  - UY
+                  - ''
+                country:
+                  type: string
+                  description: The customer's country (MAX 2; MIN 2; [ISO 3166-1](country-reference)).
+                  enum:
+                  - AR
+                  - BO
+                  - BR
+                  - CL
+                  - CO
+                  - CR
+                  - EC
+                  - SV
+                  - GT
+                  - HN
+                  - MX
+                  - NI
+                  - PA
+                  - PY
+                  - PE
+                  - US
+                  - UY
+                document:
+                  type: object
+                  description: Specifies the customer's document object, including
+                    its number and type. This object is not mandatory. However, if
+                    you send this information, the payment experience will be enhanced
+                    for your user.
+                  required:
+                  - document_number
+                  properties:
+                    document_number:
+                      type: string
+                      description: The customer's document number (MAX 40; MIN 3).
+                    document_type:
+                      type: string
+                      description: The customer's document type (MAX 6, MIN 2; [Country
+                        reference](country-reference)).
+                      enum:
+                      - DNI
+                      - CI
+                      - LC
+                      - LE
+                      - CUIT
+                      - CUIL
+                      - PAS
+                      - CPF
+                      - RG
+                      - CNH
+                      - CNPJ
+                      - RUT
+                      - RUN
+                      - CC
+                      - CE
+                      - NIT
+                      - DUI
+                      - PIC
+                      - DPI
+                      - IFR
+                      - INE
+                      - CP
+                      - RFC
+                      - CURP
+                      - CIP
+                      - CIC
+                      - CUI
+                      - RUC
+                      - ''
+                phone:
+                  type: object
+                  description: Specifies the customer's phone number object. This
+                    object is not mandatory. However, if you send this information,
+                    the payment experience will be enhanced for your user.
+                  required:
+                  - country_code
+                  - number
+                  properties:
+                    country_code:
+                      type: string
+                      description: 'The country calling code of the customer''s phone
+                        (MAX 3; MIN 1). Possible values values: Check the [Country
+                        reference.](country-reference)'
+                    number:
+                      type: string
+                      description: The customer's phone number, without the country
+                        code (MAX 32; MIN 1).
+                billing_address:
+                  type: object
+                  description: Specifies the customer's billing address object. This
+                    object is not mandatory. However, if you send this information,
+                    the payment experience will be enhanced for your user.
+                  required:
+                  - address_line_1
+                  - city
+                  - country
+                  properties:
+                    address_line_1:
+                      type: string
+                      description: The primary billing address line of the customer
+                        (MAX 255; MIN 3).
+                    address_line_2:
+                      type: string
+                      description: The secondary billing address line of the customer
+                        (MAX 255; MIN 3).
+                    city:
+                      type: string
+                      description: The city considered for the billing address (MAX
+                        255; MIN 3).
+                    country:
+                      type: string
+                      description: The country considered for the billing address
+                        (MAX 2; MIN 2; [ISO 3166-1](country-reference))
+                      enum:
+                      - AR
+                      - BO
+                      - BR
+                      - CL
+                      - CO
+                      - CR
+                      - EC
+                      - SV
+                      - GT
+                      - HN
+                      - MX
+                      - NI
+                      - PA
+                      - PY
+                      - PE
+                      - US
+                      - UY
+                    state:
+                      type: string
+                      description: The state considered for the billing address (MAX
+                        255; MIN 3).
+                    zip_code:
+                      type: string
+                      description: The zipcode considered for the billing address
+                        (MAX 11; MIN 4).
+                    neighborhood:
+                      type: string
+                      description: The neighborhood of the address line of the customer(MAX
+                        255; MIN 3)
+                shipping_address:
+                  type: object
+                  description: Specifies the customer's shipping address object. This
+                    object is not mandatory. However, if you send this information,
+                    the payment experience will be enhanced for your user.
+                  required:
+                  - address_line_1
+                  - city
+                  - country
+                  properties:
+                    address_line_1:
+                      type: string
+                      description: The primary shipping address line of the customer
+                        (MAX 255; MIN 3).
+                    address_line_2:
+                      type: string
+                      description: The secondary shipping address line of the customer
+                        (MAX 255; MIN 3).
+                    city:
+                      type: string
+                      description: The city considered for the shipping address (MAX
+                        255; MIN 3).
+                    country:
+                      type: string
+                      description: The country considered for the shipping address
+                        (MAX 2; MIN 2; [ISO 3166-1](country-reference))
+                      enum:
+                      - AR
+                      - BO
+                      - BR
+                      - CL
+                      - CO
+                      - CR
+                      - EC
+                      - SV
+                      - GT
+                      - HN
+                      - MX
+                      - NI
+                      - PA
+                      - PY
+                      - PE
+                      - US
+                      - UY
+                      - ''
+                    state:
+                      type: string
+                      description: The state considered for the shipping address (MAX
+                        255; MIN 3).
+                    zip_code:
+                      type: string
+                      description: The zipcode considered for the shipping address
+                        (MAX 11; MIN 4).
+                    neighborhood:
+                      type: string
+                      description: The neighborhood of the address line of the customer(MAX
+                        255; MIN 3)
+                metadata:
+                  type: array
+                  description: Specifies a list of metadata objects. You can add up
+                    to 50 metadata objects.
+                  items:
+                    properties:
+                      key:
+                        type: string
+                        description: The metadata key.
+                      value:
+                        type: string
+                        description: The metadata key value.
+                    required:
+                    - key
+                    - value
+                    type: object
+            examples:
+              Customer (full data):
+                value:
+                  merchant_customer_id: '4321'
+                  merchant_customer_created_at: '2022-05-09T20:46:54.786342Z'
+                  first_name: John
+                  last_name: Doe
+                  email: john.doe@email.com
+                  gender: M
+                  date_of_birth: '1990-02-28'
+                  nationality: CO
+                  country: CO
+                  document:
+                    document_type: CC
+                    document_number: '1093333333'
+                  phone:
+                    number: '3132450765'
+                    country_code: '57'
+                  billing_address:
+                    address_line_1: 'Calle 34 # 56 - 78'
+                    address_line_2: Apartamento 502, Torre I
+                    country: CO
+                    state: Cundinamarca
+                    city: Bogotá
+                    zip_code: '111111'
+                    neighborhood: Comuna 2
+                  shipping_address:
+                    address_line_1: 'Calle 34 # 56 - 78'
+                    address_line_2: Apartamento 502, Torre I
+                    country: CO
+                    state: Cundinamarca
+                    city: Bogotá
+                    zip_code: '111111'
+                    neighborhood: Comuna 2
+                  metadata:
+                  - key: ID
+                    value: '123456'
+              Customer (min. data):
+                value:
+                  merchant_customer_id: '4321'
+                  first_name: John
+                  last_name: Doe
+                  email: john.doe@email.com
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Customer (full data):
+                  value: "{\n    \"id\": \"9104911d-5df9-429e-8488-ad41abea1a4b\",\n
+                    \   \"merchant_customer_id\": \"4321\",\n    \"merchant_customer_created_at\":\"2022-05-09T20:46:54.786342Z\",\n
+                    \   \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\":
+                    \"john.doe@email.com\",\n    \"gender\": \"M\", \n    \"date_of_birth\":
+                    \"1990-02-28\",\n    \"nationality\": \"CO\",\n    \"country\":
+                    \"CO\",\n    \"document\": {\n      \"document_type\": \"CC\",\n
+                    \     \"document_number\": \"1093333333\"\n    },\n    \"phone\":
+                    {\n      \"number\": \"3132450765\",\n      \"country_code\":
+                    \"57\"\n    },\n    \"billing_address\": {\n      \"address_line_1\":
+                    \"Calle 34 # 56 - 78\",\n      \"address_line_2\": \"Apartamento
+                    502, Torre I\",\n      \"country\": \"CO\",\n      \"state\":
+                    \"Cundinamarca\",\n      \"city\": \"Bogotá\",\n      \"zip_code\":
+                    \"111111\"\n    },\n    \"shipping_address\": {\n      \"address_line_1\":
+                    \"Calle 34 # 56 - 78\",\n      \"address_line_2\": \"Apartamento
+                    502, Torre I\",\n      \"country\": \"CO\",\n      \"state\":
+                    \"Cundinamarca\",\n      \"city\": \"Bogotá\",\n      \"zip_code\":
+                    \"111111\"\n    },\n     \"created_at\": \"2022-05-09T20:46:54.786342Z\",\n
+                    \    \"updated_at\": \"2022-05-09T20:46:54.786342Z\"\n}"
+                Customer (min. data):
+                  value: "{\n    \"id\": \"9104911d-5df9-429e-8488-ad41abea1a4b\",\n
+                    \   \"merchant_customer_id\": \"4321\",\n    \"first_name\": \"John\",\n
+                    \   \"last_name\": \"Doe\",\n    \"email\": \"john.doe@email.com\",\n
+                    \   \"gender\": null, \n    \"date_of_birth\": null,\n    \"nationality\":
+                    null,\n    \"country\": null,\n    \"document\": null,\n    \"phone\":
+                    null,\n    \"billing_address\": null,\n    \"shipping_address\":
+                    null,\n    \"created_at\": \"2022-05-09T20:46:54.786342Z\",\n
+                    \   \"updated_at\": \"2022-05-09T20:46:54.786342Z\"\n}"
+              schema:
+                oneOf:
+                - title: Customer (full data)
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: 9104911d-5df9-429e-8488-ad41abea1a4b
+                    merchant_customer_id:
+                      type: string
+                      example: '4321'
+                    merchant_customer_created_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+                    first_name:
+                      type: string
+                      example: John
+                    last_name:
+                      type: string
+                      example: Doe
+                    email:
+                      type: string
+                      example: john.doe@email.com
+                    gender:
+                      type: string
+                      example: M
+                    date_of_birth:
+                      type: string
+                      example: '1990-02-28'
+                    nationality:
+                      type: string
+                      example: CO
+                    country:
+                      type: string
+                      example: CO
+                    document:
+                      type: object
+                      properties:
+                        document_type:
+                          type: string
+                          example: CC
+                        document_number:
+                          type: string
+                          example: '1093333333'
+                    phone:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          example: '3132450765'
+                        country_code:
+                          type: string
+                          example: '57'
+                    billing_address:
+                      type: object
+                      properties:
+                        address_line_1:
+                          type: string
+                          example: 'Calle 34 # 56 - 78'
+                        address_line_2:
+                          type: string
+                          example: Apartamento 502, Torre I
+                        country:
+                          type: string
+                          example: CO
+                        state:
+                          type: string
+                          example: Cundinamarca
+                        city:
+                          type: string
+                          example: Bogotá
+                        zip_code:
+                          type: string
+                          example: '111111'
+                    shipping_address:
+                      type: object
+                      properties:
+                        address_line_1:
+                          type: string
+                          example: 'Calle 34 # 56 - 78'
+                        address_line_2:
+                          type: string
+                          example: Apartamento 502, Torre I
+                        country:
+                          type: string
+                          example: CO
+                        state:
+                          type: string
+                          example: Cundinamarca
+                        city:
+                          type: string
+                          example: Bogotá
+                        zip_code:
+                          type: string
+                          example: '111111'
+                    created_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+                    updated_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+                - title: Customer (min. data)
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: 9104911d-5df9-429e-8488-ad41abea1a4b
+                    merchant_customer_id:
+                      type: string
+                      example: '4321'
+                    first_name:
+                      type: string
+                      example: John
+                    last_name:
+                      type: string
+                      example: Doe
+                    email:
+                      type: string
+                      example: john.doe@email.com
+                    gender: {}
+                    date_of_birth: {}
+                    nationality: {}
+                    country: {}
+                    document: {}
+                    phone: {}
+                    billing_address: {}
+                    shipping_address: {}
+                    created_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+                    updated_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: |-
+                    {
+                      "code": "INVALID_REQUEST",
+                      "messages": [
+                        "Invalid request"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_REQUEST
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid request
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value: |-
+                    {
+                      "code": "INVALID_CREDENTIALS",
+                      "messages": [
+                        "Invalid Credentials"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_CREDENTIALS
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid Credentials
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Forbidden:
+                  value: |-
+                    {
+                      "code": "AUTHORIZATION_REQUIRED",
+                      "messages": [
+                        "The merchant has no authorization to use this API"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: AUTHORIZATION_REQUIRED
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: The merchant has no authorization to use this API
+      deprecated: false
+  "/customers/{id}":
+    patch:
+      summary: Update Customer
+      description: ''
+      operationId: update-customer
+      parameters:
+      - name: id
+        in: path
+        description: The unique identifier of the customer (UUID | MAX 36 ; MIN 36).
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                merchant_customer_id:
+                  type: string
+                  description: The unique identifier of the customer in the external
+                    merchant (MAX 255; MIN 1).
+                merchant_customer_created_at:
+                  type: string
+                  description: Customer´s registration date on the merchants platform
+                    (ISO 8601 MAX 27; MIN 27)
+                  format: date-time
+                first_name:
+                  type: string
+                  description: The customer's first name (MAX 255; MIN 1).
+                last_name:
+                  type: string
+                  description: The customer's last name (MAX 255; MIN 1).
+                gender:
+                  type: string
+                  description: The customer's gender (MAX 1, MIN 1).
+                  enum:
+                  - M
+                  - F
+                  - ''
+                date_of_birth:
+                  type: string
+                  description: The customer's date of birth in the YYYY-MM-DD format
+                    (MAX 10; MIN 10).
+                email:
+                  type: string
+                  description: The customer's e-mail (MAX 255; MIN 3).
+                nationality:
+                  type: string
+                  description: The customer's nationality (MAX 2; MIN 2; [ISO 3166-1](country-reference)).
+                  enum:
+                  - AR
+                  - BO
+                  - BR
+                  - CL
+                  - CO
+                  - CR
+                  - EC
+                  - SV
+                  - GT
+                  - HN
+                  - MX
+                  - NI
+                  - PA
+                  - PY
+                  - PE
+                  - US
+                  - UY
+                  - ''
+                country:
+                  type: string
+                  description: The customer's country (MAX 2; MIN 2; [ISO 3166-1](country-reference)).
+                  enum:
+                  - AR
+                  - BO
+                  - BR
+                  - CL
+                  - CO
+                  - CR
+                  - EC
+                  - SV
+                  - GT
+                  - HN
+                  - MX
+                  - NI
+                  - PA
+                  - PY
+                  - PE
+                  - US
+                  - UY
+                  - ''
+                document:
+                  type: object
+                  description: Specifies the customer's document object, including
+                    its number and type.
+                  properties:
+                    document_number:
+                      type: string
+                      description: The customer's document number (MAX 40; MIN 3).
+                    document_type:
+                      type: string
+                      description: The customer's document type (MAX 6, MIN 2; [Country
+                        reference](country-reference)).
+                      enum:
+                      - PAS
+                      - DNI
+                      - CI
+                      - LC
+                      - LE
+                      - CUIT
+                      - CUIL
+                      - RG
+                      - CPF
+                      - CNH
+                      - CNPJ
+                      - RUT
+                      - RUN
+                      - CC
+                      - CE
+                      - NIT
+                      - RUC
+                      - IFE
+                      - INE
+                      - CP
+                      - RFC
+                phone:
+                  type: object
+                  description: Specifies the customer's phone number object.
+                  properties:
+                    country_code:
+                      type: string
+                      description: 'The country calling code of the customer''s phone
+                        (MAX 3; MIN 1). Possible values values: Check the [Country
+                        reference.](country-reference)'
+                    number:
+                      type: string
+                      description: The customer's phone number, without the country
+                        code (MAX 32; MIN 1).
+                billing_address:
+                  type: object
+                  description: Specifies the customer's billing address object.
+                  properties:
+                    address_line_1:
+                      type: string
+                      description: The primary billing address line of the customer
+                        (MAX 255; MIN 3).
+                    address_line_2:
+                      type: string
+                      description: The secondary billing address line of the customer
+                        (MAX 255; MIN 3).
+                    city:
+                      type: string
+                      description: The city considered for the billing address (MAX
+                        255; MIN 3).
+                    country:
+                      type: string
+                      description: The country considered for the billing address
+                        (MAX 2; MIN 2; [ISO 3166-1](country-reference)).
+                      enum:
+                      - AR
+                      - BO
+                      - BR
+                      - CL
+                      - CO
+                      - CR
+                      - EC
+                      - SV
+                      - GT
+                      - HN
+                      - MX
+                      - NI
+                      - PA
+                      - PY
+                      - PE
+                      - US
+                      - UY
+                      - ''
+                    state:
+                      type: string
+                      description: The state considered for the billing address (MAX
+                        255; MIN 3).
+                    zip_code:
+                      type: string
+                      description: The zipcode considered for the billing address
+                        (MAX 11; MIN 4).
+                    neighborhood:
+                      type: string
+                      description: The neighborhood of the address line of the customer(MAX
+                        255; MIN 3)
+                shipping_address:
+                  type: object
+                  description: Specifies the customer's shipping address object.
+                  properties:
+                    address_line_1:
+                      type: string
+                      description: The primary shipping address line of the customer
+                        (MAX 255; MIN 3).
+                    address_line_2:
+                      type: string
+                      description: The secondary shipping address line of the customer
+                        (MAX 255; MIN 3).
+                    city:
+                      type: string
+                      description: The city considered for the shipping address (MAX
+                        255; MIN 3).
+                    country:
+                      type: string
+                      description: The country considered for the shipping address
+                        (MAX 2; MIN 2; [ISO 3166-1](country-reference)).
+                      enum:
+                      - AR
+                      - BO
+                      - BR
+                      - CL
+                      - CO
+                      - CR
+                      - EC
+                      - SV
+                      - GT
+                      - HN
+                      - MX
+                      - NI
+                      - PA
+                      - PY
+                      - PE
+                      - US
+                      - UY
+                      - ''
+                    state:
+                      type: string
+                      description: The state considered for the shipping address (MAX
+                        255; MIN 3).
+                    zipcode:
+                      type: string
+                      description: The zipcode considered for the shipping address
+                        (MAX 11; MIN 4).
+                    neighborhood:
+                      type: string
+                      description: The neighborhood of the address line of the customer(MAX
+                        255; MIN 3)
+                metadata:
+                  type: array
+                  description: Specifies a list of metadata objects. You can add up
+                    to 50 metadata objects.
+                  items:
+                    properties:
+                      key:
+                        type: string
+                        description: The metadata key.
+                      value:
+                        type: string
+                        description: The metadata key value.
+                    required:
+                    - key
+                    - value
+                    type: object
+            examples:
+              update_multiple_fields:
+                value:
+                  merchant_customer_id: '4321'
+                  merchant_customer_created_at: '2022-05-09T20:46:54.786342Z'
+                  first_name: John
+                  last_name: Doe
+                  email: john.doe@email.com
+                  gender: M
+                  date_of_birth: '1990-02-28'
+                  nationality: CO
+                  country: CO
+                  document:
+                    document_type: CC
+                    document_number: '1093333333'
+                  phone:
+                    number: '3132450765'
+                    country_code: '57'
+                  billing_address:
+                    address_line_1: 'Calle 34 # 56 - 78'
+                    address_line_2: Apartamento 502, Torre I
+                    country: CO
+                    state: Cundinamarca
+                    city: Bogotá
+                    zip_code: '111111'
+                    neighborhood: Comuna 2
+                  shipping_address:
+                    address_line_1: 'Calle 34 # 56 - 78'
+                    address_line_2: Apartamento 502, Torre I
+                    country: CO
+                    state: Cundinamarca
+                    city: Bogotá
+                    zip_code: '111111'
+                    neighborhood: Comuna 2
+                  metadata:
+                  - key: ID
+                    value: '123456'
+              update_a_field:
+                value:
+                  email: john.smith@y.uno
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                update_a_field:
+                  value: "{\n    \"id\": \"9104911d-5df9-429e-8488-ad41abea1a4b\",\n
+                    \    \"merchant_customer_id\": \"4321\",\n    \"first_name\":
+                    \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.smith@email.com\",\n
+                    \   \"gender\": \"M\", \n    \"date_of_birth\": \"1990-02-28\",\n
+                    \   \"nationality\": \"CO\",\n    \"country\": \"CO\",\n    \"document\":
+                    {\n      \"document_type\": \"CC\",\n      \"document_number\":
+                    \"1093333333\"\n    },\n    \"phone\": {\n      \"number\": \"3132450765\",\n
+                    \     \"country_code\": \"57\"\n    },\n    \"billing_address\":
+                    {\n      \"address_line_1\": \"Calle 34 # 56 - 78\",\n      \"address_line_2\":
+                    \"Apartamento 502, Torre I\",\n      \"country\": \"CO\",\n      \"state\":
+                    \"Cundinamarca\",\n      \"city\": \"Bogotá\",\n      \"zip_code\":
+                    \"111111\"\n    },\n    \"shipping_address\": {\n      \"address_line_1\":
+                    \"Calle 34 # 56 - 78\",\n      \"address_line_2\": \"Apartamento
+                    502, Torre I\",\n      \"country\": \"CO\",\n      \"state\":
+                    \"Cundinamarca\",\n      \"city\": \"Bogotá\",\n      \"zip_code\":
+                    \"111111\"\n    },\n      \"created_at\": \"2022-05-09T20:46:54.786342Z\",\n
+                    \     \"updated_at\": \"2022-05-09T20:46:54.786342Z\"\n\n  \n}"
+                update_multiple_fields:
+                  value: "{\n    \"id\": \"9104911d-5df9-429e-8488-ad41abea1a4b\",\n
+                    \   \"merchant_customer_id\": \"4321\",\n    \"first_name\": \"John\",\n
+                    \   \"last_name\": \"smith\",\n    \"email\": \"john.smith@email.com\",\n
+                    \   \"gender\": \"M\", \n    \"date_of_birth\": \"1990-02-28\",\n
+                    \   \"nationality\": \"CO\",\n    \"country\": \"CO\",\n    \"document\":
+                    {\n      \"document_type\": \"CC\",\n      \"document_number\":
+                    \"1093333333\"\n    },\n    \"phone\": {\n      \"country_code\":
+                    \"59\",\n      \"number\": \"3132463565\"\n    },\n    \"billing_address\":
+                    {\n      \"address_line_1\": \"Calle 34 # 56 - 78\",\n      \"address_line_2\":
+                    \"Apartamento 502, Torre I\",\n      \"country\": \"CO\",\n      \"state\":
+                    \"Cundinamarca\",\n      \"city\": \"Bogotá\",\n      \"zip_code\":
+                    \"111111\"\n    },\n    \"shipping_address\": {\n      \"address_line_1\":
+                    \"Calle 34 # 56 - 78\",\n      \"address_line_2\": \"Apartamento
+                    502, Torre I\",\n      \"country\": \"CO\",\n      \"state\":
+                    \"Cundinamarca\",\n      \"city\": \"Bogotá\",\n      \"zip_code\":
+                    \"111111\"\n    },\n      \"created_at\": \"2022-05-09T20:46:54.786342Z\",\n
+                    \     \"updated_at\": \"2022-05-09T20:46:54.786342Z\"\n\n  \n}"
+              schema:
+                oneOf:
+                - title: update_a_field
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: 9104911d-5df9-429e-8488-ad41abea1a4b
+                    merchant_customer_id:
+                      type: string
+                      example: '4321'
+                    first_name:
+                      type: string
+                      example: John
+                    last_name:
+                      type: string
+                      example: Doe
+                    email:
+                      type: string
+                      example: john.smith@email.com
+                    gender:
+                      type: string
+                      example: M
+                    date_of_birth:
+                      type: string
+                      example: '1990-02-28'
+                    nationality:
+                      type: string
+                      example: CO
+                    country:
+                      type: string
+                      example: CO
+                    document:
+                      type: object
+                      properties:
+                        document_type:
+                          type: string
+                          example: CC
+                        document_number:
+                          type: string
+                          example: '1093333333'
+                    phone:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          example: '3132450765'
+                        country_code:
+                          type: string
+                          example: '57'
+                    billing_address:
+                      type: object
+                      properties:
+                        address_line_1:
+                          type: string
+                          example: 'Calle 34 # 56 - 78'
+                        address_line_2:
+                          type: string
+                          example: Apartamento 502, Torre I
+                        country:
+                          type: string
+                          example: CO
+                        state:
+                          type: string
+                          example: Cundinamarca
+                        city:
+                          type: string
+                          example: Bogotá
+                        zip_code:
+                          type: string
+                          example: '111111'
+                    shipping_address:
+                      type: object
+                      properties:
+                        address_line_1:
+                          type: string
+                          example: 'Calle 34 # 56 - 78'
+                        address_line_2:
+                          type: string
+                          example: Apartamento 502, Torre I
+                        country:
+                          type: string
+                          example: CO
+                        state:
+                          type: string
+                          example: Cundinamarca
+                        city:
+                          type: string
+                          example: Bogotá
+                        zip_code:
+                          type: string
+                          example: '111111'
+                    created_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+                    updated_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+                - title: update_multiple_fields
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: 9104911d-5df9-429e-8488-ad41abea1a4b
+                    merchant_customer_id:
+                      type: string
+                      example: '4321'
+                    first_name:
+                      type: string
+                      example: John
+                    last_name:
+                      type: string
+                      example: smith
+                    email:
+                      type: string
+                      example: john.smith@email.com
+                    gender:
+                      type: string
+                      example: M
+                    date_of_birth:
+                      type: string
+                      example: '1990-02-28'
+                    nationality:
+                      type: string
+                      example: CO
+                    country:
+                      type: string
+                      example: CO
+                    document:
+                      type: object
+                      properties:
+                        document_type:
+                          type: string
+                          example: CC
+                        document_number:
+                          type: string
+                          example: '1093333333'
+                    phone:
+                      type: object
+                      properties:
+                        country_code:
+                          type: string
+                          example: '59'
+                        number:
+                          type: string
+                          example: '3132463565'
+                    billing_address:
+                      type: object
+                      properties:
+                        address_line_1:
+                          type: string
+                          example: 'Calle 34 # 56 - 78'
+                        address_line_2:
+                          type: string
+                          example: Apartamento 502, Torre I
+                        country:
+                          type: string
+                          example: CO
+                        state:
+                          type: string
+                          example: Cundinamarca
+                        city:
+                          type: string
+                          example: Bogotá
+                        zip_code:
+                          type: string
+                          example: '111111'
+                    shipping_address:
+                      type: object
+                      properties:
+                        address_line_1:
+                          type: string
+                          example: 'Calle 34 # 56 - 78'
+                        address_line_2:
+                          type: string
+                          example: Apartamento 502, Torre I
+                        country:
+                          type: string
+                          example: CO
+                        state:
+                          type: string
+                          example: Cundinamarca
+                        city:
+                          type: string
+                          example: Bogotá
+                        zip_code:
+                          type: string
+                          example: '111111'
+                    created_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+                    updated_at:
+                      type: string
+                      example: '2022-05-09T20:46:54.786342Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: |-
+                    {
+                      "code": "INVALID_REQUEST",
+                      "messages": [
+                        "Invalid request"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_REQUEST
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid request
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value: |-
+                    {
+                      "code": "INVALID_CREDENTIALS",
+                      "messages": [
+                        "Invalid credentials"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_CREDENTIALS
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid credentials
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Forbidden:
+                  value: |-
+                    {
+                      "code": "AUTHORIZATION_REQUIRED",
+                      "messages": [
+                        "The merchant has no authorization to use this API."
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: AUTHORIZATION_REQUIRED
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: The merchant has no authorization to use this API.
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "code": "CUSTOMER_NOT_FOUND",
+                      "messages": [
+                        "Customer not found"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: CUSTOMER_NOT_FOUND
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Customer not found
+      deprecated: false
+    get:
+      summary: Retrieve Customer
+      description: ''
+      operationId: retrieve-customer
+      parameters:
+      - name: id
+        in: path
+        description: The unique identifier of the customer (MAX 64 ; MIN 36).
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"9104911d-5df9-429e-8488-ad41abea1a4b\",\n
+                    \    \"merchant_customer_id\": \"4321\",\n    \"first_name\":
+                    \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@email.com\",\n
+                    \   \"gender\": \"M\", \n    \"date_of_birth\": \"1990-02-28\",\n
+                    \   \"nationality\": \"CO\",\n    \"country\": \"CO\",\n    \"document\":
+                    {\n      \"document_type\": \"CC\",\n      \"document_number\":
+                    \"1093333333\"\n    },\n    \"phone\": {\n      \"number\": \"3132450765\",\n
+                    \     \"country_code\": \"57\"\n    },\n    \"billing_address\":
+                    {\n      \"address_line_1\": \"Calle 34 # 56 - 78\",\n      \"address_line_2\":
+                    \"Apartamento 502, Torre I\",\n      \"country\": \"CO\",\n      \"state\":
+                    \"Cundinamarca\",\n      \"city\": \"Bogotá\",\n      \"zip_code\":
+                    \"111111\"\n    },\n    \"shipping_address\": {\n      \"address_line_1\":
+                    \"Calle 34 # 56 - 78\",\n      \"address_line_2\": \"Apartamento
+                    502, Torre I\",\n      \"country\": \"CO\",\n      \"state\":
+                    \"Cundinamarca\",\n      \"city\": \"Bogotá\",\n      \"zip_code\":
+                    \"111111\"\n    },\n      \"created_at\": \"2022-05-09T20:46:54.786342Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 9104911d-5df9-429e-8488-ad41abea1a4b
+                  merchant_customer_id:
+                    type: string
+                    example: '4321'
+                  first_name:
+                    type: string
+                    example: John
+                  last_name:
+                    type: string
+                    example: Doe
+                  email:
+                    type: string
+                    example: john.doe@email.com
+                  gender:
+                    type: string
+                    example: M
+                  date_of_birth:
+                    type: string
+                    example: '1990-02-28'
+                  nationality:
+                    type: string
+                    example: CO
+                  country:
+                    type: string
+                    example: CO
+                  document:
+                    type: object
+                    properties:
+                      document_type:
+                        type: string
+                        example: CC
+                      document_number:
+                        type: string
+                        example: '1093333333'
+                  phone:
+                    type: object
+                    properties:
+                      number:
+                        type: string
+                        example: '3132450765'
+                      country_code:
+                        type: string
+                        example: '57'
+                  billing_address:
+                    type: object
+                    properties:
+                      address_line_1:
+                        type: string
+                        example: 'Calle 34 # 56 - 78'
+                      address_line_2:
+                        type: string
+                        example: Apartamento 502, Torre I
+                      country:
+                        type: string
+                        example: CO
+                      state:
+                        type: string
+                        example: Cundinamarca
+                      city:
+                        type: string
+                        example: Bogotá
+                      zip_code:
+                        type: string
+                        example: '111111'
+                  shipping_address:
+                    type: object
+                    properties:
+                      address_line_1:
+                        type: string
+                        example: 'Calle 34 # 56 - 78'
+                      address_line_2:
+                        type: string
+                        example: Apartamento 502, Torre I
+                      country:
+                        type: string
+                        example: CO
+                      state:
+                        type: string
+                        example: Cundinamarca
+                      city:
+                        type: string
+                        example: Bogotá
+                      zip_code:
+                        type: string
+                        example: '111111'
+                  created_at:
+                    type: string
+                    example: '2022-05-09T20:46:54.786342Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: |-
+                    {
+                      "code": "INVALID_REQUEST",
+                      "messages": [
+                        "Invalid request"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_REQUEST
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid request
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value: |-
+                    {
+                      "code": "INVALID_CREDENTIALS",
+                      "messages": [
+                        "Invalid credentials"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_CREDENTIALS
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid credentials
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Forbidden:
+                  value: |-
+                    {
+                      "code": "AUTHORIZATION_REQUIRED",
+                      "messages": [
+                        "The merchant has no authorization to use this API"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: AUTHORIZATION_REQUIRED
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: The merchant has no authorization to use this API
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Not Found:
+                  value: |-
+                    {
+                      "code": "CUSTOMER_NOT_FOUND",
+                      "messages": [
+                        "Customer not found"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: CUSTOMER_NOT_FOUND
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Customer not found
+      deprecated: false
+  "/customers/sessions":
+    post:
+      summary: Create Customer Session
+      description: ''
+      operationId: create-customer-session
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - account_id
+              - country
+              - customer_id
+              properties:
+                account_id:
+                  type: string
+                  description: The unique identifier of the account. You find this
+                    information on [Yuno's Dashboard](https://dashboard.y.uno/) (MAX
+                    64; MIN 36).
+                country:
+                  type: string
+                  description: The customer's country  (MAX 2; MIN 2; [ISO 3166-1](ref:country-reference)).
+                  enum:
+                  - AR
+                  - BO
+                  - BR
+                  - CL
+                  - CO
+                  - CR
+                  - EC
+                  - SV
+                  - GT
+                  - HN
+                  - MX
+                  - NI
+                  - PA
+                  - PY
+                  - PE
+                  - US
+                  - UY
+                  - ''
+                customer_id:
+                  type: string
+                  description: The unique identifier of the customer, created using
+                    the [Create Customer](https://docs.y.uno/reference/create-customer)
+                    endpoint (MAX 64 ; MIN 36).
+                callback_url:
+                  type: string
+                  description: The url to redirect your customer after the enrollment  is
+                    made in the provider´s environment (MAX 526; MIN 3).
+            examples:
+              Customer session (full data):
+                value:
+                  customer_id: 1b430201-0200-46cd-84f7-36a8799bbbd7
+                  country: CO
+                  account_id: 8beac4de-5f6f-11ed-9b6a-0242ac120002
+                  callback_url: http://www.mysite.com
+              Customer session (min. data):
+                value:
+                  customer_id: "<Customer's id>"
+                  country: CO
+                  account_id: "<Your account_id>"
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Customer session (min. data):
+                  value: |-
+                    {
+                        "customer_session": "b22edccc-cdd5-4520-bae7-5f5f491dd851",
+                        "customer_id": "1b430201-0200-46cd-84f7-36a8799bbbd7",
+                        "country": "CO",
+                        "callback_url": null,
+                        "created_at": "2022-11-08T01:28:08.804150Z"
+                    }
+                Customer session (full data):
+                  value: |-
+                    {
+                        "customer_session": "b22edccc-cdd5-4520-bae7-5f5f491dd851",
+                        "customer_id": "1b430201-0200-46cd-84f7-36a8799bbbd7",
+                        "country": "CO",
+                        "callback_url": "http://www.mysite.com?customerSession=b22edccc-cdd5-4520-bae7-5f5f491dd851",
+                        "created_at": "2022-11-08T01:28:08.804150Z"
+                    }
+              schema:
+                oneOf:
+                - title: Customer session (min. data)
+                  type: object
+                  properties:
+                    customer_session:
+                      type: string
+                      example: b22edccc-cdd5-4520-bae7-5f5f491dd851
+                    customer_id:
+                      type: string
+                      example: 1b430201-0200-46cd-84f7-36a8799bbbd7
+                    country:
+                      type: string
+                      example: CO
+                    callback_url: {}
+                    created_at:
+                      type: string
+                      example: '2022-11-08T01:28:08.804150Z'
+                - title: Customer session (full data)
+                  type: object
+                  properties:
+                    customer_session:
+                      type: string
+                      example: b22edccc-cdd5-4520-bae7-5f5f491dd851
+                    customer_id:
+                      type: string
+                      example: 1b430201-0200-46cd-84f7-36a8799bbbd7
+                    country:
+                      type: string
+                      example: CO
+                    callback_url:
+                      type: string
+                      example: http://www.mysite.com?customerSession=b22edccc-cdd5-4520-bae7-5f5f491dd851
+                    created_at:
+                      type: string
+                      example: '2022-11-08T01:28:08.804150Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: |-
+                    {
+                      "code": "INVALID_REQUEST",
+                      "messages": [
+                        "Invalid request"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_REQUEST
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid request
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value: |-
+                    {
+                      "code": "INVALID_CREDENTIALS",
+                      "messages": [
+                        "Invalid credentials"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_CREDENTIALS
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid credentials
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Forbidden:
+                  value: |-
+                    {
+                      "code": "AUTHORIZATION_REQUIRED",
+                      "messages": [
+                        "The merchant has no authorization to use this API."
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: AUTHORIZATION_REQUIRED
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: The merchant has no authorization to use this API.
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Not Found:
+                  value: |-
+                    {
+                      "code": "CUSTOMER_NOT_FOUND",
+                      "messages": [
+                        "Customer not found"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: CUSTOMER_NOT_FOUND
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Customer not found
+      deprecated: false
+  "/customers/payment-methods/{payment_method_id}/unenroll":
+    post:
+      summary: Unenroll Payment Method
+      description: ''
+      operationId: unenroll-payment-method-checkout
+      parameters:
+      - name: payment_method_id
+        in: path
+        description: The payment method id to unenroll. (MÁX 64 ; MÍN 36).
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\"id\":\"123u7911d-5df9-429e-8488-ad4askfeo1a4b\",\n\"account_id\":
+                    \"21654335343754\",\n\"name\":\"Mercado Pago - Wallet\",\n\"description\":\"Mercado
+                    Pago - Wallet\",\n\"type\":\"MERCADOPAGO_WALLET\",\n\"category\":\"WALLET\",\n\"country\":\"AR\",\n\"status\":\"UNENROLLED\",\n\"icon\":\"https://imagen.jpe\",\n\"created_at\":\"2022-05-09T20:46:54.786342Z\",\n\"updated_at\":\"2022-05-21T12:31:01.456842Z\",
+                    \n\"enrollment\":{\n\"session\":\"9104911d-5df9-429e-8488-ad41abea1a4b\",\n\"sdk_required_action\":true\n}\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 123u7911d-5df9-429e-8488-ad4askfeo1a4b
+                  account_id:
+                    type: string
+                    example: '21654335343754'
+                  name:
+                    type: string
+                    example: Mercado Pago - Wallet
+                  description:
+                    type: string
+                    example: Mercado Pago - Wallet
+                  type:
+                    type: string
+                    example: MERCADOPAGO_WALLET
+                  category:
+                    type: string
+                    example: WALLET
+                  country:
+                    type: string
+                    example: AR
+                  status:
+                    type: string
+                    example: UNENROLLED
+                  icon:
+                    type: string
+                    example: https://imagen.jpe
+                  created_at:
+                    type: string
+                    example: '2022-05-09T20:46:54.786342Z'
+                  updated_at:
+                    type: string
+                    example: '2022-05-21T12:31:01.456842Z'
+                  enrollment:
+                    type: object
+                    properties:
+                      session:
+                        type: string
+                        example: 9104911d-5df9-429e-8488-ad41abea1a4b
+                      sdk_required_action:
+                        type: boolean
+                        example: true
+                        default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: |-
+                    {
+                      "code": "INVALID_REQUEST",
+                      "messages": [
+                        "Invalid request"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_REQUEST
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid request
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value: |-
+                    {
+                      "code": "INVALID_CREDENTIALS",
+                      "messages": [
+                        "Invalid credentials"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_CREDENTIALS
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid credentials
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Forbidden:
+                  value: |-
+                    {
+                      "code": "AUTHORIZATION_REQUIRED",
+                      "messages": [
+                        "The merchant has no authorization to use this API."
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: AUTHORIZATION_REQUIRED
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: The merchant has no authorization to use this API.
+      deprecated: false
+  "/{customer_id}/payments-methods/to-enroll":
+    get:
+      summary: Retrieve Payment Methods To Enroll
+      description: ''
+      operationId: retrieve-payment-methods-available-api
+      parameters:
+      - name: customer_id
+        in: path
+        description: The unique identifier of the customer, created using the [Create
+          Customer](https://docs.y.uno/reference/create-customer) endpoint (MAX 64
+          ; MIN 36).
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "vaulted_token": "5104911d-5df9-229e-8468-bd41abea1a4s",
+                      "name": "Mercado Pago - Wallet",
+                      "description": "Mercado Pago - Wallet",
+                      "type": "MERCADO_PAGO_WALLET",
+                      "category": "WALLET",
+                      "icon": "https://imagen.jpe",
+                      "sdk_action_required": "true"
+                    }
+              schema:
+                type: object
+                properties:
+                  vaulted_token:
+                    type: string
+                    example: 5104911d-5df9-229e-8468-bd41abea1a4s
+                  name:
+                    type: string
+                    example: Mercado Pago - Wallet
+                  description:
+                    type: string
+                    example: Mercado Pago - Wallet
+                  type:
+                    type: string
+                    example: MERCADO_PAGO_WALLET
+                  category:
+                    type: string
+                    example: WALLET
+                  icon:
+                    type: string
+                    example: https://imagen.jpe
+                  sdk_action_required:
+                    type: string
+                    example: 'true'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: |-
+                    {
+                      "code": "INVALID_REQUEST",
+                      "messages": [
+                        "Invalid request"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_REQUEST
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid request
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value: |-
+                    {
+                      "code": "INVALID_CREDENTIALS",
+                      "messages": [
+                        "Invalid credentials"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_CREDENTIALS
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid credentials
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Forbidden:
+                  value: |-
+                    {
+                      "code": "AUTHORIZATION_REQUIRED",
+                      "messages": [
+                        "The merchant has no authorization to use this API."
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: AUTHORIZATION_REQUIRED
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: The merchant has no authorization to use this API.
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "code": "CUSTOMER_NOT_FOUND",
+                      "messages": [
+                        "Customer not found"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: CUSTOMER_NOT_FOUND
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Customer not found
+      deprecated: false
+  "/customers/{customer_id}/payment-methods":
+    get:
+      summary: Retrieve Enrolled Payment Methods
+      description: ''
+      operationId: retrieve-enrolled-payment-methods-api
+      parameters:
+      - name: customer_id
+        in: path
+        description: The unique identifier of the customer, created using the [Create
+          Customer](https://docs.y.uno/reference/create-customer) endpoint (MAX 64
+          ; MIN 36).
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "payment_methods": [
+                            {
+                                "idempotency_key": null,
+                                "name": "VISA ****1111",
+                                "description": "VISA ****1111",
+                                "icon": "https://icons.prod.y.uno/visa_logosimbolo.png",
+                                "type": "CARD",
+                                "category": "CARD",
+                                "country": "AR",
+                                "status": "ENROLLED",
+                                "sub_status": null,
+                                "vaulted_token": "1590e732-098a-4e6b-9c1b-2c853c6e8c3a",
+                                "callback_url": null,
+                                "action": null,
+                                "redirect_url": null,
+                                "created_at": "2023-02-10T11:38:29.488467Z",
+                                "updated_at": "2023-02-10T11:38:29.488469Z",
+                                "card_data": {
+                                    "iin": "41111111",
+                                    "lfd": "1111",
+                                    "expiration_month": 3,
+                                    "expiration_year": 26,
+                                    "number_length": 16,
+                                    "security_code_length": 3,
+                                    "brand": "VISA",
+                                    "issuer": null,
+                                    "category": "",
+                                    "type": "CREDIT"
+                                },
+                                "last_successfully_used": false,
+                                "last_successfully_used_at": ""
+                            }
+                        ]
+                    }
+              schema:
+                type: object
+                properties:
+                  payment_methods:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        idempotency_key: {}
+                        name:
+                          type: string
+                          example: VISA ****1111
+                        description:
+                          type: string
+                          example: VISA ****1111
+                        icon:
+                          type: string
+                          example: https://icons.prod.y.uno/visa_logosimbolo.png
+                        type:
+                          type: string
+                          example: CARD
+                        category:
+                          type: string
+                          example: CARD
+                        country:
+                          type: string
+                          example: AR
+                        status:
+                          type: string
+                          example: ENROLLED
+                        sub_status: {}
+                        vaulted_token:
+                          type: string
+                          example: 1590e732-098a-4e6b-9c1b-2c853c6e8c3a
+                        callback_url: {}
+                        action: {}
+                        redirect_url: {}
+                        created_at:
+                          type: string
+                          example: '2023-02-10T11:38:29.488467Z'
+                        updated_at:
+                          type: string
+                          example: '2023-02-10T11:38:29.488469Z'
+                        card_data:
+                          type: object
+                          properties:
+                            iin:
+                              type: string
+                              example: '41111111'
+                            lfd:
+                              type: string
+                              example: '1111'
+                            expiration_month:
+                              type: integer
+                              example: 3
+                              default: 0
+                            expiration_year:
+                              type: integer
+                              example: 26
+                              default: 0
+                            number_length:
+                              type: integer
+                              example: 16
+                              default: 0
+                            security_code_length:
+                              type: integer
+                              example: 3
+                              default: 0
+                            brand:
+                              type: string
+                              example: VISA
+                            issuer: {}
+                            category:
+                              type: string
+                              example: ''
+                            type:
+                              type: string
+                              example: CREDIT
+                        last_successfully_used:
+                          type: boolean
+                          example: false
+                          default: true
+                        last_successfully_used_at:
+                          type: string
+                          example: ''
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: |-
+                    {
+                      "code": "INVALID_REQUEST",
+                      "messages": [
+                        "Invalid request"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_REQUEST
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid request
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "code": "INVALID_CREDENTIALS",
+                      "messages": [
+                        "Invalid credentials"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_CREDENTIALS
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid credentials
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Forbidden:
+                  value: |-
+                    {
+                      "code": "AUTHORIZATION_REQUIRED",
+                      "messages": [
+                        "The merchant has no authorization to use this API."
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: AUTHORIZATION_REQUIRED
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: The merchant has no authorization to use this API.
+      deprecated: false
+  "/customers/{customer_id}/payment-methods/{payment_method_id}":
+    get:
+      summary: Retrieve Enrolled Payment Method by Id
+      description: ''
+      operationId: retrieve-enrolled-payment-method-by-id-api
+      parameters:
+      - name: customer_id
+        in: path
+        description: The unique identifier of the customer, created using the [Create
+          Customer](https://docs.y.uno/reference/create-customer) endpoint (MAX 64
+          ; MIN 36).
+        schema:
+          type: string
+        required: true
+      - name: payment_method_id
+        in: path
+        description: The unique identifier of the `payment_method`. This information
+          was received by enrolling a payment method using [Enroll Payment Method](ref:enroll-payment-method-api)
+          as the `vaulted_token` (MAX 64; MIN 36).
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "idempotency_key": "a4fcdc90-db83-4b92-853d-03af4aeb1739",
+                        "name": "VISA ****1111",
+                        "description": "VISA ****1111",
+                        "type": "CARD",
+                        "category": "CARD",
+                        "country": "AR",
+                        "status": "ENROLLED",
+                        "sub_status": null,
+                        "vaulted_token": "387c5184-1cfd-4434-8d98-e5c7caefcfa0",
+                        "callback_url": null,
+                        "action": "FORM",
+                        "redirect_url": null,
+                        "created_at": "2023-02-28T18:41:49.118409Z",
+                        "updated_at": "2023-02-28T18:41:49.118411Z",
+                        "card_data": {
+                            "iin": "41111111",
+                            "lfd": "1111",
+                            "expiration_month": 3,
+                            "expiration_year": 26,
+                            "number_length": 16,
+                            "security_code_length": 3,
+                            "brand": "VISA",
+                            "issuer": null,
+                            "category": "",
+                            "type": "CREDIT"
+                        },
+                        "last_successfully_used": null,
+                        "last_successfully_used_at": null
+                    }
+              schema:
+                type: object
+                properties:
+                  idempotency_key:
+                    type: string
+                    example: a4fcdc90-db83-4b92-853d-03af4aeb1739
+                  name:
+                    type: string
+                    example: VISA ****1111
+                  description:
+                    type: string
+                    example: VISA ****1111
+                  type:
+                    type: string
+                    example: CARD
+                  category:
+                    type: string
+                    example: CARD
+                  country:
+                    type: string
+                    example: AR
+                  status:
+                    type: string
+                    example: ENROLLED
+                  sub_status: {}
+                  vaulted_token:
+                    type: string
+                    example: 387c5184-1cfd-4434-8d98-e5c7caefcfa0
+                  callback_url: {}
+                  action:
+                    type: string
+                    example: FORM
+                  redirect_url: {}
+                  created_at:
+                    type: string
+                    example: '2023-02-28T18:41:49.118409Z'
+                  updated_at:
+                    type: string
+                    example: '2023-02-28T18:41:49.118411Z'
+                  card_data:
+                    type: object
+                    properties:
+                      iin:
+                        type: string
+                        example: '41111111'
+                      lfd:
+                        type: string
+                        example: '1111'
+                      expiration_month:
+                        type: integer
+                        example: 3
+                        default: 0
+                      expiration_year:
+                        type: integer
+                        example: 26
+                        default: 0
+                      number_length:
+                        type: integer
+                        example: 16
+                        default: 0
+                      security_code_length:
+                        type: integer
+                        example: 3
+                        default: 0
+                      brand:
+                        type: string
+                        example: VISA
+                      issuer: {}
+                      category:
+                        type: string
+                        example: ''
+                      type:
+                        type: string
+                        example: CREDIT
+                  last_successfully_used: {}
+                  last_successfully_used_at: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: |-
+                    {
+                      "code": "INVALID_REQUEST",
+                      "messages": [
+                        "Invalid request"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_REQUEST
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid request
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value: |-
+                    {
+                      "code": "INVALID_CREDENTIALS",
+                      "messages": [
+                        "Invalid credentials"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: INVALID_CREDENTIALS
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid credentials
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Forbidden:
+                  value: |-
+                    {
+                      "code": "AUTHORIZATION_REQUIRED",
+                      "messages": [
+                        "The merchant has no authorization to use this API."
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: AUTHORIZATION_REQUIRED
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: The merchant has no authorization to use this API.
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Not Found:
+                  value: |-
+                    {
+                      "code": "CUSTOMER_NOT_FOUND",
+                      "messages": [
+                        "Customer not found"
+                      ]
+                    }
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: CUSTOMER_NOT_FOUND
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                      example: Customer not found
+      deprecated: false
+x-readme:
+  headers:
+  - key: charset
+    value: utf-8
+  explorer-enabled: true
+  proxy-enabled: true
+x-readme-fauxas: true
