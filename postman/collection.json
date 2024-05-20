@@ -27,13 +27,13 @@
             {
               "key": "email",
               "value": "",
-              "description": "The email address to be evaluated for fraud. ⚠️ URL encoding required. ⚠️"
+              "description": "The email address to be evaluated for fraud."
             },
             {
               "key": "reference_id",
               "value": "",
               "disabled": true,
-              "description": "Internal identifier for the email or transaction. ⚠️ URL encoding required ⚠️."
+              "description": "Internal identifier for the email or transaction."
             },
             {
               "key": "first",
