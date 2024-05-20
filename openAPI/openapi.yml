@@ -156,10 +156,6 @@ components:
           type: object
           description: Risk related data for the given query based on the provided email and associated details.
           properties:
-            query_id:
-              type: string
-              description: Unique identifier for the response provided. Can be used with our [Feedback API](https://atdata-fraud.readme.io/reference/submit-feedback) or for troubleshooting.
-              example: "2744dd5d0acb475b81687d366fff4c48"
             score:
               type: integer
               description: A machine learning-based score from 0 to 100 that assesses the risk associated with the email, with higher scores indicating higher risk.
@@ -168,6 +164,10 @@ components:
               type: integer
               description: A score from 0 to 3 indicating the presence of multiple variations of the same email address, with higher scores indicating more variations detected.
               example: 0
+            query_id:
+              type: string
+              description: Unique identifier for the response provided. Can be used with our [Feedback API](https://atdata-fraud.readme.io/reference/submit-feedback) or for troubleshooting.
+              example: "2744dd5d0acb475b81687d366fff4c48"
             ip:
               type: object
               description: Details about the IP address associated with the email query, providing insights into the location and network characteristics.
