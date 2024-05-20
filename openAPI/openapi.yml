@@ -29,13 +29,13 @@ paths:
           required: true
           schema:
             type: string
-          description: The email address to be evaluated for fraud. ⚠️ **URL encoding required**. ⚠️
+          description: The email address to be evaluated for fraud.
           example: demo@atdata.com
         - in: query
           name: reference_id
           schema:
             type: string
-          description: Internal identifier for the email or transaction. ⚠️ **URL encoding required**. ⚠️
+          description: Internal identifier for the email or transaction.
           example: a4840850-98be-46de-b391-3d52732d27c4
         - in: query
           name: first
