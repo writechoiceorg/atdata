@@ -31,13 +31,6 @@
     </summary>
     <div>
       <div class="card">
-        <p><strong>query_id</strong> <small>string</small>
-          <br />AtData’s unique identifier for the response provided. Can be used with our Feedback API or
-          for troubleshooting.
-          <br /><small> Example: 2744dd5d0acb475b81687d366fff4c48 </small>
-        </p>
-      </div>
-      <div class="card">
         <p><strong>score</strong> <small>integer</small>
           <br />A machine learning-based score of 0 – 100 using AtData’s metadata, of which the API
           response is only a part, to identify high risk and fraudulent profiles. A score of 0 being low
@@ -53,6 +46,13 @@
           of 1, 2 and 3 indicated a linear risk of tumbling detected. Tumbling is evaluated
           across AtData’s entire network, not just your own activity.
           <br /><small> Example: 0 </small>
+        </p>
+      </div>
+      <div class="card">
+        <p><strong>query_id</strong> <small>string</small>
+          <br />AtData’s unique identifier for the response provided. Can be used with our Feedback API or
+          for troubleshooting.
+          <br /><small> Example: 2744dd5d0acb475b81687d366fff4c48 </small>
         </p>
       </div>
 
@@ -116,7 +116,18 @@
             <p><strong>proxy_type</strong> <small>string</small>
               <br />The network or protocol utilized by the server to proxy the user connection is identified.
               Proxy type classifications include the use of http, Tor, web and SOCKS.
-              <br /><small> Examples: http, service, socks, socks http, tor, unknown, web, privacy proxy</small>
+              <br /><small> Possible values:
+                <ul>
+                  <li>http</li>
+                  <li>service</li>
+                  <li>socks</li>
+                  <li>socks http</li>
+                  <li>tor</li>
+                  <li>unknown</li>
+                  <li>web</li>
+                  <li>privacy proxy</li>
+                </ul>
+              </small>
             </p>
           </div>
 
@@ -246,15 +257,33 @@
           <div class="card">
             <p><strong>address_type</strong> <small>string</small>
               <br />Indicates the type of address, such as Street, PO Box, etc.
-              <br /><small> Values: Alias, Firm, General, Delivery, Highrise, PO Box, Rural, Route, Street.</small>
+              <br /><small> Possible values:
+                <ul>
+                  <li>Alias</li>
+                  <li>Firm</li>
+                  <li>General</li>
+                  <li>Delivery</li>
+                  <li>Highrise</li>
+                  <li>PO Box</li>
+                  <li>Rural</li>
+                  <li>Route</li>
+                  <li>Street</li>
+                </ul>
+              </small>
             </p>
           </div>
 
           <div class="card">
             <p><strong>deliverability</strong> <small>string</small>
               <br />Indicates the deliverability status of the postal address.
-              <br /><small> Values: <code>deliverable</code>, <code>undeliverable</code>,
-                <code>possibly_deliverable</code>, <code>probably_deliverable</code>.</small>
+              <br /><small> Possible values:
+                <ul>
+                  <li>deliverable</li>
+                  <li>undeliverable</li>
+                  <li>possibly_deliverable</li>
+                  <li>probably_deliverable</li>
+                </ul>
+              </small>
             </p>
           </div>
 
@@ -262,10 +291,15 @@
             <p><strong>deliverability_substatus</strong> <small>string</small>
               <br />Provides more details on the primary reason for the deliverability status.
               <br /><small> 23+ possible values.
-                The most common 5 are: <code>deliverable</code> (deliverable), <code>missing_secondary</code>
-                (<code>possibly_deliverable</code>),
-                <code>missing_primary</code> (<code>undeliverable</code>), <code>maildrop_or_inactive</code>
-                (<code>probably_deliverable</code>), <code>invalid_street</code> (<code>undeliverable</code>).</small>
+                The most common 5 are:
+                <ul>
+                  <li>deliverable</li>
+                  <li>missing_secondary</li>
+                  <li>missing_primary</li>
+                  <li>maildrop_or_inactive</li>
+                  <li>invalid_street</li>
+                </ul>
+              </small>
             </p>
           </div>
         </div>
@@ -376,7 +410,7 @@
       <div class="card">
         <p><strong>status</strong> <small>string</small>
           <br />The summary status of the email validation result.
-          <br /><small> Values:
+          <br /><small> Possible values:
             <ul>
               <li><b>valid</b>: The email address passed all checks and is safe to mail.</li>
               <li><b>invalid</b>: Do not mail. The email does not have proper syntax, the domain is dead or the mailbox
@@ -405,7 +439,7 @@
       <div class="card">
         <p><strong>domain_type</strong> <small>string</small>
           <br />An optional field, indicates the type of the domain.
-          <br /><small> Values:
+          <br /><small> Possible values:
             <ul>
               <li><strong>biz</strong>: The domain of a corporation or business.</li>
               <li><strong>disposable</strong>: The domain is used to create temporary email addresses. AtData assigns
