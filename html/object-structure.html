@@ -88,7 +88,7 @@
               a user connecting through a fixed connection is likely very close to the connection. A user
               connecting through a regional proxy is probably in the same country as the connection,
               whereas a user connecting through a satellite connection could be anywhere.
-              <br />IP Routing Types:
+              <br /><b>IP Routing Types:</b>
             <ul>
               <li><strong>fixed</strong>: The user is connecting through a fixed-line connection, such as cable,
                 DSL, T1, and fiber. The user is likely to be at or near the location assigned to the IP.</li>
@@ -133,7 +133,7 @@
             <p><strong>proxy_type</strong> <small>string</small>
               <br />The network or protocol utilized by the server to proxy the user connection is identified.
               Proxy type classifications include the use of http, Tor, web and SOCKS.
-              <br /><small> Possible values:
+              <br /><small> Possible results:
                 <ul><b>
                     <li>http</li>
                     <li>service</li>
@@ -154,7 +154,7 @@
               computing, dedicated hosting, virtual private servers and web hosting.
               A value of <b>true</b> indicates that the IP address is associated with a hosting facility;
               otherwise the value is <b>false</b>.
-              <br /><small> Possible values:
+              <br /><small> Possible results:
                 <ul><b>
                     <li>true</li>
                     <li>false</li>
@@ -193,9 +193,9 @@
               moment
               they first appear rather than waiting for industry classification. It encompasses
               different types of risky domains and their behaviour derived from the AtData network.
-              <br /><small>Possible values:
+              <br /><small>Possible results:
                 <ul>
-                  <li><b>0</b>: no risk associated with the domain</li>
+                  <li><b>0</b>: no risk associated with the domain; to</li>
                   <li><b>10</b>: domain poses a significant threat due to multiple variables</li>
                 </ul>
               </small>
@@ -226,7 +226,7 @@
 
           <div class="card">
             <p><strong>last_name_match</strong> <small>string</small>
-              <br />Indicates if the last name does not match with previously known data.
+              <br />Indicates if the last name matches with previously known data.
               <br /><small> Possible results:
                 <ul>
                   <li><b>match</b>: Last name supplied matches last name previously associated with email.</li>
@@ -283,7 +283,7 @@
           <div class="card">
             <p><strong>address_type</strong> <small>string</small>
               <br />Indicates the type of address, such as Street, PO Box, etc.
-              <br /><small> Possible values:
+              <br /><small> Possible results:
                 <ul><b>
                     <li>Alias</li>
                     <li>Firm</li>
@@ -301,8 +301,8 @@
 
           <div class="card">
             <p><strong>deliverability</strong> <small>string</small>
-              <br />Indicates the deliverability status of the postal address.
-              <br /><small> Possible values:
+              <br />Indicates the deliverability status of the postal address according to the US Postal Service.
+              <br /><small> Possible results:
                 <ul><b>
                     <li>deliverable</li>
                     <li>undeliverable</li>
@@ -316,8 +316,8 @@
           <div class="card">
             <p><strong>deliverability_substatus</strong> <small>string</small>
               <br />Provides more details on the primary reason for the deliverability status. There are more than 23
-              possible values.
-              <br /><small> 5 most common values:
+              possible results.
+              <br /><small> 5 most common results:
                 <ul><b>
                     <li>deliverable</li>
                     <li>missing_secondary</li>
@@ -372,8 +372,7 @@
       <div class="card">
         <p><strong>popularity</strong> <small>integer</small>
           <br />A score from 0 (no sources in 12 months) to 10 (most sources) gauging the popularity of the email
-          address over the last 12 months based
-          on the number of sources from which AtData has received the address.
+          address over the last 12 months based on the number of sources from which AtData has received the address.
           <br /><small> Example: 10 </small>
         </p>
       </div>
