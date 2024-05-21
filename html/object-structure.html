@@ -189,16 +189,11 @@
         <div>
           <div class="card">
             <p><strong>domain_risk_score</strong> <small>integer</small>
-              <br />The domain risk score ranges from 0 to 10 and allows users to identify high risk email domains the
+              <br />The domain risk score ranges from 0 (no risk associated with the domain) to 10 (significant threat due to multiple variables) and allows users to identify high risk email domains the
               moment
               they first appear rather than waiting for industry classification. It encompasses
               different types of risky domains and their behaviour derived from the AtData network.
-              <br /><small>Possible results:
-                <ul>
-                  <li><b>0</b>: no risk associated with the domain; to</li>
-                  <li><b>10</b>: domain poses a significant threat due to multiple variables</li>
-                </ul>
-              </small>
+              <br /><small>Example: 7</small>
             </p>
           </div>
         </div>
@@ -352,7 +347,7 @@
       <div class="card">
         <p><strong>longevity</strong> <small>integer</small>
           <br />A score from 0 to 3 indicating how long the email has been known, with 3 representing a longer period.
-          <br /><small> Values:
+          <br /><small> Possible values:
             <ul>
               <li><b>0</b>: AtData has not encountered this email address before.</li>
               <li><b>1</b>: AtData first encountered this email within the last month.</li>
