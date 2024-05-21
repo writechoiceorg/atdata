@@ -112,8 +112,6 @@ paths:
           $ref: '#/components/schemas/Unauthorized401'
         '403':
           $ref: '#/components/schemas/AccessDenied403'
-        '404':
-          $ref: '#/components/schemas/NotFound404'
         '415':
           $ref: '#/components/schemas/InvalidContentType415'
         '422':
@@ -162,8 +160,6 @@ paths:
           $ref: '#/components/schemas/Unauthorized401'
         '403':
           $ref: '#/components/schemas/AccessDenied403'
-        '404':
-          $ref: '#/components/schemas/NotFound404'
         '415':
           $ref: '#/components/schemas/InvalidContentType415'
         '422':
@@ -344,8 +340,6 @@ components:
       description: Unauthorized. Check you're using the right api_key.
     AccessDenied403:
       description: Access denied. Your query limit has been exceeded, or the API key provided does not have the required permissions.
-    NotFound404:
-      description: The list or results file isn't found. Verify you have the correct list_id and the list is in the right status.
     InvalidContentType415:
       description: Invalid Content-Type submitted.
     InvalidFile422:
