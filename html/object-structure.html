@@ -20,6 +20,20 @@
   .card .card {
     margin: 1.5em;
   }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-mode="system"] .card {
+      background-color: #303b42;
+      border: 1px solid #4a5861;
+      border-left: 10px solid #353B96;
+    }
+  }
+
+  [data-color-mode="dark"] .card {
+    background-color: #303b42;
+    border: 1px solid #4a5861;
+    border-left: 10px solid #353B96;
+  }
 </style>
 
 <div>
@@ -42,12 +56,14 @@
       <div class="card">
         <p><strong>tumbling_risk</strong> <small>integer</small>
           <br />A score from 0 to 3 indicating multiple variations of the same email address (e.g. jondoe@gmail.com
-          and jon.doe+123@gmail.com are identical to gmail). Tumbling is evaluated across AtData's entire network, not just your own activity.
+          and jon.doe+123@gmail.com are identical to gmail). Tumbling is evaluated across AtData's entire network, not
+          just your own activity.
           <br /><small>Possible values:
             <ul>
               <li><b>0</b>: no tumbling detected</li>
               <li><b>1, 2 and 3</b>: linear risk of tumbling</li>
-            </ul></small>
+            </ul>
+          </small>
         </p>
       </div>
       <div class="card">
@@ -73,35 +89,35 @@
               connecting through a regional proxy is probably in the same country as the connection,
               whereas a user connecting through a satellite connection could be anywhere.
               <br />IP Routing Types:
-                <ul>
-                  <li><strong>fixed</strong>: The user is connecting through a fixed-line connection, such as cable,
-                    DSL, T1, and fiber. The user is likely to be at or near the location assigned to the IP.</li>
-                  <li><strong>aol, aolpop, aoldialup, aolproxy</strong>: The user is part of the AOL network. AtData can
-                    identify the user country in most cases. However, establishing the user location below country is
-                    not possible.</li>
-                  <li><strong>pop</strong>: The user is dialing into a regional ISP (Internet Service Provider) and is
-                    likely to be near the IP location.</li>
-                  <li><strong>satellite</strong>: The user is connecting to the Internet through a consumer satellite or
-                    a backbone satellite provider, where no information about the terrestrial connection is available.
-                    The user can be anywhere within the beam pattern of the satellite, which can span a continent or
-                    more.</li>
-                  <li><strong>cache proxy</strong>: The user is using a proxy connection, either through an Internet
-                    accelerator or a content distribution service. It is possible the user is located in a different
-                    country from the IP location.</li>
-                  <li><strong>international proxy</strong>: The user is connecting through a proxy (not an anonymizer)
-                    that routes traffic from multiple countries. It is possible the user is located in a different
-                    country from the IP location.</li>
-                  <li><strong>regional proxy</strong>: The user is connecting through a proxy (not an anonymizer) that
-                    routes traffic from multiple states within a single country. It is possible the user is located in a
-                    different state from the IP location.</li>
-                  <li><strong>corp proxy</strong>: The user is connecting through a proxy (not an anonymizer) that
-                    routes traffic through edge nodes, or nexus points for traffic entering and exiting a corporate
-                    network.</li>
-                  <li><strong>mobile gateway</strong>: The user is using a gateway to connect mobile devices to the
-                    public Internet. Many mobile operators, especially in Europe, serve more than one country and
-                    backhaul traffic through centralized network hubs. Therefore, it is possible the user is located in
-                    a different country from the IP location.</li>
-                </ul>
+            <ul>
+              <li><strong>fixed</strong>: The user is connecting through a fixed-line connection, such as cable,
+                DSL, T1, and fiber. The user is likely to be at or near the location assigned to the IP.</li>
+              <li><strong>aol, aolpop, aoldialup, aolproxy</strong>: The user is part of the AOL network. AtData can
+                identify the user country in most cases. However, establishing the user location below country is
+                not possible.</li>
+              <li><strong>pop</strong>: The user is dialing into a regional ISP (Internet Service Provider) and is
+                likely to be near the IP location.</li>
+              <li><strong>satellite</strong>: The user is connecting to the Internet through a consumer satellite or
+                a backbone satellite provider, where no information about the terrestrial connection is available.
+                The user can be anywhere within the beam pattern of the satellite, which can span a continent or
+                more.</li>
+              <li><strong>cache proxy</strong>: The user is using a proxy connection, either through an Internet
+                accelerator or a content distribution service. It is possible the user is located in a different
+                country from the IP location.</li>
+              <li><strong>international proxy</strong>: The user is connecting through a proxy (not an anonymizer)
+                that routes traffic from multiple countries. It is possible the user is located in a different
+                country from the IP location.</li>
+              <li><strong>regional proxy</strong>: The user is connecting through a proxy (not an anonymizer) that
+                routes traffic from multiple states within a single country. It is possible the user is located in a
+                different state from the IP location.</li>
+              <li><strong>corp proxy</strong>: The user is connecting through a proxy (not an anonymizer) that
+                routes traffic through edge nodes, or nexus points for traffic entering and exiting a corporate
+                network.</li>
+              <li><strong>mobile gateway</strong>: The user is using a gateway to connect mobile devices to the
+                public Internet. Many mobile operators, especially in Europe, serve more than one country and
+                backhaul traffic through centralized network hubs. Therefore, it is possible the user is located in
+                a different country from the IP location.</li>
+            </ul>
             </p>
           </div>
 
@@ -119,14 +135,14 @@
               Proxy type classifications include the use of http, Tor, web and SOCKS.
               <br /><small> Possible values:
                 <ul><b>
-                  <li>http</li>
-                  <li>service</li>
-                  <li>socks</li>
-                  <li>socks http</li>
-                  <li>tor</li>
-                  <li>unknown</li>
-                  <li>web</li>
-                  <li>privacy proxy</li>
+                    <li>http</li>
+                    <li>service</li>
+                    <li>socks</li>
+                    <li>socks http</li>
+                    <li>tor</li>
+                    <li>unknown</li>
+                    <li>web</li>
+                    <li>privacy proxy</li>
                 </ul></b>
               </small>
             </p>
@@ -139,9 +155,9 @@
               A value of <b>true</b> indicates that the IP address is associated with a hosting facility;
               otherwise the value is <b>false</b>.
               <br /><small> Possible values:
-    		        <ul><b>
-                  <li>true</li>
-                  <li>false</li>
+                <ul><b>
+                    <li>true</li>
+                    <li>false</li>
                 </ul></b>
               </small>
             </p>
@@ -173,14 +189,16 @@
         <div>
           <div class="card">
             <p><strong>domain_risk_score</strong> <small>integer</small>
-              <br />The domain risk score ranges from 0 to 10 and allows users to identify high risk email domains the moment
+              <br />The domain risk score ranges from 0 to 10 and allows users to identify high risk email domains the
+              moment
               they first appear rather than waiting for industry classification. It encompasses
               different types of risky domains and their behaviour derived from the AtData network.
               <br /><small>Possible values:
                 <ul>
                   <li><b>0</b>: no risk associated with the domain</li>
                   <li><b>10</b>: domain poses a significant threat due to multiple variables</li>
-                </ul></small>
+                </ul>
+              </small>
             </p>
           </div>
         </div>
@@ -267,15 +285,15 @@
               <br />Indicates the type of address, such as Street, PO Box, etc.
               <br /><small> Possible values:
                 <ul><b>
-                  <li>Alias</li>
-                  <li>Firm</li>
-                  <li>General</li>
-                  <li>Delivery</li>
-                  <li>Highrise</li>
-                  <li>PO Box</li>
-                  <li>Rural</li>
-                  <li>Route</li>
-                  <li>Street</li>
+                    <li>Alias</li>
+                    <li>Firm</li>
+                    <li>General</li>
+                    <li>Delivery</li>
+                    <li>Highrise</li>
+                    <li>PO Box</li>
+                    <li>Rural</li>
+                    <li>Route</li>
+                    <li>Street</li>
                 </ul></b>
               </small>
             </p>
@@ -286,10 +304,10 @@
               <br />Indicates the deliverability status of the postal address.
               <br /><small> Possible values:
                 <ul><b>
-                  <li>deliverable</li>
-                  <li>undeliverable</li>
-                  <li>possibly_deliverable</li>
-                  <li>probably_deliverable</li>
+                    <li>deliverable</li>
+                    <li>undeliverable</li>
+                    <li>possibly_deliverable</li>
+                    <li>probably_deliverable</li>
                 </ul></b>
               </small>
             </p>
@@ -297,14 +315,15 @@
 
           <div class="card">
             <p><strong>deliverability_substatus</strong> <small>string</small>
-              <br />Provides more details on the primary reason for the deliverability status. There are more than 23 possible values.
+              <br />Provides more details on the primary reason for the deliverability status. There are more than 23
+              possible values.
               <br /><small> 5 most common values:
                 <ul><b>
-                  <li>deliverable</li>
-                  <li>missing_secondary</li>
-                  <li>missing_primary</li>
-                  <li>maildrop_or_inactive</li>
-                  <li>invalid_street</li>
+                    <li>deliverable</li>
+                    <li>missing_secondary</li>
+                    <li>missing_primary</li>
+                    <li>maildrop_or_inactive</li>
+                    <li>invalid_street</li>
                 </ul></b>
               </small>
             </p>
@@ -344,14 +363,16 @@
 
       <div class="card">
         <p><strong>velocity</strong> <small>integer</small>
-          <br />A score from 0 (no activity) to 10 (most active), reflecting the activity of the email address over the last 6 months.
+          <br />A score from 0 (no activity) to 10 (most active), reflecting the activity of the email address over the
+          last 6 months.
           <br /><small> Example: 10 </small>
         </p>
       </div>
 
       <div class="card">
         <p><strong>popularity</strong> <small>integer</small>
-          <br />A score from 0 (no sources in 12 months) to 10 (most sources) gauging the popularity of the email address over the last 12 months based
+          <br />A score from 0 (no sources in 12 months) to 10 (most sources) gauging the popularity of the email
+          address over the last 12 months based
           on the number of sources from which AtData has received the address.
           <br /><small> Example: 10 </small>
         </p>
