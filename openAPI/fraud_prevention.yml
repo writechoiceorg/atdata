@@ -28,7 +28,7 @@ paths:
           schema:
             type: string
           description: The email address to be evaluated for fraud.
-          example: demo@atdata.com
+          example: example@atdata.com
         - in: query
           name: reference_id
           schema:
@@ -109,33 +109,40 @@ paths:
                     eam:
                       longevity: 2
                       velocity: 4
-                      date_first_seen: "2024-02-16"
+                      date_first_seen: "2017-04-21"
                       popularity: 1
                     dam:
                       longevity: 3
                       velocity: 6
-                      date_first_seen: "2003-06-08"
+                      date_first_seen: "2017-04-21"
                       popularity: 5
                     risk:
                       score: 94
-                      query_id: "2746f8b4-4337-4710-b2c3-50bd54a710a4"
+                      query_id: "47b1b085-1ced-4697-8fba-cb98db09709d"
                       tumbling_risk: 0
+                      ip:
+                        routing_type: fixed
+                        organization: samsungsds inc.
+                        latitude: 37.561
+                        proxy_type: ''
+                        hosting_facility: false
+                        longitude: 126.98265
                       domain:
                         domain_risk_score: 0
                       postal:
-                        deliverability: "possibly_deliverable"
-                        address_type: "Highrise"
-                        last_name_match: "no_data"
-                        first_name_match: "no_data"
-                        deliverability_substatus: "missing_secondary"
-                        zip_match: "no_data"
-                        city_match: "no_data"
-                        street_match: "no_data"
+                        deliverability: "deliverable"
+                        address_type: "Street"
+                        last_name_match: "match"
+                        first_name_match: "no_match"
+                        deliverability_substatus: "deliverable"
+                        zip_match: "no_match"
+                        city_match: "match"
+                        street_match: "no_match"
                     email_validation:
                       domain_type: "biz"
-                      status_code: 45
-                      address: "emailexperts@atdata.com"
-                      status: "unverifiable"
+                      status_code: 50
+                      address: "example@atdata.com"
+                      status: "valid"
                 example2:
                   summary: Successful with address outside US
                   value:
@@ -165,7 +172,7 @@ paths:
                         street_match: "no_data"
                     email_validation:
                       status_code: 50
-                      address: "bruna@writechoice.io"
+                      address: "example@atdata.com"
                       status: "valid"
                 example3:
                   summary: Email Only
@@ -189,17 +196,17 @@ paths:
                     email_validation:
                       domain_type: "freeisp"
                       status_code: 50
-                      address: "bruna.theeldar@gmail.com"
+                      address: "example@atdata.com"
                       status: "valid"
                 example4:
                   summary: Incorrectly typed email
                   value:
                     email_validation:
                       status_code: 115
-                      address: "demo@atdata"
+                      address: "example@atdata"
                       role_account: true
                       email_corrections:
-                        - "demo@atdata.com"
+                        - "example@atdata.com"
                       status: "invalid"
                 example5:
                   summary: Invalid email
