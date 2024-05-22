@@ -392,17 +392,17 @@ components:
     Accepted202:
       description: Request accepted
     BadRequest400:
-      description: 'Bad request: Either an invalid parameter exists or the data expected is not present'
+      description: 'Bad request: Either an invalid parameter exists or the data expected is not present.'
     Unauthorized401:
-      description: "Unauthorized: Check you're using the right api_key"
+      description: "Unauthorized: Check you're using the right api_key."
     AccessDenied403:
-      description: 'Access denied: Your query limit has been exceeded, or the API key provided does not have the required permissions'
+      description: 'Access denied: Your query limit has been exceeded, or the API key provided does not have the required permissions.'
     InvalidContentType415:
       description: Invalid Content-Type submitted
     InvalidFile422:
-      description: 'Invalid file: Verify file has proper name and format'
+      description: 'Invalid file: Verify file has proper name and format.'
     InternalServerError500:
-      description: 'Internal server error: Please contact support'
+      description: 'Internal server error: Please contact support.'
     BadGateway502:
-      description: 'Bad gateway: The API is not available. Please try again later or contact support'
+      description: 'Bad gateway: The API is not available. Please try again later or contact support.'
 
