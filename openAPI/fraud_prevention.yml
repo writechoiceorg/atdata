@@ -11,8 +11,6 @@ servers:
 paths:
   /fr:
     get:
-      tags:
-        - Fraud Prevention
       operationId: retrieve-fraud-risk
       description: Retrieves fraud risk information based on the provided email and optional personal data.
       summary: Retrieve Fraud Risk Information
@@ -23,26 +21,14 @@ paths:
           schema:
             type: string
           description: API key for accessing the service.
-          examples:
-            example1:
-              summary: Example 1
-              value: '<YOUR_API_KEY>'
-            example2:
-              summary: Example 2
-              value: '<YOUR_API_KEY>'
+          example: '<YOUR_API_KEY>'
         - in: query
           name: email
           required: true
           schema:
             type: string
           description: The email address to be evaluated for fraud.
-          examples:
-            example1:
-              summary: Example 1
-              value: 'emailexperts@atdata.com'
-            example2:
-              summary: Example 2
-              value: 'anotheremail@atdata.com'
+          example: demo@atdata.com
         - in: query
           name: reference_id
           schema:
@@ -118,7 +104,7 @@ paths:
                 $ref: '#/components/schemas/FraudRetrieveResponse'
               examples:
                 example1:
-                  summary: Example 1
+                  summary: Successful Response
                   value:
                     eam:
                       longevity: 2
@@ -151,7 +137,7 @@ paths:
                       address: "emailexperts@atdata.com"
                       status: "unverifiable"
                 example2:
-                  summary: Example 2
+                  summary: Successful with address outside US
                   value:
                     eam:
                       longevity: 1
@@ -182,42 +168,46 @@ paths:
                       address: "bruna@writechoice.io"
                       status: "valid"
                 example3:
-                  summary: Example 3
+                  summary: Email Only
                   value:
                     eam:
-                      longevity: "<integer>"
-                      velocity: "<integer>"
-                      date_first_seen: "<date>"
-                      popularity: "<integer>"
+                      longevity: 3
+                      velocity: 0
+                      date_first_seen: "2011-04-04"
+                      popularity: 0
                     dam:
-                      longevity: "<integer>"
-                      velocity: "<integer>"
-                      date_first_seen: "<date>"
-                      popularity: "<integer>"
+                      longevity: 3
+                      velocity: 10
+                      date_first_seen: "2002-11-09"
+                      popularity: 10
                     risk:
-                      score: "<integer>"
-                      query_id: "<string>"
-                      tumbling_risk: "<integer>"
+                      score: 1
+                      query_id: "9aef8719-e1cf-4a1e-afea-9e2764b716d0"
+                      tumbling_risk: 0
                       domain:
-                        domain_risk_score: "<integer>"
-                      postal:
-                        deliverability: "<string>"
-                        last_name_match: "<string>"
-                        first_name_match: "<string>"
-                        deliverability_substatus: "<string>"
-                        zip_match: "<string>"
-                        city_match: "<string>"
-                        street_match: "<string>"
+                        domain_risk_score: 0
                     email_validation:
-                      status_code: "<integer>"
-                      address: "<string>"
-                      status: "<string>"
+                      domain_type: "freeisp"
+                      status_code: 50
+                      address: "bruna.theeldar@gmail.com"
+                      status: "valid"
+                example4:
+                  summary: Invalid email
+                  value:
+                    email_validation:
+                      status_code: 150
+                      address: "notanactualemail"
+                      status: "invalid"
         '202':
           $ref: '#/components/schemas/Accepted202'
         '400':
           $ref: '#/components/schemas/BadRequest400'
         '401':
           $ref: '#/components/schemas/Unauthorized401'
+          examples:
+            example1:
+              summary: Invalid API key
+              value: Invalid API key.
         '403':
           $ref: '#/components/schemas/AccessDenied403'
         '415':
