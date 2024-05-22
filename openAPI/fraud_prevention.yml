@@ -228,10 +228,10 @@ paths:
                   value: Invalid API key.
         '403':
           $ref: '#/components/schemas/AccessDenied403'
-        '415':
-          $ref: '#/components/schemas/InvalidContentType415'
-        '422':
-          $ref: '#/components/schemas/InvalidFile422'
+        # '415':
+        #   $ref: '#/components/schemas/InvalidContentType415'
+        # '422':
+        #   $ref: '#/components/schemas/InvalidFile422'
         '500':
           $ref: '#/components/schemas/InternalServerError500'
         '502':
