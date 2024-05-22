@@ -192,12 +192,23 @@ paths:
                       address: "bruna.theeldar@gmail.com"
                       status: "valid"
                 example4:
+                  summary: Incorrectly typed email
+                  value:
+                    email_validation:
+                      status_code: 115
+                      address: "demo@atdata"
+                      role_account: true
+                      email_corrections:
+                        - "demo@atdata.com"
+                      status: "invalid"
+                example5:
                   summary: Invalid email
                   value:
                     email_validation:
                       status_code: 150
                       address: "notanactualemail"
                       status: "invalid"
+                
         '202':
           $ref: '#/components/schemas/Accepted202'
         '400':
