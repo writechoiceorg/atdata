@@ -203,11 +203,14 @@ paths:
         '400':
           $ref: '#/components/schemas/BadRequest400'
         '401':
-          $ref: '#/components/schemas/Unauthorized401'
-          examples:
-            example1:
-              summary: Invalid API key
-              value: Invalid API key.
+          description: Unauthorized. Check you're using the right api_key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized401'
+              example:
+                summary: Invalid API key
+                value: Invalid API key.
         '403':
           $ref: '#/components/schemas/AccessDenied403'
         '415':
