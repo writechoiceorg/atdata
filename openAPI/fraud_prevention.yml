@@ -202,8 +202,14 @@ paths:
           $ref: '#/components/schemas/Accepted202'
         '400':
           $ref: '#/components/schemas/BadRequest400'
+          content:
+            application/json:
+              examples: 
+                example1: 
+                  summary: Missing email
+                  value: Missing query parameter(s).
         '401':
-          description: Unauthorized. Check you're using the right api_key.
+          $ref: '#/components/schemas/Unauthorized401'
           content:
             application/json:
               examples: 
