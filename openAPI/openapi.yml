@@ -104,22 +104,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FraudRetrieveResponse'
-        '202':
-          $ref: '#/components/schemas/Accepted202'
+#        '202':
+#          $ref: '#/components/schemas/Accepted202'
         '400':
           $ref: '#/components/schemas/BadRequest400'
         '401':
           $ref: '#/components/schemas/Unauthorized401'
-        '403':
-          $ref: '#/components/schemas/AccessDenied403'
-        '415':
-          $ref: '#/components/schemas/InvalidContentType415'
-        '422':
-          $ref: '#/components/schemas/InvalidFile422'
-        '500':
-          $ref: '#/components/schemas/InternalServerError500'
-        '502':
-          $ref: '#/components/schemas/BadGateway502' 
+#        '403':
+#          $ref: '#/components/schemas/AccessDenied403'
+#        '415':
+#          $ref: '#/components/schemas/InvalidContentType415'
+#        '422':
+#          $ref: '#/components/schemas/InvalidFile422'
+#        '500':
+#          $ref: '#/components/schemas/InternalServerError500'
+#        '502':
+#          $ref: '#/components/schemas/BadGateway502' 
   /feedback/v1:
     post:
       tags: 
@@ -152,22 +152,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitFeedbackResponse'
-        '202':
-          $ref: '#/components/schemas/Accepted202'
+#        '202':
+#          $ref: '#/components/schemas/Accepted202'
         '400':
           $ref: '#/components/schemas/BadRequest400'
         '401':
           $ref: '#/components/schemas/Unauthorized401'
-        '403':
-          $ref: '#/components/schemas/AccessDenied403'
-        '415':
-          $ref: '#/components/schemas/InvalidContentType415'
-        '422':
-          $ref: '#/components/schemas/InvalidFile422'
-        '500':
-          $ref: '#/components/schemas/InternalServerError500'
-        '502':
-          $ref: '#/components/schemas/BadGateway502'             
+#        '403':
+#          $ref: '#/components/schemas/AccessDenied403'
+#        '415':
+#          $ref: '#/components/schemas/InvalidContentType415'
+#        '422':
+#          $ref: '#/components/schemas/InvalidFile422'
+#        '500':
+#          $ref: '#/components/schemas/InternalServerError500'
+#        '502':
+#          $ref: '#/components/schemas/BadGateway502'             
 components:
   schemas:
     SubmitFeedbackResponse:
@@ -332,20 +332,20 @@ components:
               type: string
               description: Type of the domain of the email address, such as free ISP, disposable, corporate, etc.
               example: "freeisp"
-    Accepted202:
-      description: Request accepted.
+#    Accepted202:
+#      description: Request accepted.
     BadRequest400:
       description: Bad request. Either an invalid parameter exists or the data expected is not present.
     Unauthorized401:
       description: Unauthorized. Check you're using the right api_key.
-    AccessDenied403:
-      description: Access denied. Your query limit has been exceeded, or the API key provided does not have the required permissions.
-    InvalidContentType415:
-      description: Invalid Content-Type submitted.
-    InvalidFile422:
-      description: Invalid file. Verify file has proper name and format.
-    InternalServerError500:
-      description: Internal server error. Please contact support.
-    BadGateway502:
-      description: Bad gateway. The API is not available. Please try again later or contact support.
+#    AccessDenied403:
+#      description: Access denied. Your query limit has been exceeded, or the API key provided does not have the required permissions.
+#    InvalidContentType415:
+#      description: Invalid Content-Type submitted.
+#    InvalidFile422:
+#      description: Invalid file. Verify file has proper name and format.
+#    InternalServerError500:
+#      description: Internal server error. Please contact support.
+#    BadGateway502:
+#      description: Bad gateway. The API is not available. Please try again later or contact support.
 
