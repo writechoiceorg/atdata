@@ -42,14 +42,26 @@ paths:
           $ref: '#/components/schemas/Accepted202'
         '400':
           $ref: '#/components/schemas/BadRequest400'
-        '401':
-          $ref: '#/components/schemas/Unauthorized401'
-        '403':
-          $ref: '#/components/schemas/AccessDenied403'
-        '415':
-          $ref: '#/components/schemas/InvalidContentType415'
-        '422':
-          $ref: '#/components/schemas/InvalidFile422'
+          content:
+            application/json:
+              examples: 
+                example1: 
+                  summary: Invalid file extension
+                  value: 'Bad request: Unrecognized column header'
+                example2: 
+                  summary: Invalid API Key
+                  value: 'Bad request: invalid apiKey'
+                example3: 
+                  summary: Missing API Key
+                  value: 'Bad request: apiKey is missing'
+        # '401':
+        #   $ref: '#/components/schemas/Unauthorized401'
+        # '403':
+        #   $ref: '#/components/schemas/AccessDenied403'
+        # '415':
+        #   $ref: '#/components/schemas/InvalidContentType415'
+        # '422':
+        #   $ref: '#/components/schemas/InvalidFile422'
         '500':
           $ref: '#/components/schemas/InternalServerError500'
         '502':
