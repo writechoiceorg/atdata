@@ -13,7 +13,7 @@ paths:
     get:
       operationId: retrieve-fraud-risk
       description: Retrieves fraud risk information based on the provided email and optional personal data.
-      summary: Retrieve Fraud Risk Information
+      summary: Fraud Prevention
       parameters:
         - in: query
           name: api_key
