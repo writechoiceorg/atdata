@@ -206,7 +206,10 @@ paths:
           description: Unauthorized. Check you're using the right api_key.
           content:
             application/json:
-              example: Invalid API key.
+              examples: 
+                example1: 
+                  summary: Invalid API key
+                  value: Invalid API key.
         '403':
           $ref: '#/components/schemas/AccessDenied403'
         '415':
