@@ -208,7 +208,6 @@ paths:
                       status_code: 150
                       address: "notanactualemail"
                       status: "invalid"
-                
         '202':
           $ref: '#/components/schemas/Accepted202'
         '400':
