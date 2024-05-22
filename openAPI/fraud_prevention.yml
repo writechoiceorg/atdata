@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: AtData Fraud Prevention API
+  title: Fraud Prevention API
   version: 1.0.0
   description: Provides detailed information about email addresses and their risk and fraud correlation.
   contact:
@@ -23,14 +23,26 @@ paths:
           schema:
             type: string
           description: API key for accessing the service.
-          example: '00000000000000000000000000000000'
+          examples:
+            example1:
+              summary: Example 1
+              value: '<YOUR_API_KEY>'
+            example2:
+              summary: Example 2
+              value: '<YOUR_API_KEY>'
         - in: query
           name: email
           required: true
           schema:
             type: string
           description: The email address to be evaluated for fraud.
-          example: demo@atdata.com
+          examples:
+            example1:
+              summary: Example 1
+              value: 'emailexperts@atdata.com'
+            example2:
+              summary: Example 2
+              value: 'anotheremail@atdata.com'
         - in: query
           name: reference_id
           schema:
@@ -104,6 +116,102 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FraudRetrieveResponse'
+              examples:
+                example1:
+                  summary: Example 1
+                  value:
+                    eam:
+                      longevity: 2
+                      velocity: 4
+                      date_first_seen: "2024-02-16"
+                      popularity: 1
+                    dam:
+                      longevity: 3
+                      velocity: 6
+                      date_first_seen: "2003-06-08"
+                      popularity: 5
+                    risk:
+                      score: 94
+                      query_id: "2746f8b4-4337-4710-b2c3-50bd54a710a4"
+                      tumbling_risk: 0
+                      domain:
+                        domain_risk_score: 0
+                      postal:
+                        deliverability: "possibly_deliverable"
+                        address_type: "Highrise"
+                        last_name_match: "no_data"
+                        first_name_match: "no_data"
+                        deliverability_substatus: "missing_secondary"
+                        zip_match: "no_data"
+                        city_match: "no_data"
+                        street_match: "no_data"
+                    email_validation:
+                      domain_type: "biz"
+                      status_code: 45
+                      address: "emailexperts@atdata.com"
+                      status: "unverifiable"
+                example2:
+                  summary: Example 2
+                  value:
+                    eam:
+                      longevity: 1
+                      velocity: 0
+                      date_first_seen: "2024-05-13"
+                      popularity: 0
+                    dam:
+                      longevity: 2
+                      velocity: 0
+                      date_first_seen: "2024-02-15"
+                      popularity: 0
+                    risk:
+                      score: 99
+                      query_id: "bf08e205-f413-43ef-ad17-1342ede71925"
+                      tumbling_risk: 0
+                      domain:
+                        domain_risk_score: 10
+                      postal:
+                        deliverability: "undeliverable"
+                        last_name_match: "no_data"
+                        first_name_match: "no_data"
+                        deliverability_substatus: "invalid_street"
+                        zip_match: "no_data"
+                        city_match: "no_data"
+                        street_match: "no_data"
+                    email_validation:
+                      status_code: 50
+                      address: "bruna@writechoice.io"
+                      status: "valid"
+                example3:
+                  summary: Example 3
+                  value:
+                    eam:
+                      longevity: "<integer>"
+                      velocity: "<integer>"
+                      date_first_seen: "<date>"
+                      popularity: "<integer>"
+                    dam:
+                      longevity: "<integer>"
+                      velocity: "<integer>"
+                      date_first_seen: "<date>"
+                      popularity: "<integer>"
+                    risk:
+                      score: "<integer>"
+                      query_id: "<string>"
+                      tumbling_risk: "<integer>"
+                      domain:
+                        domain_risk_score: "<integer>"
+                      postal:
+                        deliverability: "<string>"
+                        last_name_match: "<string>"
+                        first_name_match: "<string>"
+                        deliverability_substatus: "<string>"
+                        zip_match: "<string>"
+                        city_match: "<string>"
+                        street_match: "<string>"
+                    email_validation:
+                      status_code: "<integer>"
+                      address: "<string>"
+                      status: "<string>"
         '202':
           $ref: '#/components/schemas/Accepted202'
         '400':
@@ -120,67 +228,8 @@ paths:
           $ref: '#/components/schemas/InternalServerError500'
         '502':
           $ref: '#/components/schemas/BadGateway502' 
-  /feedback/v1:
-    post:
-      tags: 
-        - Fraud Prevention
-      operationId: submit-feedback
-      summary: Submit Feedback
-      description: Submits feedback about identified fraud through a tab-separated file.
-      parameters:
-        - in: query
-          name: api_key
-          required: true
-          schema:
-            type: string
-          description: API key for accessing the service.
-          example: '00000000000000000000000000000000'
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
-                  description: A tab-separated file containing feedback data.
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SubmitFeedbackResponse'
-        '202':
-          $ref: '#/components/schemas/Accepted202'
-        '400':
-          $ref: '#/components/schemas/BadRequest400'
-        '401':
-          $ref: '#/components/schemas/Unauthorized401'
-        '403':
-          $ref: '#/components/schemas/AccessDenied403'
-        '415':
-          $ref: '#/components/schemas/InvalidContentType415'
-        '422':
-          $ref: '#/components/schemas/InvalidFile422'
-        '500':
-          $ref: '#/components/schemas/InternalServerError500'
-        '502':
-          $ref: '#/components/schemas/BadGateway502'             
 components:
   schemas:
-    SubmitFeedbackResponse:
-      type: object
-      properties:
-        total_records:
-          type: integer
-          description: Total number of records processed.
-          example: 2
-        skipped_records:
-          type: integer
-          description: Number of records skipped.
-          example: 0
     FraudRetrieveResponse:
       type: object
       properties:
