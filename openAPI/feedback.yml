@@ -38,6 +38,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitFeedbackResponse'
+              examples: 
+                example1: 
+                  summary: Succesful Response
+                  value:
+                    total_records: 2
+                    skipped_records: 0
         '202':
           $ref: '#/components/schemas/Accepted202'
         '400':
