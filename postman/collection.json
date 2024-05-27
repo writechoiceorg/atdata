@@ -7,6 +7,21 @@
   "item": [
     {
       "name": "Retrieve Fraud Risk Information",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "var querycount = pm.request.url.query.count();",
+              "for(let i = 0; i < querycount; i++) {",
+              "  if (pm.request.url.query.idx(i).key != 'api_key') {",
+              "    pm.request.url.query.idx(i).value = encodeURIComponent(pm.request.url.query.idx(i).value);",
+              "  }",
+              "}"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -81,7 +96,7 @@
               "key": "phone",
               "value": "",
               "disabled": true,
-              "description": "hone number, including country code."
+              "description": "Phone number, including country code."
             },
             {
               "key": "ip",
@@ -111,6 +126,7 @@
             {
               "key": "file",
               "type": "file",
+              "src": "https://github.com/writechoiceorg/atdata-docs/blob/main/file.tsv",
               "description": "A tab-separated file containing feedback data."
             }
           ]
@@ -133,6 +149,16 @@
         },
         "description": "Submits feedback about identified fraud through a tab-separated file."
       }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api.atdata.com"
+    },
+    {
+      "key": "api_key",
+      "value": "your_api_key_here"
     }
   ]
 }
