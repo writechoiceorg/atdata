@@ -1,0 +1,3 @@
+reference _ id email ip risk_level risk_type source
+453127da-9020-4bc5-87b9-30317b8be0d0 fraudster2023@atdata.com 19.172.217.255 High credit _ card chargeback
+9be3edef-9244-4597-baf9-36ebfc271f4d up.to.no.go.od@gmail.com 113.214.70.139 High credit _ card chargeback
