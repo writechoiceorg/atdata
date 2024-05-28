@@ -40,12 +40,12 @@ paths:
                 $ref: '#/components/schemas/SubmitFeedbackResponse'
               examples: 
                 example1: 
-                  summary: Succesful Response
+                  summary: Successful Response
                   value:
                     total_records: 2
                     skipped_records: 0
-        '202':
-          $ref: '#/components/schemas/Accepted202'
+        # '202':
+        #   $ref: '#/components/schemas/Accepted202'
         '400':
           $ref: '#/components/schemas/BadRequest400'
           content:
@@ -68,10 +68,10 @@ paths:
         #   $ref: '#/components/schemas/InvalidContentType415'
         # '422':
         #   $ref: '#/components/schemas/InvalidFile422'
-        '500':
-          $ref: '#/components/schemas/InternalServerError500'
-        '502':
-          $ref: '#/components/schemas/BadGateway502'             
+        # '500':
+        #   $ref: '#/components/schemas/InternalServerError500'
+        # '502':
+        #   $ref: '#/components/schemas/BadGateway502'             
 components:
   schemas:
     SubmitFeedbackResponse:
