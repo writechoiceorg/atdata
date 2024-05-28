@@ -215,8 +215,6 @@ paths:
                       status_code: 150
                       address: "notanactualemail"
                       status: "invalid"
-        '202':
-          $ref: '#/components/schemas/Accepted202'
         '400':
           $ref: '#/components/schemas/BadRequest400'
           content:
@@ -396,8 +394,6 @@ components:
               type: string
               description: Type of the domain of the email address, such as free ISP, disposable, corporate, etc.
               example: "freeisp"
-    Accepted202:
-      description: Request accepted
     BadRequest400:
       description: 'Bad request: Either an invalid parameter exists or the data expected is not present.'
     Unauthorized401:
