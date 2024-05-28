@@ -70,7 +70,7 @@ paths:
           schema:
             type: string
           description: ZIP or postcode of the postal address.
-          example: P2P6B3P
+          example: 38067
         - in: query
           name: country
           schema:
