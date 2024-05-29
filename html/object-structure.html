@@ -79,7 +79,7 @@
         <summary><strong>ip</strong> <small>object</small>
           <br />
           <p>Information related to the IP address associated with the email query.
-          <br /><small>⚠️ IP object will appear in response only if IP address is provided. ⚠️</small>
+            <br /><small>⚠️ IP object will appear in response only if IP address is provided. ⚠️</small>
           </p>
         </summary>
         <div>
@@ -207,14 +207,15 @@
         <summary>postal<strong></strong> <small>object</small>
           <br />
           <p>Contains information related to the postal data provided in the API request and its validation results.
-          <br /><small>⚠️ Postal object will appear in response only if name or postal fields are provided. ⚠️</small>
+            <br /><small>⚠️ Postal object will appear in response only if name or postal fields are provided. ⚠️</small>
           </p>
         </summary>
         <div>
           <div class="card">
             <p><strong>first_name_match</strong> <small>string</small>
               <br />Indicates if the first name matches with previously known data.
-              <br /><small>⚠️ If first field is not provided in the request, first_name_mach will return no_data. ⚠️ </small>
+              <br /><small>⚠️ If first field is not provided in the request, first_name_mach will return no_data. ⚠️
+              </small>
               <br /><small> Possible results:
                 <ul>
                   <li><b>match</b>: First name supplied matches first name previously associated with email.</li>
@@ -229,7 +230,8 @@
           <div class="card">
             <p><strong>last_name_match</strong> <small>string</small>
               <br />Indicates if the last name matches with previously known data.
-              <br /><small>⚠️ If last field is not provided in the request, last_name_mach will return no_data. ⚠️ </small>
+              <br /><small>⚠️ If last field is not provided in the request, last_name_mach will return no_data. ⚠️
+              </small>
               <br /><small> Possible results:
                 <ul>
                   <li><b>match</b>: Last name supplied matches last name previously associated with email.</li>
@@ -244,7 +246,8 @@
           <div class="card">
             <p><strong>street_match</strong> <small>string</small>
               <br />Indicates if street data is available and matches with known records.
-              <br /><small>⚠️ If street field is not provided in the request, street_mach will return no_data. ⚠️ </small>
+              <br /><small>⚠️ If street field is not provided in the request, street_mach will return no_data. ⚠️
+              </small>
               <br /><small> Possible results:
                 <ul>
                   <li><b>match</b>: Street supplied matches street previously associated with email.</li>
@@ -259,7 +262,8 @@
           <div class="card">
             <p><strong>city_match</strong> <small>string</small>
               <br />Indicates if city data is available and matches with known records.
-              <br /><small>⚠️ If no postal fields are provided in the request, city_mach will return no_data. ⚠️ </small>
+              <br /><small>⚠️ If no postal fields are provided in the request, city_mach will return no_data. ⚠️
+              </small>
               <br /><small> Possible results:
                 <ul>
                   <li><b>match</b>: City supplied matches city previously associated with email.</li>
@@ -289,7 +293,8 @@
           <div class="card">
             <p><strong>address_type</strong> <small>string</small>
               <br />Indicates the type of address, such as Street, PO Box, etc.
-              <br /><small>⚠️ The address_type object will appear in response only if provided address is valid. ⚠️</small>
+              <br /><small>⚠️ The address_type object will appear in response only if provided address is valid.
+                ⚠️</small>
               <br /><small> Possible results:
                 <ul><b>
                     <li>Alias</li>
@@ -307,7 +312,8 @@
           <div class="card">
             <p><strong>deliverability</strong> <small>string</small>
               <br />Indicates the deliverability status of the postal address according to the US Postal Service.
-              <br /><small>⚠️ The deliverability object will appear in response only if name or postal fields are provided. ⚠️</small>
+              <br /><small>⚠️ The deliverability object will appear in response only if name or postal fields are
+                provided. ⚠️</small>
               <br /><small> Possible results:
                 <ul><b>
                     <li>deliverable</li>
@@ -323,7 +329,8 @@
             <p><strong>deliverability_substatus</strong> <small>string</small>
               <br />Provides more details on the primary reason for the deliverability status. There are more than 23
               possible results.
-              <br /><small>⚠️ The deliverability_substatus object will appear in response only if name or postal fields are provided. ⚠️</small>
+              <br /><small>⚠️ The deliverability_substatus object will appear in response only if name or postal fields
+                are provided. ⚠️</small>
               <br /><small> 5 most common results:
                 <ul><b>
                     <li>deliverable</li>
@@ -343,11 +350,13 @@
   <details class="card">
     <summary><strong>eam</strong> <small>object</small>
       <br />
-      <p>The origin of AtData's fraud solution is our Email Activity Metrics, which are used by all the leading
+      <p>
+        The origin of AtData's fraud solution is our Email Activity Metrics, which are used by all the leading
         antifraud solutions that evaluate email addresses. Through our broad client base, our extensive partner network
         and our 20-year history, AtData has the highest recognition rate of U.S. email addresses in the market, over
         98%.
-        <br />
+      </p>
+      <p>
         Forty percent of fraudsters use new email addresses. If AtData does not recognize an email address or only
         recently encountered it, beware.
       </p>
