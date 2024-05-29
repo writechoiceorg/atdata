@@ -91,7 +91,7 @@ components:
     # Accepted202:
     #   description: Request accepted
     BadRequest400:
-      description: 'Bad request: Either an invalid parameter exists or the data expected is not present'
+      description: 'Bad request: Either an invalid parameter exists or the data expected is not present.'
     Unauthorized401:
       description: "Unauthorized: Check you're using the right api_key."
     # AccessDenied403:
