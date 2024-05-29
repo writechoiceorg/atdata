@@ -49,8 +49,7 @@ paths:
         '400':
           $ref: '#/components/schemas/BadRequest400'
           content:
-            application/json:
-              text/plain:
+            text/plain:
               schema:
                   type: string
               examples: 
