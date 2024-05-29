@@ -26,9 +26,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{base_url}}/fr?api_key={{api_key}}&email={{email}}&reference_id={{reference_id}}&first={{first}}&last={{last}}&street={{street}}&city={{city}}&state={{state}}&zip={{zip}}&country={{country}}&phone={{phone}}&ip={{ip}}&user_agent={{user_agent}}",
+          "raw": "https://api.atdata.com/fr?api_key={{api_key}}&email={{email}}&reference_id={{reference_id}}&first={{first}}&last={{last}}&street={{street}}&city={{city}}&state={{state}}&zip={{zip}}&country={{country}}&phone={{phone}}&ip={{ip}}&user_agent={{user_agent}}",
           "host": [
-            "{{base_url}}"
+            "https://api.atdata.com"
           ],
           "path": [
             "fr"
@@ -132,9 +132,9 @@
           ]
         },
         "url": {
-          "raw": "{{base_url}}/feedback/v1?api_key={{api_key}}",
+          "raw": "https://api.atdata.com/feedback/v1?api_key={{api_key}}",
           "host": [
-            "{{base_url}}"
+            "https://api.atdata.com"
           ],
           "path": [
             "feedback/v1"
@@ -152,10 +152,6 @@
     }
   ],
   "variable": [
-    {
-      "key": "base_url",
-      "value": "https://api.atdata.com"
-    },
     {
       "key": "api_key",
       "value": "your_api_key_here"
