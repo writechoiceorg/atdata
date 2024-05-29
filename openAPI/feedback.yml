@@ -50,6 +50,9 @@ paths:
           $ref: '#/components/schemas/BadRequest400'
           content:
             application/json:
+              text/plain:
+              schema:
+                  type: string
               examples: 
                 example1: 
                   summary: Invalid file extension
