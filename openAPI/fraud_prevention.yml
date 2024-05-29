@@ -219,6 +219,9 @@ paths:
           $ref: '#/components/schemas/BadRequest400'
           content:
             text/plain:
+              schema:
+                type: string
+                example: "Missing query parameter(s)."
               examples: 
                 example1: 
                   summary: Missing email
@@ -227,6 +230,9 @@ paths:
           $ref: '#/components/schemas/Unauthorized401'
           content:
             text/plain:
+              schema:
+                  type: string
+                  example: "Invalid API key."
               examples: 
                 example1: 
                   summary: Invalid API key
