@@ -144,7 +144,7 @@ paths:
                       address: "example@atdata.com"
                       status: "valid"
                 example2:
-                  summary: Successful with address outside US
+                  summary: Invalid postal address
                   value:
                     eam:
                       longevity: 1
