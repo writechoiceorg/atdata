@@ -204,7 +204,7 @@
       </details>
 
       <details class="card">
-        <summary>postal<strong></strong> <small>object</small>
+        <summary><strong>postal</strong><small>object</small>
           <br />
           <p>Contains information related to the postal data provided in the API request and its validation results.
             <br /><small>⚠️ Postal object will appear in response only if name or postal fields are provided. ⚠️</small>
@@ -293,7 +293,8 @@
           <div class="card">
             <p><strong>address_type</strong> <small>string</small>
               <br />Indicates the type of address, such as Street, PO Box, etc.
-              <br /><small>⚠️ The address_type object will appear in response only if provided address is valid.
+              <br /><small>⚠️ The address_type field will appear in response only if a valid US postal address is
+                provided.
                 ⚠️</small>
               <br /><small> Possible results:
                 <ul><b>
@@ -312,8 +313,8 @@
           <div class="card">
             <p><strong>deliverability</strong> <small>string</small>
               <br />Indicates the deliverability status of the postal address according to the US Postal Service.
-              <br /><small>⚠️ The deliverability object will appear in response only if name or postal fields are
-                provided. ⚠️</small>
+              <br /><small>⚠️ The deliverability field will appear in response only if US postal fields are provided.
+                ⚠️</small>
               <br /><small> Possible results:
                 <ul><b>
                     <li>deliverable</li>
@@ -329,8 +330,8 @@
             <p><strong>deliverability_substatus</strong> <small>string</small>
               <br />Provides more details on the primary reason for the deliverability status. There are more than 23
               possible results.
-              <br /><small>⚠️ The deliverability_substatus object will appear in response only if name or postal fields
-                are provided. ⚠️</small>
+              <br /><small>⚠️ The deliverability_substatus field will appear in response only if US postal fields are
+                provided. ⚠️</small>
               <br /><small> 5 most common results:
                 <ul><b>
                     <li>deliverable</li>
@@ -491,7 +492,8 @@
       <div class="card">
         <p><strong>status_code</strong> <small>integer</small>
           <br />A range from 5-999 will always be returned and describes the detailed results of the
-          validation within the <b>status</b> categorization. For a full list of possible values, go to the <a href="/reference/status-codes">Status Codes</a> page.
+          validation within the <b>status</b> categorization. For a full list of possible values, go to the <a
+            href="/reference/status-codes">Status Codes</a> page.
           <br /><small> Example: 50 </small>
         </p>
       </div>
