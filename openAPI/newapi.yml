@@ -255,10 +255,13 @@ paths:
                 properties:
                   email:
                     type: string
+                    description: The email address of the person
                   first:
                     type: string
+                    description: First name of the person
                   last:
                     type: string
+                    description: Last name of the person
               example:
                 - email: sample@atdata.com
                   first: Caitlin
