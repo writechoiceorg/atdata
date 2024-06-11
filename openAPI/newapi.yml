@@ -408,30 +408,30 @@ paths:
                     Could not parse multipart servlet request; nested exception
                     is java.io.IOException: org.apache.tomcat.util.http.fileupload.FileUploadException: the request was rejected because no multipart boundary was found
                   path: /v5/list
-  # /v5/list/{list_id}:
-  #   get:
-  #     summary: Check List Status
-  #     description: >-
-  #       Check the status of a submitted list.
-  #     parameters:
-  #       - in: path
-  #         name: list_id
-  #         required: true
-  #         schema:
-  #           type: string
-  #         description: The ID of the list to check.
-  #       - in: header
-  #         name: api_key
-  #         required: true
-  #         schema:
-  #           type: string
-  #         description: Your AtData API key
-  #     responses:
-  #       '404':
-  #         description: List not found
-  #         content:
-  #           text/plain:
-  #             schema:
-  #               type: string
-  #               example: List not found: 1234
+  /v5/list/{list_id}:
+    get:
+      summary: Check List Status
+      description: >-
+        Check the status of a submitted list.
+      parameters:
+        - in: path
+          name: list_id
+          required: true
+          schema:
+            type: string
+          description: The ID of the list to check.
+        - in: header
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '404':
+          description: List not found
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'List not found: 1234'
   
