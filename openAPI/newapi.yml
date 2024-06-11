@@ -189,6 +189,8 @@ paths:
   /v5/td:
     get:
       summary: Intelligence API
+      tags:
+        - Intelligence API
       description: >-
         Retrieve information about an email address.
       parameters:
