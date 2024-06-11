@@ -411,6 +411,8 @@ paths:
   /v5/list/{list_id}:
     get:
       summary: Check List Status
+      tags:
+        - List API
       description: >-
         Check the status of a submitted list.
       parameters:
