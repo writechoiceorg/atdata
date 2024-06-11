@@ -28,6 +28,7 @@ paths:
           schema:
             type: string
           description: The email address to be validated
+          example: sales@atdata.com
       responses:
         '200':
           description: SafeToSend email
