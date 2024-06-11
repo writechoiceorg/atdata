@@ -10,7 +10,9 @@ servers:
 paths:
   /v5/ev:
     get:
-      summary: SafeToSend Email Verification
+      summary: SafeToSend
+      tags:
+        - SafeToSend Email Verification
       description: >-
         The SafeToSend API verifies email addresses to filter out invalid and
         high risk email addresses which results in higher open rates, clicks and
@@ -184,6 +186,49 @@ paths:
                     address: sample@atdata.com
                     engagement: 6
                     status: safetosend
+  /v5/td:
+    get:
+      summary: Intelligence API
+      description: >-
+        Retrieve information about an email address.
+      parameters:
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+          description: Email Address
+        - in: query
+          name: first
+          required: false
+          schema:
+            type: string
+          description: First name of person
+        - in: query
+          name: last
+          required: false
+          schema:
+            type: string
+          description: Last name of person
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gender:
+                    type: string
+                example:
+                  gender: Female
+
   # /v5/ei/bulk:
   #   post:
   #     summary: Bulk Intelligence Endpoint
@@ -381,56 +426,4 @@ paths:
   #             schema:
   #               type: string
   #               example: List not found: 1234
-  # /v5/td:
-  #   get:
-  #     summary: Intelligence API
-  #     description: >-
-  #       Retrieve information about an email address.
-  #     parameters:
-  #       - in: query
-  #         name: email
-  #         required: true
-  #         schema:
-  #           type: string
-  #         description: Email Address
-  #       - in: query
-  #         name: first
-  #         required: false
-  #         schema:
-  #           type: string
-  #         description: First name of person
-  #       - in: query
-  #         name: last
-  #         required: false
-  #         schema:
-  #           type: string
-  #         description: Last name of person
-  #       - in: query
-  #         name: api_key
-  #         required: true
-  #         schema:
-  #           type: string
-  #         description: Your AtData API key
-  #     responses:
-  #       '200':
-  #         description: Sample Query by Email Address
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: object
-  #               properties:
-  #                 gender:
-  #                   type: string
-  #               example:
-  #                 gender: Female
-  #       '200':
-  #         description: Sample Query by Name and Postal Address
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: object
-  #               properties:
-  #                 gender:
-  #                   type: string
-  #               example:
-  #                 gender: Female
+  
