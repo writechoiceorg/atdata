@@ -1,0 +1,2781 @@
+{
+	"info": {
+		"_postman_id": "55c21ddd-2a6e-4de0-95f0-22139132d9bc",
+		"name": "AtData API",
+		"description": "AtData API's help you improve the quality and depth of your customer data by enabling you to quickly and securely verify and enhance email addresses.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35971377"
+	},
+	"item": [
+		{
+			"name": "Data API's",
+			"item": [
+				{
+					"name": "SafeToSend Email Verification",
+					"item": [
+						{
+							"name": "SafeToSend",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.atdata.com/v5/ev?api_key=308a5a59888c6c4d750346cb9ed827b1&email={{Email}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"ev"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "308a5a59888c6c4d750346cb9ed827b1",
+											"description": "Your AtData API key"
+										},
+										{
+											"key": "email",
+											"value": "{{Email}}",
+											"description": "The email address to be validated"
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								},
+								"description": "The SafeToSend API verifies email addresses to filter out invalid and high risk email addresses which results in higher open rates, clicks and conversions."
+							},
+							"response": [
+								{
+									"name": "SafeToSend email",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key={{API-Key}}&email=sales@atdata.com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												},
+												{
+													"key": "email",
+													"value": "sales@atdata.com",
+													"description": "The email address to be validated"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:22:11 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 9feee68c149ffc812d2a7f5683100dd2.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "ai9FLRxhz2p1kTMPaMZGYfYBorUofloSGrcHDZZMUi86rrwPi3H80g=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"domain_type\": \"biz\",\n        \"status_code\": 50,\n        \"address\": \"sales@atdata.com\",\n        \"role_account\": true,\n        \"status\": \"safetosend\"\n    }\n}"
+								},
+								{
+									"name": "Valid email",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key={{API-Key}}&email=valid@demo.atdata.com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												},
+												{
+													"key": "email",
+													"value": "valid@demo.atdata.com",
+													"description": "The email address to be validated"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:25:21 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 9feee68c149ffc812d2a7f5683100dd2.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "GgJpMrIFK8-Rke6uMjAiBVKz7rKINcNTpMQ9C7MHvyVOIIPxF8h4MA=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"status_code\": 20,\n        \"address\": \"valid@demo.atdata.com\",\n        \"status\": \"valid\"\n    }\n}"
+								},
+								{
+									"name": "Invalid email address",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key={{API-Key}}&email=accountnotfound@atdata.com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												},
+												{
+													"key": "email",
+													"value": "accountnotfound@atdata.com",
+													"description": "The email address to be validated"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:26:22 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 9feee68c149ffc812d2a7f5683100dd2.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "lSoTYNrJL7JhAwxQIv7IBXs4JdpByLSshjijAGKqPiJ_vOO5h0H0rg=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"domain_type\": \"biz\",\n        \"status_code\": 400,\n        \"address\": \"accountnotfound@atdata.com\",\n        \"status\": \"invalid\"\n    }\n}"
+								},
+								{
+									"name": "Email corrections",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key={{API-Key}}&email=sales@@atdata,com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												},
+												{
+													"key": "email",
+													"value": "sales@@atdata,com"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:26:47 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 9feee68c149ffc812d2a7f5683100dd2.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "G31YzjSYoULkm7qscrP38EiiaSDb46FaCGyGlXNikinEoQqndD_kaQ=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"status_code\": 155,\n        \"address\": \"sales@@atdata,com\",\n        \"role_account\": true,\n        \"email_corrections\": [\n            \"sales@atdata.com\"\n        ],\n        \"status\": \"invalid\"\n    }\n}"
+								},
+								{
+									"name": "Catchall email",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key={{API-Key}}&email=anyuser@fedex.com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												},
+												{
+													"key": "email",
+													"value": "anyuser@fedex.com",
+													"description": "The email address to be validated"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:34:59 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 e3b3138ab681fdbb8fab7bde9e330642.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "vj-rZOIT-XG2qa0gkz3NPxeR5ixW6XZ5trGRZPF8BItP9hU6T4AAOw=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"domain_type\": \"biz\",\n        \"status_code\": 45,\n        \"address\": \"anyuser@fedex.com\",\n        \"status\": \"valid\"\n    }\n}"
+								},
+								{
+									"name": "Trap email",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key={{API-Key}}&email=trap@demo.atdata.com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												},
+												{
+													"key": "email",
+													"value": "trap@demo.atdata.com"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:28:44 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 9feee68c149ffc812d2a7f5683100dd2.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "yUyyDK5gN-CfI9HHCxc3aWW5hHB5YdBCAJdueAhsp6iCB8ChCkw31A=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"status_code\": 525,\n        \"address\": \"trap@demo.atdata.com\",\n        \"status\": \"trap\"\n    }\n}"
+								},
+								{
+									"name": "Disposable email",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key={{API-Key}}&email=johndoe@mailinator.com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												},
+												{
+													"key": "email",
+													"value": "johndoe@mailinator.com",
+													"description": "The email address to be validated"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:29:00 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 9feee68c149ffc812d2a7f5683100dd2.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "nqZYIEn7-o7YXw07kYEfTdO6EwXXTFTyT7rGpms3wCMHWFECU5-0Dw=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"domain_type\": \"disposable\",\n        \"status_code\": 525,\n        \"address\": \"johndoe@mailinator.com\",\n        \"status\": \"trap\"\n    }\n}"
+								},
+								{
+									"name": "Role account",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key={{API-Key}}&email=sales@atdata.com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												},
+												{
+													"key": "email",
+													"value": "sales@atdata.com",
+													"description": "The email address to be validated"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:29:15 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 9feee68c149ffc812d2a7f5683100dd2.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "zz198BogfpQViXFgmNB8xffgNDMO6HfwQ744FiGgJHRxuWsGiwXntg=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"domain_type\": \"biz\",\n        \"status_code\": 50,\n        \"address\": \"sales@atdata.com\",\n        \"role_account\": true,\n        \"status\": \"safetosend\"\n    }\n}"
+								},
+								{
+									"name": "Invalid API key",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/ev?api_key=INVALID_API_KEY&email=c@i.com",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ev"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "INVALID_API_KEY"
+												},
+												{
+													"key": "email",
+													"value": "c@i.com",
+													"description": "The email address to be validated"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 15:29:29 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 9feee68c149ffc812d2a7f5683100dd2.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "wUa9JomF16jDghjzhwq2RRX_7E4hJtU4VV5qU4q7KJ5lyzbRKiqOPA=="
+										}
+									],
+									"cookie": [],
+									"body": "API Key is not the correct length. Please make sure you are passing the correct value."
+								}
+							]
+						}
+					],
+					"description": "See the documentation [https://docs.atdata.com/#safetosend-introduction](https://docs.atdata.com/#safetosend-introduction)"
+				},
+				{
+					"name": "Identity Matching",
+					"item": [
+						{
+							"name": "Email Append",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var querycount = pm.request.url.query.count();\r",
+											"for(let i = 0; i < querycount; i++) {\r",
+											"  if (pm.request.url.query.idx(i).key != 'api_key') {\r",
+											"    pm.request.url.query.idx(i).value = encodeURIComponent(pm.request.url.query.idx(i).value);\r",
+											"  }\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.atdata.com/v5/eppend?first=&last=&street=&city=&state=&zip=&api_key={{API-Key}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"eppend"
+									],
+									"query": [
+										{
+											"key": "first",
+											"value": "",
+											"description": "First name of person"
+										},
+										{
+											"key": "last",
+											"value": "",
+											"description": "Last name of person"
+										},
+										{
+											"key": "street",
+											"value": "",
+											"description": "Street number & name"
+										},
+										{
+											"key": "city",
+											"value": "",
+											"description": "Name of city"
+										},
+										{
+											"key": "state",
+											"value": "",
+											"description": "Two letter state abbreviation"
+										},
+										{
+											"key": "zip",
+											"value": "",
+											"description": "Five-digit zip and, optionally, four-digit extension separated by a dash"
+										},
+										{
+											"key": "api_key",
+											"value": "{{API-Key}}",
+											"description": "Your AtData API key"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Email Append",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/eppend?first=caitlin&last=plackard&street=789%20CHESTNUT%20ST&city=SAN%20FRANCISCO&state=CA&zip=94133&api_key={{API-Key}}",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"eppend"
+											],
+											"query": [
+												{
+													"key": "first",
+													"value": "caitlin",
+													"description": "First name of person"
+												},
+												{
+													"key": "last",
+													"value": "plackard",
+													"description": "Last name of person"
+												},
+												{
+													"key": "street",
+													"value": "789%20CHESTNUT%20ST",
+													"description": "Street number & name"
+												},
+												{
+													"key": "city",
+													"value": "SAN%20FRANCISCO",
+													"description": "City"
+												},
+												{
+													"key": "state",
+													"value": "CA",
+													"description": "Two letter state abbreviation"
+												},
+												{
+													"key": "zip",
+													"value": "94133",
+													"description": "Five-digit zip and, optionally, four-digit extension separated by a dash"
+												},
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 07 Jun 2024 05:29:35 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 316ff1e97338bc9bbb335af58b00d0aa.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "67Usu09cUHrQBJFazz2siXZmIV7YnlGD7Tos78LgwmY_NQZbfThycA=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"email_append\": [\n        {\n            \"email_match_type\": \"Individual\",\n            \"email\": \"sample@atdata.com\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Postal Append",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.atdata.com/v5/eppend?email={{Email}}&api_key={{API-Key}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"eppend"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "{{Email}}",
+											"description": "The email address to be appended"
+										},
+										{
+											"key": "api_key",
+											"value": "{{API-Key}}",
+											"description": "Your AtData API key"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Postal Append",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/eppend?email=sample@atdata.com&api_key={{API-Key}}",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"eppend"
+											],
+											"query": [
+												{
+													"key": "email",
+													"value": "sample@atdata.com",
+													"description": "The email address to be appended"
+												},
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 10 Jun 2024 13:13:35 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 1c7f2d03ad31a748ff5915695aa85442.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "JFK52-P5"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "q4cUKpf2Z4subx2S4gUOos1LnkxVW1KmT95YRxrAiUUbHl0E2Fqy2w=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"postal_address\": {\n        \"zip\": \"94133-1234\",\n        \"address\": \"789 CHESTNUT ST\",\n        \"city\": \"SAN FRANCISCO\",\n        \"last_name\": \"PLACKARD\",\n        \"state\": \"CA\",\n        \"first_name\": \"CAITLIN\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Alternate Email",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.atdata.com/ae?email={{Email}}&api_key={{API-Key}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"ae"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "{{Email}}",
+											"description": "The input email address"
+										},
+										{
+											"key": "api_key",
+											"value": "{{API-Key}}",
+											"description": "Your AtData API key"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Alternate Email",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/ae?email=sample@atdata.com&api_key={{API-Key}}",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"ae"
+											],
+											"query": [
+												{
+													"key": "email",
+													"value": "sample@atdata.com",
+													"description": "The input email address"
+												},
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 09:17:47 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 17c056a089c69d54a02a9a3ca804fdd6.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "iDEIhUWfmfF2qMmFuD21DvIqnXT-vhgHSutNeigDaaJjDhmNXAckMQ=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"safe_to_send\": {\n        \"domain_type\": \"biz\",\n        \"status_code\": 50,\n        \"address\": \"sample@atdata.com\",\n        \"engagement\": 6,\n        \"status\": \"safetosend\"\n    }\n}"
+								}
+							]
+						}
+					],
+					"description": "See the documentation [https://docs.atdata.com/#identity-matching-introduction](https://docs.atdata.com/#identity-matching-introduction)"
+				},
+				{
+					"name": "Email Intelligence",
+					"item": [
+						{
+							"name": "Intelligence API",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.atdata.com/v5/td?email={{Email}}&api_key={{API-Key}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"td"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "{{Email}}",
+											"description": "Email Address"
+										},
+										{
+											"key": "first",
+											"value": "",
+											"description": "First name of person",
+											"disabled": true
+										},
+										{
+											"key": "last",
+											"value": "",
+											"description": "Last name of person",
+											"disabled": true
+										},
+										{
+											"key": "api_key",
+											"value": "{{API-Key}}",
+											"description": "Your AtData API key"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Sample Query by Email Address",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/td?email=sample@atdata.com&first=caitlin&last=plackard&api_key={{API-Key}}",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"td"
+											],
+											"query": [
+												{
+													"key": "email",
+													"value": "sample@atdata.com",
+													"description": "Email address"
+												},
+												{
+													"key": "first",
+													"value": "caitlin",
+													"description": "First name of person"
+												},
+												{
+													"key": "last",
+													"value": "plackard",
+													"description": "Last name of person"
+												},
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 07 Jun 2024 05:29:12 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 6558ca49ea7de7f93b4e2fdd32251fce.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "MDSi-LIuaEbeyfRLv8Hwx4oiK2wbtfmw7zhcxlexJXOrFgmfb6oaug=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"gender\": \"Female\"\n}"
+								},
+								{
+									"name": "Sample Query by Name and Postal Address",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.atdata.com/v5/td?first=caitlin&last=plackard&street=789%20CHESTNUT%20ST&city=SAN%20FRANCISCO&state=CA&zip=94133&api_key={{API-Key}}",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"td"
+											],
+											"query": [
+												{
+													"key": "first",
+													"value": "caitlin",
+													"description": "First name of person"
+												},
+												{
+													"key": "last",
+													"value": "plackard",
+													"description": "Last name of person"
+												},
+												{
+													"key": "street",
+													"value": "789%20CHESTNUT%20ST",
+													"description": "Street number & name"
+												},
+												{
+													"key": "city",
+													"value": "SAN%20FRANCISCO",
+													"description": "Name of city"
+												},
+												{
+													"key": "state",
+													"value": "CA",
+													"description": "Two letter state abbreviation"
+												},
+												{
+													"key": "zip",
+													"value": "94133",
+													"description": "Five-digit zip and, optionally, four-digit extension separated by a dash"
+												},
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 07 Jun 2024 05:29:04 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 70e06614c0a8446cd4a80ab3436628d4.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "KQ9haGH25CfpYSteSX24tMUBO3fpgVewGjqP9zp4iTSh4zrBpe0-iQ=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"gender\": \"Female\"\n}"
+								}
+							]
+						}
+					],
+					"description": "See the documentation [https://docs.atdata.com/#email-intelligence-introduction](https://docs.atdata.com/#email-intelligence-introduction)"
+				},
+				{
+					"name": "Bulk Email Intelligence",
+					"item": [
+						{
+							"name": "Bulk Intelligence Endpoint",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"email\": \"sample@atdata.com\",\n        \"first\": \"Caitlin\",\n        \"last\": \"Plackard\"\n    },\n    {\n        \"email\": \"unknown_email@domain.com\"\n    },\n    {\n        \"email\": \"demo@atdata.com\"\n    },\n    {\n        \"email\": \"NOT_AN_EMAIL_ADDRESS\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.atdata.com/v5/ei/bulk?api_key={{API-Key}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"ei",
+										"bulk"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API-Key}}",
+											"description": "Your AtData API key"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Bulk Intelligence Endpoint",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\"email\":\"sample@atdata.com\",\"first\":\"Caitlin\",\"last\":\"Plackard\"},\n  {\"email\":\"unknown_email@domain.com\"},\n  {\"email\":\"demo@atdata.com\"},\n  {\"email\":\"NOT_AN_EMAIL_ADDRESS\"}\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.atdata.com/v5/ei/bulk?api_key={{API-Key}}",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"ei",
+												"bulk"
+											],
+											"query": [
+												{
+													"key": "api_key",
+													"value": "{{API-Key}}",
+													"description": "Your AtData API key"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 09:31:10 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Jetty(11.0.20)"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Miss from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 a3cc6ada872dd8799739f0e62dddda7c.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "RuUvpQbDIImKTmMrSZ0lb2lmuW8pqp2dEYJ1Jmk_AnieuE1PLkYXfA=="
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"gender\": \"Female\"\n    },\n    {},\n    {\n        \"gender\": \"Male\"\n    },\n    {\n        \"error_code\": 400,\n        \"error_msg\": \"Invalid identifier\"\n    }\n]"
+								}
+							]
+						}
+					],
+					"description": "See the documentation [https://docs.atdata.com/#bulk-email-intelligence-introduction](https://docs.atdata.com/#bulk-email-intelligence-introduction)"
+				},
+				{
+					"name": "List API",
+					"item": [
+						{
+							"name": "Submitting Lists",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api_key",
+										"value": "877035ecdd2e654220c6e82ec164e5fd",
+										"description": "Your AtData API key"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"description": "Type of media to be sent."
+									},
+									{
+										"key": "email_column",
+										"value": "1",
+										"description": "If email address is in the file, the index of the column containing it, starting at 1.",
+										"disabled": true
+									},
+									{
+										"key": "header",
+										"value": "true",
+										"description": "Used to indicate the presense of a header line with a value of true or false; default=false. Must be used for non-email fields.",
+										"disabled": true
+									},
+									{
+										"key": "delimiter",
+										"value": ",",
+										"description": "The character used to separate multiple columns within the file; default variable is tab (\\t).",
+										"disabled": true
+									},
+									{
+										"key": "report",
+										"value": "true",
+										"description": "For all services except validation, only produce a match report and do not purchase data.",
+										"disabled": true
+									},
+									{
+										"key": "name",
+										"value": "customer_emails.csv",
+										"description": "File name, which must use one of these file extensions: .txt, .csv or .zip; default=myfile.csv.",
+										"disabled": true
+									},
+									{
+										"key": "fields",
+										"value": "age,gender",
+										"description": "A comma-separated list of the data fields you want returned. By default, all available fields are returned.",
+										"disabled": true
+									},
+									{
+										"key": "callback_url",
+										"value": "https://example.com/callback_url",
+										"description": "a valid webhook/callback url with a max length of 512 characters, that can accept POST requests with a JSON payload and uses https or http (https is strongly encouraged)",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "@customer_emails.csv",
+											"description": "File with list of customers to be validated.",
+											"type": "file",
+											"src": "postman-cloud:///1ef257cb-5294-4d50-b610-bc59dec2f2cf"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.atdata.com/v5/list",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"list"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Submitting Lists",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "877035ecdd2e654220c6e82ec164e5fd",
+												"description": "Your AtData API key"
+											},
+											{
+												"key": "Content-Type",
+												"value": "multipart/form-data",
+												"description": "Type of media to be sent."
+											},
+											{
+												"key": "email_column",
+												"value": "1",
+												"description": "If email address is in the file, the index of the column containing it, starting at 1.",
+												"disabled": true
+											},
+											{
+												"key": "header",
+												"value": "true",
+												"description": "Used to indicate the presense of a header line with a value of true or false; default=false. Must be used for non-email fields.",
+												"disabled": true
+											},
+											{
+												"key": "delimiter",
+												"value": ",",
+												"description": "The character used to separate multiple columns within the file; default variable is tab (\\t).",
+												"disabled": true
+											},
+											{
+												"key": "report",
+												"value": "true",
+												"description": "For all services except validation, only produce a match report and do not purchase data.",
+												"disabled": true
+											},
+											{
+												"key": "name",
+												"value": "customer_emails.csv",
+												"description": "File name, which must use one of these file extensions: .txt, .csv or .zip; default=myfile.csv.",
+												"disabled": true
+											},
+											{
+												"key": "fields",
+												"value": "age,gender",
+												"description": "A comma-separated list of the data fields you want returned. By default, all available fields are returned.",
+												"disabled": true
+											},
+											{
+												"key": "callback_url",
+												"value": "https://example.com/callback_url",
+												"description": "a valid webhook/callback url with a max length of 512 characters, that can accept POST requests with a JSON payload and uses https or http (https is strongly encouraged)",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "@customer_emails.csv",
+													"description": "File with list of customers to be validated.",
+													"type": "file",
+													"src": "postman-cloud:///1ef257cb-5294-4d50-b610-bc59dec2f2cf"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://api.atdata.com/v5/list",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"list"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 09:59:38 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 8bc02eb70fbe9b20b0505e49467df014.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "uq90THqJouMHA3fHmHvjjYUhF4mgzk0aKpAYFT4-IoVSce0XXRpoMw=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": 1717840778086,\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"exception\": \"org.springframework.web.multipart.MultipartException\",\n    \"message\": \"Could not parse multipart servlet request; nested exception is java.io.IOException: org.apache.tomcat.util.http.fileupload.FileUploadException: the request was rejected because no multipart boundary was found\",\n    \"path\": \"/v5/list\"\n}"
+								},
+								{
+									"name": "Match report only",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "877035ecdd2e654220c6e82ec164e5fd",
+												"description": "Your AtData API key"
+											},
+											{
+												"key": "Content-Type",
+												"value": "multipart/form-data",
+												"description": "Type of media to be sent."
+											},
+											{
+												"key": "action",
+												"value": "report"
+											},
+											{
+												"key": "email_column",
+												"value": "1",
+												"description": "If email address is in the file, the index of the column containing it, starting at 1.",
+												"disabled": true
+											},
+											{
+												"key": "header",
+												"value": "true",
+												"description": "Used to indicate the presense of a header line with a value of true or false; default=false. Must be used for non-email fields.",
+												"disabled": true
+											},
+											{
+												"key": "delimiter",
+												"value": ",",
+												"description": "The character used to separate multiple columns within the file; default variable is tab (\\t).",
+												"disabled": true
+											},
+											{
+												"key": "report",
+												"value": "true",
+												"description": "For all services except validation, only produce a match report and do not purchase data.",
+												"disabled": true
+											},
+											{
+												"key": "name",
+												"value": "customer_emails.csv",
+												"description": "File name, which must use one of these file extensions: .txt, .csv or .zip; default=myfile.csv.",
+												"disabled": true
+											},
+											{
+												"key": "fields",
+												"value": "age,gender",
+												"description": "A comma-separated list of the data fields you want returned. By default, all available fields are returned.",
+												"disabled": true
+											},
+											{
+												"key": "callback_url",
+												"value": "https://example.com/callback_url",
+												"description": "a valid webhook/callback url with a max length of 512 characters, that can accept POST requests with a JSON payload and uses https or http (https is strongly encouraged)",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "@customer_emails.csv",
+													"description": "File with list of customers to be validated.",
+													"type": "file",
+													"src": "postman-cloud:///1ef257cb-5294-4d50-b610-bc59dec2f2cf"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://api.atdata.com/v5/list",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"list"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 10:21:34 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 a3cc6ada872dd8799739f0e62dddda7c.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "cdVtiib_y3JSKfXzsdLT1HkfBzQvEACTHTizLfZIbjxe6Jid7LFeag=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": 1717842094657,\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"exception\": \"org.springframework.web.multipart.MultipartException\",\n    \"message\": \"Could not parse multipart servlet request; nested exception is java.io.IOException: org.apache.tomcat.util.http.fileupload.FileUploadException: the request was rejected because no multipart boundary was found\",\n    \"path\": \"/v5/list\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Check List Status",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "api_key",
+										"value": "877035ecdd2e654220c6e82ec164e5fd",
+										"description": "Your AtData API key"
+									}
+								],
+								"url": {
+									"raw": "https://api.atdata.com/v5/list/{{list_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"list",
+										"{{list_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Check List Status",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "877035ecdd2e654220c6e82ec164e5fd",
+												"description": "Your AtData API key"
+											}
+										],
+										"url": {
+											"raw": "https://api.atdata.com/v5/list/1234",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"list",
+												"1234"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 10:07:40 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 8bc02eb70fbe9b20b0505e49467df014.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "_KeBGDZh3h3twDAw6Z1Lobt1fGnctLUl635USPE0b_T8PoiDT-Ef_A=="
+										}
+									],
+									"cookie": [],
+									"body": "List not found: 1234"
+								}
+							]
+						},
+						{
+							"name": "Setting a callback URL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api_key",
+										"value": "877035ecdd2e654220c6e82ec164e5fd",
+										"description": "Your AtData API key"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"description": "Type of media to be sent."
+									},
+									{
+										"key": "callback_url",
+										"value": "https://example.com/callback_url",
+										"description": "a valid webhook/callback url with a max length of 512 characters, that can accept POST requests with a JSON payload and uses https or http (https is strongly encouraged)"
+									},
+									{
+										"key": "email_column",
+										"value": "1",
+										"description": "If email address is in the file, the index of the column containing it, starting at 1.",
+										"disabled": true
+									},
+									{
+										"key": "header",
+										"value": "true",
+										"description": "Used to indicate the presense of a header line with a value of true or false; default=false. Must be used for non-email fields.",
+										"disabled": true
+									},
+									{
+										"key": "delimiter",
+										"value": ",",
+										"description": "The character used to separate multiple columns within the file; default variable is tab (\\t).",
+										"disabled": true
+									},
+									{
+										"key": "report",
+										"value": "true",
+										"description": "For all services except validation, only produce a match report and do not purchase data.",
+										"disabled": true
+									},
+									{
+										"key": "name",
+										"value": "customer_emails.csv",
+										"description": "File name, which must use one of these file extensions: .txt, .csv or .zip; default=myfile.csv.",
+										"disabled": true
+									},
+									{
+										"key": "fields",
+										"value": "age,gender",
+										"description": "A comma-separated list of the data fields you want returned. By default, all available fields are returned.",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "@customer_emails.csv",
+											"description": "File with list of customers to be validated.",
+											"type": "file",
+											"src": "postman-cloud:///1ef257cb-5294-4d50-b610-bc59dec2f2cf"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.atdata.com/v5/list",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"list"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Setting a callback URL",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "877035ecdd2e654220c6e82ec164e5fd",
+												"description": "Your AtData API key"
+											},
+											{
+												"key": "Content-Type",
+												"value": "multipart/form-data",
+												"description": "Type of media to be sent."
+											},
+											{
+												"key": "callback_url",
+												"value": "https://example.com/callback_url",
+												"description": "a valid webhook/callback url with a max length of 512 characters, that can accept POST requests with a JSON payload and uses https or http (https is strongly encouraged)"
+											},
+											{
+												"key": "email_column",
+												"value": "1",
+												"description": "If email address is in the file, the index of the column containing it, starting at 1.",
+												"disabled": true
+											},
+											{
+												"key": "header",
+												"value": "true",
+												"description": "Used to indicate the presense of a header line with a value of true or false; default=false. Must be used for non-email fields.",
+												"disabled": true
+											},
+											{
+												"key": "delimiter",
+												"value": ",",
+												"description": "The character used to separate multiple columns within the file; default variable is tab (\\t).",
+												"disabled": true
+											},
+											{
+												"key": "report",
+												"value": "true",
+												"description": "For all services except validation, only produce a match report and do not purchase data.",
+												"disabled": true
+											},
+											{
+												"key": "name",
+												"value": "customer_emails.csv",
+												"description": "File name, which must use one of these file extensions: .txt, .csv or .zip; default=myfile.csv.",
+												"disabled": true
+											},
+											{
+												"key": "fields",
+												"value": "age,gender",
+												"description": "A comma-separated list of the data fields you want returned. By default, all available fields are returned.",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "@customer_emails.csv",
+													"description": "File with list of customers to be validated.",
+													"type": "file",
+													"src": "postman-cloud:///1ef257cb-5294-4d50-b610-bc59dec2f2cf"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://api.atdata.com/v5/list",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"list"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 10:11:06 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 cef2b4d24f9bca7ece48f6be33efd62c.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "t9jqgJWMTxJ7Ei2yCmTRaCyf-k00DmS-d9X0pU1ek055p-DCxHYQ8Q=="
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": 1717841466473,\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"exception\": \"org.springframework.web.multipart.MultipartException\",\n    \"message\": \"Could not parse multipart servlet request; nested exception is java.io.IOException: org.apache.tomcat.util.http.fileupload.FileUploadException: the request was rejected because no multipart boundary was found\",\n    \"path\": \"/v5/list\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Purchase List Results",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api_key",
+										"value": "877035ecdd2e654220c6e82ec164e5fd",
+										"description": "Your AtData API key"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "Type of media to be sent."
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.atdata.com/v5/list/{{list_id}}/purchase",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"list",
+										"{{list_id}}",
+										"purchase"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Purchase List Results",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "877035ecdd2e654220c6e82ec164e5fd",
+												"description": "Your AtData API key"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"description": "Type of media to be sent."
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n \"fields\": [\"gender\",\n            \"postal_address\"]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.atdata.com/v5/list/1234/purchase",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"list",
+												"1234",
+												"purchase"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 10:13:47 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 077f711c23b8630fba0cd55c24dd3124.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "JAJc4usUh5l0Oe-eINSerjJmfZRD1FScSWTA185CjXVlSXxPVBLjgA=="
+										}
+									],
+									"cookie": [],
+									"body": "List not found: 1234"
+								},
+								{
+									"name": "Specifying fields to purchase",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "877035ecdd2e654220c6e82ec164e5fd",
+												"description": "Your AtData API key"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"description": "Type of media to be sent."
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.atdata.com/v5/list/{{list_id}}/purchase",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"list",
+												"{{list_id}}",
+												"purchase"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 10:14:08 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 62b5a67033f9ddeb513aca6c5afc317e.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "NhQD02--kocHvrzB4KYxq6oKrgTPK8dn4td_NlbZzKZyMcEv1c25MQ=="
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Purchase individual email append matches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "877035ecdd2e654220c6e82ec164e5fd",
+												"description": "Your AtData API key"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"description": "Type of media to be sent."
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"options\":{\n      \"email_append\":{\n         \"match_type\": \"I\"\n      }\n   }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.atdata.com/v5/list/{{list_id}}/purchase",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"list",
+												"{{list_id}}",
+												"purchase"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 10:14:08 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 62b5a67033f9ddeb513aca6c5afc317e.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "NhQD02--kocHvrzB4KYxq6oKrgTPK8dn4td_NlbZzKZyMcEv1c25MQ=="
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Retrieve List Results",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "api_key",
+										"value": "877035ecdd2e654220c6e82ec164e5fd",
+										"description": "Your AtData API key"
+									}
+								],
+								"url": {
+									"raw": "https://api.atdata.com/v5/list/{{list_id}}/results",
+									"protocol": "https",
+									"host": [
+										"api",
+										"atdata",
+										"com"
+									],
+									"path": [
+										"v5",
+										"list",
+										"{{list_id}}",
+										"results"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Retrieve List Results",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "877035ecdd2e654220c6e82ec164e5fd",
+												"description": "Your AtData API key"
+											}
+										],
+										"url": {
+											"raw": "https://api.atdata.com/v5/list/1234/results",
+											"protocol": "https",
+											"host": [
+												"api",
+												"atdata",
+												"com"
+											],
+											"path": [
+												"v5",
+												"list",
+												"1234",
+												"results"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "14"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 08 Jun 2024 10:18:00 GMT"
+										},
+										{
+											"key": "X-Cache",
+											"value": "Error from cloudfront"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 28f481302befff8459645b5750f67a86.cloudfront.net (CloudFront)"
+										},
+										{
+											"key": "X-Amz-Cf-Pop",
+											"value": "IAD66-C2"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "X-Amz-Cf-Id",
+											"value": "Z8Qvq8ZrP8UjHJxQ8s7o_DCP-Ij077kBm6l-qmzCW0EFOtERPIyslQ=="
+										}
+									],
+									"cookie": [],
+									"body": "File not found"
+								}
+							]
+						}
+					],
+					"description": "See the documentation [https://docs.atdata.com/#list-api-introduction](https://docs.atdata.com/#list-api-introduction)"
+				}
+			],
+			"description": "See the documentation [https://docs.atdata.com/](https://docs.atdata.com/)"
+		},
+		{
+			"name": "Fraud Prevention API's",
+			"item": [
+				{
+					"name": "Retrieve Fraud Risk Information",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var querycount = pm.request.url.query.count();",
+									"for(let i = 0; i < querycount; i++) {",
+									"  if (pm.request.url.query.idx(i).key != 'api_key') {",
+									"    pm.request.url.query.idx(i).value = encodeURIComponent(pm.request.url.query.idx(i).value);",
+									"  }",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.atdata.com/fr?api_key={{API-Key}}&email={{Email}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"atdata",
+								"com"
+							],
+							"path": [
+								"fr"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API-Key}}",
+									"description": "API key for accessing the service."
+								},
+								{
+									"key": "email",
+									"value": "{{Email}}",
+									"description": "The email address to be evaluated for fraud."
+								},
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "Internal identifier for the email or transaction.",
+									"disabled": true
+								},
+								{
+									"key": "first",
+									"value": "",
+									"description": "First name of the individual.",
+									"disabled": true
+								},
+								{
+									"key": "last",
+									"value": "",
+									"description": "Last name of the individual.",
+									"disabled": true
+								},
+								{
+									"key": "street",
+									"value": "",
+									"description": "First line of the postal address, including number.",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "",
+									"description": "City of the postal address.",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "",
+									"description": "State of the postal address.",
+									"disabled": true
+								},
+								{
+									"key": "zip",
+									"value": "",
+									"description": "ZIP or postcode of the postal address.",
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": "",
+									"description": "2 letter country code.",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "",
+									"description": "Phone number, including country code.",
+									"disabled": true
+								},
+								{
+									"key": "ip",
+									"value": "",
+									"description": "User's IP address.",
+									"disabled": true
+								},
+								{
+									"key": "user_agent",
+									"value": "",
+									"description": "User agent of the client.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retrieves fraud risk information based on the provided email and optional personal data."
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Feedback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "A tab-separated file containing feedback data.",
+									"type": "file",
+									"src": "https://github.com/writechoiceorg/atdata-docs/blob/main/file.tsv"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.atdata.com/feedback/v1?api_key={{API-Key}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"atdata",
+								"com"
+							],
+							"path": [
+								"feedback",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API-Key}}",
+									"description": "API key for accessing the service."
+								}
+							]
+						},
+						"description": "Submits feedback about identified fraud through a tab-separated file."
+					},
+					"response": []
+				}
+			],
+			"description": "The AtData Fraud Prevention API provides detailed information about email addresses and their risk and fraud correlation.\n\nSee the documentation at [https://atdata-fraud.readme.io/reference/overview](https://atdata-fraud.readme.io/reference/overview)"
+		}
+	],
+	"variable": [
+		{
+			"key": "API-Key",
+			"value": "56d9f37ca76d80b9b216d803687e5ae4"
+		}
+	]
+}
