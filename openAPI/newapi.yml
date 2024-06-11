@@ -60,6 +60,8 @@ paths:
   /v5/eppend:
     get:
       summary: Email Append
+      tags:
+      - Identity Matching
       description: >-
         Append additional information to an email address.
       parameters:
@@ -102,6 +104,12 @@ paths:
             Five-digit zip and, optionally, four-digit extension separated by a
             dash
         - in: query
+          name: email
+          required: false
+          schema:
+            type: string
+          description: The email address to be appended
+        - in: query
           name: api_key
           required: true
           schema:
@@ -128,6 +136,54 @@ paths:
                   email_append:
                     - email_match_type: Individual
                       email: sample@atdata.com
+  /ae:
+    get:
+      summary: Alternate Email
+      tags:
+      - Identity Matching
+      description: >-
+        Get an alternate email address for the provided email.
+      parameters:
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+          description: The input email address
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '200':
+          description: Alternate Email
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  safe_to_send:
+                    type: object
+                    properties:
+                      domain_type:
+                        type: string
+                      status_code:
+                        type: integer
+                      address:
+                        type: string
+                      engagement:
+                        type: integer
+                      status:
+                        type: string
+                example:
+                  safe_to_send:
+                    domain_type: biz
+                    status_code: 50
+                    address: sample@atdata.com
+                    engagement: 6
+                    status: safetosend
   # /v5/ei/bulk:
   #   post:
   #     summary: Bulk Intelligence Endpoint
@@ -325,52 +381,6 @@ paths:
   #             schema:
   #               type: string
   #               example: List not found: 1234
-  # /ae:
-  #   get:
-  #     summary: Alternate Email
-  #     description: >-
-  #       Get an alternate email address for the provided email.
-  #     parameters:
-  #       - in: query
-  #         name: email
-  #         required: true
-  #         schema:
-  #           type: string
-  #         description: The input email address
-  #       - in: query
-  #         name: api_key
-  #         required: true
-  #         schema:
-  #           type: string
-  #         description: Your AtData API key
-  #     responses:
-  #       '200':
-  #         description: Alternate Email
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: object
-  #               properties:
-  #                 safe_to_send:
-  #                   type: object
-  #                   properties:
-  #                     domain_type:
-  #                       type: string
-  #                     status_code:
-  #                       type: integer
-  #                     address:
-  #                       type: string
-  #                     engagement:
-  #                       type: integer
-  #                     status:
-  #                       type: string
-  #               example:
-  #                 safe_to_send:
-  #                   domain_type: biz
-  #                   status_code: 50
-  #                   address: sample@atdata.com
-  #                   engagement: 6
-  #                   status: safetosend
   # /v5/td:
   #   get:
   #     summary: Intelligence API
