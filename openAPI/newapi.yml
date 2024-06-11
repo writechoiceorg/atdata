@@ -11,6 +11,7 @@ paths:
   /v5/ev:
     get:
       summary: SafeToSend
+      operationId: safe-to-send
       tags:
         - SafeToSend Email Verification
       description: >-
@@ -62,6 +63,7 @@ paths:
   /v5/eppend:
     get:
       summary: Email Append
+      operationId: email-append
       tags:
       - Identity Matching
       description: >-
@@ -141,6 +143,7 @@ paths:
   /ae:
     get:
       summary: Alternate Email
+      operationId: alternate-email
       tags:
       - Identity Matching
       description: >-
@@ -188,7 +191,8 @@ paths:
                     status: safetosend
   /v5/td:
     get:
-      summary: Intelligence API
+      summary: Intelligence
+      operationId: intelligence
       tags:
         - Intelligence API
       description: >-
@@ -232,7 +236,8 @@ paths:
                   gender: Female
   /v5/ei/bulk:
     post:
-      summary: Bulk Intelligence Endpoint
+      summary: Bulk Intelligence
+      operationId: bulk-intelligence
       tags:
         - Intelligence API
       description: >-
@@ -294,6 +299,7 @@ paths:
   /v5/list:
     post:
       summary: Submitting Lists
+      operationId: submitting-lists
       tags:
         - List API
       description: >-
@@ -411,6 +417,7 @@ paths:
   /v5/list/{list_id}:
     get:
       summary: Check List Status
+      operationId: check-list-status
       tags:
         - List API
       description: >-
@@ -439,6 +446,7 @@ paths:
   /v5/list/{list_id}/purchase:
     post:
       summary: Purchase List Results
+      operationId: purchase-list-results
       tags:
         - List API
       description: >-
@@ -467,6 +475,7 @@ paths:
   /v5/list/{list_id}/results:
     get:
       summary: Retrieve List Results
+      operationId: retrieve-list-results
       tags:
         - List API
       description: >-
