@@ -230,63 +230,64 @@ paths:
                     type: string
                 example:
                   gender: Female
-
-  # /v5/ei/bulk:
-  #   post:
-  #     summary: Bulk Intelligence Endpoint
-  #     description: >-
-  #       Submit a list of email addresses for bulk intelligence.
-  #     parameters:
-  #       - in: query
-  #         name: api_key
-  #         required: true
-  #         schema:
-  #           type: string
-  #         description: Your AtData API key
-  #     requestBody:
-  #       required: true
-  #       content:
-  #         application/json:
-  #           schema:
-  #             type: array
-  #             items:
-  #               type: object
-  #               properties:
-  #                 email:
-  #                   type: string
-  #                 first:
-  #                   type: string
-  #                 last:
-  #                   type: string
-  #             example:
-  #               - email: sample@atdata.com
-  #                 first: Caitlin
-  #                 last: Plackard
-  #               - email: unknown_email@domain.com
-  #               - email: demo@atdata.com
-  #               - email: NOT_AN_EMAIL_ADDRESS
-  #     responses:
-  #       '200':
-  #         description: Bulk Intelligence Endpoint
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: array
-  #               items:
-  #                 type: object
-  #                 properties:
-  #                   gender:
-  #                     type: string
-  #                   error_code:
-  #                     type: integer
-  #                   error_msg:
-  #                     type: string
-  #               example:
-  #                 - gender: Female
-  #                 - {}
-  #                 - gender: Male
-  #                 - error_code: 400
-  #                   error_msg: Invalid identifier
+  /v5/ei/bulk:
+    post:
+      summary: Bulk Intelligence Endpoint
+      tags:
+        - Intelligence API
+      description: >-
+        Submit a list of email addresses to Intelligence API.
+      parameters:
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  email:
+                    type: string
+                  first:
+                    type: string
+                  last:
+                    type: string
+              example:
+                - email: sample@atdata.com
+                  first: Caitlin
+                  last: Plackard
+                - email: unknown_email@domain.com
+                - email: demo@atdata.com
+                - email: NOT_AN_EMAIL_ADDRESS
+      responses:
+        '200':
+          description: Bulk Intelligence Endpoint
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    gender:
+                      type: string
+                    error_code:
+                      type: integer
+                    error_msg:
+                      type: string
+                example:
+                  - gender: Female
+                  - {}
+                  - gender: Male
+                  - error_code: 400
+                    error_msg: Invalid identifier
   # /v5/list:
   #   post:
   #     summary: Submitting Lists
