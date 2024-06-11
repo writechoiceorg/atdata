@@ -436,4 +436,59 @@ paths:
               schema:
                 type: string
                 example: 'List not found: 1234'
-  
+  /v5/list/{list_id}/purchase:
+    post:
+      summary: Purchase List Results
+      tags:
+        - List API
+      description: >-
+        Purchase the results of a submitted list.
+      parameters:
+        - in: path
+          name: list_id
+          required: true
+          schema:
+            type: string
+          description: The ID of the list to be purchased.
+        - in: header
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '404':
+          description: List not found
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'List not found: 1234'
+  /v5/list/{list_id}/results:
+    get:
+      summary: Retrieve List Results
+      tags:
+        - List API
+      description: >-
+        Retrieves the results of a submitted list.
+      parameters:
+        - in: path
+          name: list_id
+          required: true
+          schema:
+            type: string
+          description: The ID of the list to be retrieved.
+        - in: header
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '404':
+          description: File not found
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'File not found'    
