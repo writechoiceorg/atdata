@@ -57,77 +57,77 @@ paths:
                     address: sales@atdata.com
                     role_account: true
                     status: safetosend
-  # /v5/eppend:
-  #   get:
-  #     summary: Email Append
-  #     description: >-
-  #       Append additional information to an email address.
-  #     parameters:
-  #       - in: query
-  #         name: first
-  #         required: false
-  #         schema:
-  #           type: string
-  #         description: First name of person
-  #       - in: query
-  #         name: last
-  #         required: false
-  #         schema:
-  #           type: string
-  #         description: Last name of person
-  #       - in: query
-  #         name: street
-  #         required: false
-  #         schema:
-  #           type: string
-  #         description: Street number & name
-  #       - in: query
-  #         name: city
-  #         required: false
-  #         schema:
-  #           type: string
-  #         description: Name of city
-  #       - in: query
-  #         name: state
-  #         required: false
-  #         schema:
-  #           type: string
-  #         description: Two letter state abbreviation
-  #       - in: query
-  #         name: zip
-  #         required: false
-  #         schema:
-  #           type: string
-  #         description: >-
-  #           Five-digit zip and, optionally, four-digit extension separated by a
-  #           dash
-  #       - in: query
-  #         name: api_key
-  #         required: true
-  #         schema:
-  #           type: string
-  #         description: Your AtData API key
-  #     responses:
-  #       '200':
-  #         description: Email Append
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: object
-  #               properties:
-  #                 email_append:
-  #                   type: array
-  #                   items:
-  #                     type: object
-  #                     properties:
-  #                       email_match_type:
-  #                         type: string
-  #                       email:
-  #                         type: string
-  #               example:
-  #                 email_append:
-  #                   - email_match_type: Individual
-  #                     email: sample@atdata.com
+  /v5/eppend:
+    get:
+      summary: Email Append
+      description: >-
+        Append additional information to an email address.
+      parameters:
+        - in: query
+          name: first
+          required: false
+          schema:
+            type: string
+          description: First name of person
+        - in: query
+          name: last
+          required: false
+          schema:
+            type: string
+          description: Last name of person
+        - in: query
+          name: street
+          required: false
+          schema:
+            type: string
+          description: Street number & name
+        - in: query
+          name: city
+          required: false
+          schema:
+            type: string
+          description: Name of city
+        - in: query
+          name: state
+          required: false
+          schema:
+            type: string
+          description: Two letter state abbreviation
+        - in: query
+          name: zip
+          required: false
+          schema:
+            type: string
+          description: >-
+            Five-digit zip and, optionally, four-digit extension separated by a
+            dash
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '200':
+          description: Email Append
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email_append:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        email_match_type:
+                          type: string
+                        email:
+                          type: string
+                example:
+                  email_append:
+                    - email_match_type: Individual
+                      email: sample@atdata.com
   # /v5/ei/bulk:
   #   post:
   #     summary: Bulk Intelligence Endpoint
