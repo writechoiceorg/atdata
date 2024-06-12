@@ -73,8 +73,10 @@ paths:
           schema:
             type: string
           description: >-
-            File name, which must use one of these file extensions: .txt, .csv or
-            .zip; default=myfile.csv.
+            File name, which must use one of these file extensions: `.txt`, `.csv` or
+            `.zip`.
+            
+            Default value: myfile.csv
         - in: header
           name: fields
           required: false
@@ -99,11 +101,27 @@ paths:
             schema:
               type: object
               properties:
-                customer_emails.csv:
+                customer_emails:
                   type: string
                   format: binary
                   description: File with list of customers to be validated.
       responses:
+        '200':
+          description: List submitted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list_id:
+                    type: integer
+                    description: The ID of the submitted list
+                  size_bytes:
+                    type: integer
+                    description: The size of the submitted list in bytes
+              example:
+                list_id: 4321
+                size_bytes: 22709
         '500':
           description: Internal Server Error
           content:
@@ -139,7 +157,7 @@ paths:
       tags:
         - List API
       description: >-
-        Check the status of a submitted list.
+        Check the status of your uploaded list. You can poll the URL `https://api.atdata.com/v5/list/{list_id}` until your results are returned. Please wait 5 seconds between requests.
       parameters:
         - in: path
           name: list_id
@@ -154,6 +172,239 @@ paths:
             type: string
           description: Your AtData API key
       responses:
+        '200':
+          description: List submitted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list_id:
+                    type: integer
+                    description: The ID of the submitted list
+                  name:
+                    type: string
+                    description: The name of the submitted list
+                  status:
+                    type: string
+                    description: The status of the submitted list
+                  records:
+                    type: integer
+                    description: The number of records in the list
+                  size_bytes:
+                    type: integer
+                    description: The size of the submitted list in bytes
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: The creation time of the list
+                  services:
+                    type: object
+                    properties:
+                      email_validation:
+                        type: object
+                        properties:
+                          input_count:
+                            type: integer
+                            description: The number of input emails
+                          completed_count:
+                            type: integer
+                            description: The number of completed validations
+                          reporting:
+                            type: object
+                            properties:
+                              statuses:
+                                type: object
+                                properties:
+                                  Valid:
+                                    type: integer
+                                  Invalid:
+                                    type: integer
+                                  Risky:
+                                    type: integer
+                                  Unknown:
+                                    type: integer
+                                  Unverifiable:
+                                    type: integer
+                                  Corrected:
+                                    type: integer
+                              invalid_categories:
+                                type: object
+                                properties:
+                                  Syntax Errors:
+                                    type: integer
+                                  Domain Errors:
+                                    type: integer
+                                  Mailbox Errors:
+                                    type: integer
+                                  Suppressions:
+                                    type: integer
+                              domain_type:
+                                type: object
+                                properties:
+                                  Disposable:
+                                    type: integer
+                                  Free ISP:
+                                    type: integer
+                                  Paid ISP:
+                                    type: integer
+                                  Wireless:
+                                    type: integer
+                                  Education:
+                                    type: integer
+                                  Government:
+                                    type: integer
+                                  Business:
+                                    type: integer
+                                  Non-profit:
+                                    type: integer
+                                  Parked:
+                                    type: integer
+                                  Privacy:
+                                    type: integer
+                              role_accounts:
+                                type: integer
+                              status_codes:
+                                type: object
+                                properties:
+                                  '10':
+                                    type: integer
+                                  '20':
+                                    type: integer
+                                  '45':
+                                    type: integer
+                                  '50':
+                                    type: integer
+                                  '100':
+                                    type: integer
+                                  '110':
+                                    type: integer
+                                  '115':
+                                    type: integer
+                                  '120':
+                                    type: integer
+                                  '125':
+                                    type: integer
+                                  '130':
+                                    type: integer
+                                  '140':
+                                    type: integer
+                                  '145':
+                                    type: integer
+                                  '150':
+                                    type: integer
+                                  '155':
+                                    type: integer
+                                  '200':
+                                    type: integer
+                                  '210':
+                                    type: integer
+                                  '215':
+                                    type: integer
+                                  '310':
+                                    type: integer
+                                  '325':
+                                    type: integer
+                                  '400':
+                                    type: integer
+                                  '410':
+                                    type: integer
+                                  '420':
+                                    type: integer
+                                  '500':
+                                    type: integer
+                                  '505':
+                                    type: integer
+                                  '510':
+                                    type: integer
+                                  '520':
+                                    type: integer
+                                  '525':
+                                    type: integer
+                                  '530':
+                                    type: integer
+                                  '5':
+                                    type: integer
+                                  '999':
+                                    type: integer
+                              trap_hits:
+                                type: object
+                                properties:
+                                  Trap Hits:
+                                    type: integer
+                          status:
+                            type: string
+                            description: The status of the email validation
+              example:
+                list_id: 11754
+                name: lista.csv
+                status: Results
+                records: 145
+                size_bytes: 3271
+                created_at: "2023-08-16T10:39:40Z"
+                services:
+                  email_validation:
+                    input_count: 145
+                    completed_count: 145
+                    reporting:
+                      statuses:
+                        Valid: 0
+                        Invalid: 0
+                        Risky: 0
+                        Unknown: 145
+                        Unverifiable: 0
+                        Corrected: 0
+                      invalid_categories:
+                        Syntax Errors: 0
+                        Domain Errors: 0
+                        Mailbox Errors: 0
+                        Suppressions: 0
+                      domain_type:
+                        Disposable: 0
+                        Free ISP: 0
+                        Paid ISP: 0
+                        Wireless: 0
+                        Education: 0
+                        Government: 0
+                        Business: 0
+                        Non-profit: 0
+                        Parked: 0
+                        Privacy: 0
+                      role_accounts: 0
+                      status_codes:
+                        '10': 0
+                        '20': 0
+                        '45': 0
+                        '50': 0
+                        '100': 0
+                        '110': 0
+                        '115': 0
+                        '120': 0
+                        '125': 0
+                        '130': 0
+                        '140': 0
+                        '145': 0
+                        '150': 0
+                        '155': 0
+                        '200': 0
+                        '210': 0
+                        '215': 0
+                        '310': 0
+                        '325': 0
+                        '400': 0
+                        '410': 0
+                        '420': 0
+                        '500': 0
+                        '505': 0
+                        '510': 0
+                        '520': 0
+                        '525': 0
+                        '530': 0
+                        '5': 145
+                        '999': 0
+                      trap_hits:
+                        Trap Hits: 0
+                    status: Completed
         '404':
           description: List not found
           content:
@@ -168,7 +419,13 @@ paths:
       tags:
         - List API
       description: >-
-        Purchase the results of a submitted list.
+        By default, when using the List API, the service that your API key is configured for is automatically run to completion, and you will receive and be billed for the results. You can use the optional action=report parameter when submitting your list to only get a match report, without receiving data. This works for all of AtData's services except for Email Validation.
+
+
+        If you want to purchase the results of a service after reviewing the match report, submit a HTTP POST request to the URL shown to the right.
+
+
+        If you want to specify which of the match fields you wish to receive results on, you can list the fields you want to purchase in the body of the POST using the JSON format to the right. If you don't specify fields, all the fields that were matched will be purchased.
       parameters:
         - in: path
           name: list_id
