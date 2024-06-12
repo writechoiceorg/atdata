@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: SafeToSend Email Verification
+  description: >-
+    AtData API's help you improve the quality and depth of your customer data by
+    enabling you to quickly and securely verify and enhance email addresses.
+  version: 1.0.0
+servers:
+- url: https://api.atdata.com
+paths:
+  /v5/ev:
+    get:
+      summary: SafeToSend
+      operationId: safe-to-send
+      tags:
+        - SafeToSend Email Verification
+      description: >-
+        The SafeToSend API verifies email addresses to filter out invalid and
+        high risk email addresses which results in higher open rates, clicks and
+        conversions.
+      parameters:
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+          description: The email address to be validated
+          example: sales@atdata.com
+      responses:
+        '200':
+          description: SafeToSend email
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  safe_to_send:
+                    type: object
+                    properties:
+                      domain_type:
+                        type: string
+                        description: An optional field, domain_type indicates the type of the domain including, “disposable”, “freeisp”, etc.
+                      status_code:
+                        type: integer
+                        description: A range from 5-999 will always be returned and describes the detailed results of the validation within the "status" categorization.
+                      address:
+                        type: string
+                        description: The email address you queried with in a standardized format.
+                      role_account:
+                        type: boolean
+                        description: An optional field, role_account is returned if the email address is identified as the role related email account. A role account is an email address for a business job role or a group of people in a company such as sales, info, support, marketing or customer service (e.g. info@abc.com). Because role accounts are not intended for a single person, commercial emails are usually flagged as spam. For improved deliverability, we recommend only sending transactional emails to role accounts.
+                      status:
+                        type: string
+                        description: A string describing the category of the email validation result.
+                      email_corrections:
+                        type: array
+                        description: An optional field, if your API key is configured for corrections, and the input address has a syntax or spelling error, we may suggest one or more corrected forms of the address. The returned value is a JSON array of possible corrected email addresses.
+                      engagement_score:
+                        type: integer
+                        description: Engagement Score -- which is free for SafeToSend subscription customers -- provides a simple 0-10 score representing the relative engagement behavior of a specific email address, helping marketers to better segment and qualify subscribers to improve deliverability, response, and core metrics. 
+                example:
+                  safe_to_send:
+                    domain_type: biz
+                    status_code: 50
+                    address: sales@atdata.com
+                    role_account: true
+                    status: safetosend

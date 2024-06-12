@@ -194,7 +194,7 @@ paths:
       summary: Intelligence
       operationId: intelligence
       tags:
-        - Intelligence API
+        - Demographics Append
       description: >-
         Retrieve information about an email address.
       parameters:
@@ -239,9 +239,9 @@ paths:
       summary: Bulk Intelligence
       operationId: bulk-intelligence
       tags:
-        - Intelligence API
+        - Demographics Append
       description: >-
-        Submit a list of email addresses to Intelligence API.
+        Submit a list of email addresses.
       parameters:
         - in: query
           name: api_key
