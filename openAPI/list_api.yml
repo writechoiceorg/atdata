@@ -1,0 +1,221 @@
+openapi: 3.0.0
+info:
+  title: List API
+  description: >-
+    AtData API's help you improve the quality and depth of your customer data by
+    enabling you to quickly and securely verify and enhance email addresses.
+  version: 1.0.0
+servers:
+- url: https://api.atdata.com
+paths:
+  /v5/list:
+    post:
+      summary: Submitting Lists
+      operationId: submitting-lists
+      tags:
+        - List API
+      description: >-
+        Submit a list of customers to be validated. There are two methods to submit a list:
+
+
+        - Multipart method: Set the `Content-Type` header to `Content-Type: multipart/form-data` and upload a text or compressed .zip file. This method is recommended as it's less likely to break when uploading large files.
+
+
+        - Text/CSV method: Set `Content-Type` header to `Content-Type: text/csv` and upload a text file.
+      parameters:
+        - in: header
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+        - in: header
+          name: Content-Type
+          required: true
+          schema:
+            type: string
+          description: Type of media to be sent.
+        - in: header
+          name: email_column
+          required: false
+          schema:
+            type: integer
+          description: >-
+            If email address is in the file, the index of the column containing
+            it, starting at 1.
+        - in: header
+          name: header
+          required: false
+          schema:
+            type: boolean
+          description: >-
+            Used to indicate the presence of a header line with a value of true
+            or false; default=false. Must be used for non-email fields.
+        - in: header
+          name: delimiter
+          required: false
+          schema:
+            type: string
+          description: >-
+            The character used to separate multiple columns within the file;
+            default variable is tab (\\t).
+        - in: header
+          name: report
+          required: false
+          schema:
+            type: boolean
+          description: >-
+            For all services except validation, only produce a match report and
+            do not purchase data.
+        - in: header
+          name: name
+          required: false
+          schema:
+            type: string
+          description: >-
+            File name, which must use one of these file extensions: .txt, .csv or
+            .zip; default=myfile.csv.
+        - in: header
+          name: fields
+          required: false
+          schema:
+            type: string
+          description: >-
+            A comma-separated list of the data fields you want returned. By
+            default, all available fields are returned.
+        - in: header
+          name: callback_url
+          required: false
+          schema:
+            type: string
+          description: >-
+            A valid webhook/callback URL with a max length of 512 characters,
+            that can accept POST requests with a JSON payload and uses https or
+            http (https is strongly encouraged).
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                customer_emails.csv:
+                  type: string
+                  format: binary
+                  description: File with list of customers to be validated.
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  timestamp:
+                    type: integer
+                  status:
+                    type: integer
+                  error:
+                    type: string
+                  exception:
+                    type: string
+                  message:
+                    type: string
+                  path:
+                    type: string
+                example:
+                  timestamp: 1717840778086
+                  status: 500
+                  error: Internal Server Error
+                  exception: org.springframework.web.multipart.MultipartException
+                  message: >-
+                    Could not parse multipart servlet request; nested exception
+                    is java.io.IOException: org.apache.tomcat.util.http.fileupload.FileUploadException: the request was rejected because no multipart boundary was found
+                  path: /v5/list
+  /v5/list/{list_id}:
+    get:
+      summary: Check List Status
+      operationId: check-list-status
+      tags:
+        - List API
+      description: >-
+        Check the status of a submitted list.
+      parameters:
+        - in: path
+          name: list_id
+          required: true
+          schema:
+            type: string
+          description: The ID of the list to check.
+        - in: header
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '404':
+          description: List not found
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'List not found: 1234'
+  /v5/list/{list_id}/purchase:
+    post:
+      summary: Purchase List Results
+      operationId: purchase-list-results
+      tags:
+        - List API
+      description: >-
+        Purchase the results of a submitted list.
+      parameters:
+        - in: path
+          name: list_id
+          required: true
+          schema:
+            type: string
+          description: The ID of the list to be purchased.
+        - in: header
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '404':
+          description: List not found
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'List not found: 1234'
+  /v5/list/{list_id}/results:
+    get:
+      summary: Retrieve List Results
+      operationId: retrieve-list-results
+      tags:
+        - List API
+      description: >-
+        Retrieves the results of a submitted list.
+      parameters:
+        - in: path
+          name: list_id
+          required: true
+          schema:
+            type: string
+          description: The ID of the list to be retrieved.
+        - in: header
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '404':
+          description: File not found
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'File not found'    
