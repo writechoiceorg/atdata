@@ -24,13 +24,13 @@ paths:
           required: true
           schema:
             type: string
-          description: Your AtData API key
+          description: Your AtData API key.
         - in: query
           name: email
           required: true
           schema:
             type: string
-          description: The email address to be validated
+          description: The email address to be validated.
           example: sales@atdata.com
       responses:
         '200':

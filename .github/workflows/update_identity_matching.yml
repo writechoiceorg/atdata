@@ -4,7 +4,7 @@ name: Sync API definition to ReadMe
 on:
   push:
     paths:
-      - 'openAPI/safe_to_send.yml'
+      - 'openAPI/identity_matching.yml'
 
 jobs:  
   sync-readme-api-definition:
@@ -19,4 +19,4 @@ jobs:
         # Docs: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#example-using-versioned-actions
         uses: readmeio/rdme@v8
         with:
-          rdme: openapi ./openAPI/safe_to_send.yml --key=${{ secrets.README_API_KEY_2 }} --id=${{ secrets.SAFETOSEND_ID }}
+          rdme: openapi ./openAPI/identity_matching.yml --key=${{ secrets.README_API_KEY_2 }} --id=${{ secrets.IDENTITY_MATCHING_ID }}

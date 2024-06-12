@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: Identity Matching
+  description: >-
+    AtData API's help you improve the quality and depth of your customer data by
+    enabling you to quickly and securely verify and enhance email addresses.
+  version: 1.0.0
+servers:
+- url: https://api.atdata.com
+paths:
+  /v5/eppend:
+    get:
+      summary: Email Append
+      operationId: email-append
+      tags:
+      - Identity Matching
+      description: >-
+        Append additional information to an email address. AtData Email Append can match an email address to 20% - 35% of U.S. postal addresses. Use it to reach your postal customers via email or a Facebook custom audience.
+      parameters:
+        - in: query
+          name: first
+          required: false
+          schema:
+            type: string
+          description: First name of person.
+        - in: query
+          name: last
+          required: false
+          schema:
+            type: string
+          description: Last name of person.
+        - in: query
+          name: street
+          required: false
+          schema:
+            type: string
+          description: Street name.
+        - in: query
+          name: city
+          required: false
+          schema:
+            type: string
+          description: Name of city.
+        - in: query
+          name: state
+          required: false
+          schema:
+            type: string
+          description: Two letter state abbreviation.
+        - in: query
+          name: zip
+          required: false
+          schema:
+            type: string
+          description: Five-digit zip code, optionally followed by a four-digit extension separated by a dash.
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key.
+      responses:
+        '200':
+          description: Email Append
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email_append:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                          description: The email address that matched to the name and postal address.
+                        email_match_type:
+                          type: string
+                          description: Indicates at what level the email matched to the input individual. "Individual" means the email matched the full name and postal address. "Household" means the email matched postal address and the last name.
+                example:
+                  email_append:
+                    - email_match_type: Individual
+                      email: sample@atdata.com
+  /v5/eppend?email:
+    get:
+      summary: Email or Postal Append
+      operationId: email-postal-append
+      tags:
+      - Identity Matching
+      description: >-
+        Append additional information to a postal address. AtData Postal Append can match name and postal address to 35% - 50% of U.S. email addresses, enabling direct mail marketing to your email prospects or helping you link email subscribers with your catalog or in-store customers. Postal data is DPV certified and NCOA'd once per year.
+      parameters:
+        - in: query
+          name: email
+          required: false
+          schema:
+            type: string
+          description: The email address to be appended.
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key.
+      responses:
+        '200':
+          description: Postal Append
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  postal_address:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                        description: The first name of the person..
+                      last_name:
+                        type: string
+                        description: The last name of the person.
+                      address:
+                        type: string
+                        description: The street number & name.
+                      city:
+                        type: string
+                        description: The name of the city.
+                      state:
+                        type: string
+                        description: The two-letter state abbreviation.
+                      zip:
+                        type: string
+                        description: >-
+                          The five-digit zip code, optionally followed by a 
+                          four-digit extension separated by a dash.
+                example:
+                  postal_address:
+                    first_name: CAITLIN
+                    last_name: PLACKARD
+                    address: 789 CHESTNUT ST
+                    city: SAN FRANCISCO
+                    state: CA
+                    zip: 94133-1234
+  /ae:
+    get:
+      summary: Alternate Email
+      operationId: alternate-email
+      tags:
+      - Identity Matching
+      description: >-
+        AtData's "Alternate Email" service allows access via API for multiple email addresses to be returned from a single email address input.
+
+        If you have a large database of customer email addresses, either as a single database or disparately kept, the Alternate Email API allows you to create linkages between identities for improved accuracy and reach of your Identity Graph and attribution challenges. It's also handy for real-time use cases during new account origination.
+
+        AtData's U.S.-patented Alternate Email technology has been the authority of email address associations for over two decades, evolving from a simple "change of email address" solution to now acting as a core component for building an accurate and deep identity graph.
+      parameters:
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+          description: The input email address
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      responses:
+        '200':
+          description: Alternate Email
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  alternate_email:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                          description: The alternate email address
+                        email_match_type:
+                          type: string
+                          description: The type of email match
+              example:
+                alternate_email:
+                  - email: cplackard@domain.com
+                    email_match_type: Individual
+                  - email: chris.plackard@domain2.com
+                    email_match_type: Individual
