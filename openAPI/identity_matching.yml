@@ -162,16 +162,16 @@ paths:
           required: true
           schema:
             type: string
-          description: The input email address
+          description: The input email address.
         - in: query
           name: api_key
           required: true
           schema:
             type: string
-          description: Your AtData API key
+          description: Your AtData API key.
       responses:
         '200':
-          description: Alternate Email
+          description: Successful Response
           content:
             application/json:
               schema:
