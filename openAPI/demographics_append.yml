@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info:
+  title: Demographics Append
+  description: >-
+    AtData API's help you improve the quality and depth of your customer data by
+    enabling you to quickly and securely verify and enhance email addresses.
+  version: 1.0.0
+servers:
+- url: https://api.atdata.com
+paths:
+  /v5/td:
+    get:
+      summary: Intelligence
+      operationId: intelligence
+      tags:
+        - Demographics Append
+      description: >-
+        Retrieves data on a single person, using email and/or postal address, is in the right column.
+      parameters:
+        - in: query
+          name: email
+          required: false
+          schema:
+            type: string
+          description: The raw email address. It must be URL encoded.
+        - in: query
+          name: sha1_email
+          required: false
+          schema:
+            type: string
+          description: SHA-1 hashed email. The email must be lower case and stripped of white spaces before being hashed.
+        - in: query
+          name: md5_email
+          required: false
+          schema:
+            type: string
+          description: MD5 hashed email. The email must be lower case and stripped of white spaces before being hashed.
+        - in: query
+          name: first
+          required: false
+          schema:
+            type: string
+          description: First name of the person.
+        - in: query
+          name: middle
+          required: false
+          schema:
+            type: string
+          description: Middle name of the person (optional).
+        - in: query
+          name: last
+          required: false
+          schema:
+            type: string
+          description: Last name of the person.
+        - in: query
+          name: street
+          required: false
+          schema:
+            type: string
+          description: Street number & name.
+        - in: query
+          name: city
+          required: false
+          schema:
+            type: string
+          description: Name of the city.
+        - in: query
+          name: state
+          required: false
+          schema:
+            type: string
+          description: Two-letter state abbreviation.
+        - in: query
+          name: zip
+          required: false
+          schema:
+            type: string
+          description: Five-digit zip code, optionally followed by a four-digit extension separated by a dash.
+        - in: query
+          name: format
+          required: false
+          schema:
+            type: string
+          description: >-
+            You can change the output format to pretty print responses as HTML
+            within a browser. Example: format=html.
+        - in: query
+          name: fields
+          required: false
+          schema:
+            type: string
+          description: >-
+            A comma-separated list of the data fields you want returned. By
+            default, all available fields are returned.
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  age:
+                    type: string
+                    description: The age range of the person.
+                  gender:
+                    type: string
+                    description: The gender of the person.
+                  interests:
+                    type: object
+                    properties:
+                      automotive:
+                        type: boolean
+                        description: Indicates interest in automotive.
+                      books:
+                        type: boolean
+                        description: Indicates interest in books.
+                  eam:
+                    type: object
+                    properties:
+                      date_first_seen:
+                        type: string
+                        format: date
+                        description: The date the email address was first seen.
+                      month_last_open:
+                        type: string
+                        description: The month the email was last opened.
+                      velocity:
+                        type: integer
+                        description: The velocity of email engagement.
+                      popularity:
+                        type: integer
+                        description: The popularity of the email address.
+                      longevity:
+                        type: integer
+                        description: The longevity of the email address.
+                  education:
+                    type: string
+                    description: The education level of the person.
+                  occupation:
+                    type: string
+                    description: The occupation of the person.
+                  household_income:
+                    type: string
+                    description: The household income range of the person.
+                  marital_status:
+                    type: string
+                    description: The marital status of the person.
+                  presence_of_children:
+                    type: string
+                    description: Indicates if there are children present in the household.
+                  home_owner_status:
+                    type: string
+                    description: The home ownership status of the person.
+                  life_stage_segment:
+                    type: string
+                    description: The life stage segment of the person.
+                  life_stage_group:
+                    type: string
+                    description: The life stage group of the person.
+                  financial_segment:
+                    type: string
+                    description: The financial segment of the person.
+                  financial_group:
+                    type: string
+                    description: The financial group of the person.
+                example:
+                  age: "25-34"
+                  gender: "Female"
+                  interests:
+                    automotive: true
+                    books: true
+                  eam:
+                    date_first_seen: "2017-11-16"
+                    month_last_open: "2017-12"
+                    velocity: 0
+                    popularity: 3
+                    longevity: 2
+                  education: "Completed Graduate School"
+                  occupation: "White Collar Worker"
+                  household_income: "25k-35k"
+                  marital_status: "Single"
+                  presence_of_children: "No"
+                  home_owner_status: "Rent"
+                  life_stage_segment: "Career Building"
+                  life_stage_group: "Taking Hold"
+                  financial_segment: "Spontaneous Spenders"
+                  financial_group: "City Spotlight"
+  /v5/ei/bulk:
+    post:
+      summary: Bulk Intelligence
+      operationId: bulk-intelligence
+      tags:
+        - Demographics Append
+      description: >-
+        AtData’s Bulk Email Intelligence API allows you to synchronously query Email Intelligence for up to 5,000 people at a time.
+      parameters:
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    description: The email address of the person
+                  first:
+                    type: string
+                    description: First name of the person
+                  last:
+                    type: string
+                    description: Last name of the person
+              example:
+                - email: sample@atdata.com
+                  first: Caitlin
+                  last: Plackard
+                - email: unknown_email@domain.com
+                - email: demo@atdata.com
+                - email: NOT_AN_EMAIL_ADDRESS
+      responses:
+        '200':
+          description: Bulk Intelligence Endpoint
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    gender:
+                      type: string
+                    error_code:
+                      type: integer
+                    error_msg:
+                      type: string
+                example:
+                  - gender: Female
+                  - {}
+                  - gender: Male
+                  - error_code: 400
+                    error_msg: Invalid identifier
+  
