@@ -61,7 +61,7 @@ paths:
           description: Your AtData API key.
       responses:
         '200':
-          description: Email Append
+          description: Successful Response
           content:
             application/json:
               schema:
@@ -105,7 +105,7 @@ paths:
           description: Your AtData API key.
       responses:
         '200':
-          description: Postal Append
+          description: Successful Response
           content:
             application/json:
               schema:
