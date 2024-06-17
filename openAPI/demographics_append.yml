@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Demographics Append
+  title: Demographics
   description: >-
     AtData API's help you improve the quality and depth of your customer data by
     enabling you to quickly and securely verify and enhance email addresses.
@@ -10,10 +10,10 @@ servers:
 paths:
   /v5/td:
     get:
-      summary: Intelligence
-      operationId: intelligence
+      summary: Demographics Append
+      operationId: demographics-append
       tags:
-        - Demographics Append
+        - Demographics
       description: >-
         Retrieves data on a single person, using email and/or postal address, is in the right column.
       parameters:
@@ -195,12 +195,12 @@ paths:
                   financial_group: "City Spotlight"
   /v5/ei/bulk:
     post:
-      summary: Bulk Intelligence
-      operationId: bulk-intelligence
+      summary: Bulk Demographics Append
+      operationId: bulk-demographics-append
       tags:
-        - Demographics Append
+        - Demographics
       description: >-
-        AtData’s Bulk Email Intelligence API allows you to synchronously query Email Intelligence for up to 5,000 people at a time.
+        AtData’s Bulk Demographics Append endpoint allows you to synchronously query Email Intelligence for up to 5,000 people at a time.
       parameters:
         - in: query
           name: api_key
