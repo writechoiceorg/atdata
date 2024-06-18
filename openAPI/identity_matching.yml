@@ -71,37 +71,43 @@ paths:
       parameters:
         - in: query
           name: first
-          required: false
+          required: true
           schema:
             type: string
           description: First name of person.
         - in: query
-          name: last
+          name: middle
           required: false
+          schema:
+            type: string
+          description: Middle name of person (optional).
+        - in: query
+          name: last
+          required: true
           schema:
             type: string
           description: Last name of person.
         - in: query
           name: street
-          required: false
+          required: true
           schema:
             type: string
           description: Street name.
         - in: query
           name: city
-          required: false
+          required: true
           schema:
             type: string
           description: Name of city.
         - in: query
           name: state
-          required: false
+          required: true
           schema:
             type: string
           description: Two letter state abbreviation.
         - in: query
           name: zip
-          required: false
+          required: true
           schema:
             type: string
           description: Five-digit zip code, optionally followed by a four-digit extension separated by a dash.
@@ -145,10 +151,22 @@ paths:
       parameters:
         - in: query
           name: email
-          required: false
+          required: true
           schema:
             type: string
           description: The email address to be appended.
+        - in: query
+          name: sha1_email
+          required: false
+          schema:
+            type: string
+          description: '[SHA-1](https://en.wikipedia.org/wiki/SHA-1) hashed email. The email must be lower case and stripped of white spaces before being hashed.'
+        - in: query
+          name: md5_email
+          required: false
+          schema:
+            type: string
+          description: '[MD5](https://en.wikipedia.org/wiki/MD5) hashed email. The email must be lower case and stripped of white spaces before being hashed.'
         - in: query
           name: api_key
           required: true
