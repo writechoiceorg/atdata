@@ -30,7 +30,14 @@ paths:
           required: true
           schema:
             type: string
-          description: The email address to be validated.
+          description: The email address to be validated (and optionally corrected).
+          example: sales@atdata.com
+        - in: query
+          name: timeout
+          required: false
+          schema:
+            type: string
+          description: Timeout value in seconds. (Default=10; MAX=30). Floating-point numbers (e.g. 4.9, 3.55) are permitted.
           example: sales@atdata.com
       responses:
         '200':
@@ -64,10 +71,77 @@ paths:
                       engagement_score:
                         type: integer
                         description: Engagement Score -- which is free for SafeToSend subscription customers -- provides a simple 0-10 score representing the relative engagement behavior of a specific email address, helping marketers to better segment and qualify subscribers to improve deliverability, response, and core metrics. 
-                example:
-                  safe_to_send:
-                    domain_type: biz
-                    status_code: 50
-                    address: sales@atdata.com
-                    role_account: true
-                    status: safetosend
+              examples:
+                safe_to_send:
+                  summary: SafeToSend email
+                  value:
+                    safe_to_send:
+                      domain_type: biz
+                      status_code: 50
+                      address: sales@atdata.com
+                      role_account: true
+                      status: safetosend
+                valid_email:
+                  summary: Valid Email
+                  value:
+                    safe_to_send:
+                      status_code: 20
+                      address: valid@demo.atdata.com
+                      status: valid
+                invalid_email:
+                  summary: Invalid Email
+                  value:
+                    safe_to_send:
+                      status_code: 400
+                      address: accountnotfound@atdata.com
+                      status: invalid
+                email_corrections:
+                  summary: Email Corrections
+                  value:
+                    safe_to_send:
+                      status_code: 155
+                      address: sales@@atdata,com
+                      status: invalid
+                      role_account: true
+                      email_corrections:
+                        - sales@atdata.com
+                chatchall_email:
+                  summary: Catchall Email
+                  value:
+                    safe_to_send:
+                      status_code: 45
+                      address: anyuser@google.com
+                      status: catchall
+                trap_email:
+                  summary: Trap Email
+                  value:
+                    safe_to_send:
+                      status_code: 525
+                      address: trap@demo.atdata.com
+                      status: trap
+                disposable_email:
+                  summary: Disposable Email
+                  value:
+                    safe_to_send:
+                      domain_type: disposable
+                      status_code: 525
+                      address: johndoe@mailinator.com
+                      status: trap
+                role_account:
+                  summary: Role Account
+                  value:
+                    safe_to_send:
+                      domain_type: biz
+                      status_code: 50
+                      address: sales@atdata.com
+                      status: safetosend
+                      role_account: true
+        '401':
+          description: Invalid API Key
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Invalid API Key
+
+                
