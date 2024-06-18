@@ -110,7 +110,10 @@ paths:
           description: List submitted successfully
           headers:
             Location:
-              description: The URL to the resource
+              description: >-
+                The URL that can be queried to [check the status of a file](ref:check-list-status).
+
+                <small>Example: https://api.atdata.com/v5/list/4321<small>
               schema:
                 type: string
                 example: https://api.atdata.com/v5/list/4321
@@ -125,14 +128,9 @@ paths:
                   size_bytes:
                     type: integer
                     description: The size of the submitted list in bytes
-              examples:
-                success:
-                  summary: Successful Response
-                  value:
-                    list_id: 4321
-                    size_bytes: 22709
-                    headers:
-                      Location: https://api.atdata.com/v5/list/4321
+              example:
+                list_id: 4321
+                size_bytes: 22709
         '500':
           description: Internal Server Error
           content:
