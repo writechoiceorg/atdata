@@ -30,7 +30,7 @@ paths:
           schema:
             type: string
           description: >-
-            SHA-1 hashed email. The email must be lower case and stripped of white spaces before being hashed.
+            [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hashed email. The email must be lower case and stripped of white spaces before being hashed.
 
             <small>Example: demo@atdata.com hashed outputs to: 1d604932232d089ab1a1cad148f20d942db666a7</small>
         - in: query
@@ -39,7 +39,7 @@ paths:
           schema:
             type: string
           description: >-
-            MD5 hashed email. The email must be lower case and stripped of white spaces before being hashed.
+            [MD5](https://en.wikipedia.org/wiki/MD5) hashed email. The email must be lower case and stripped of white spaces before being hashed.
 
             <small>Example: demo@atdata.com hashed outputs to: 3cf1e81405a4bdf4f7e3a2453cd441c3</small>
         - in: query
