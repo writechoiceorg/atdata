@@ -136,10 +136,21 @@ paths:
                         email_match_type:
                           type: string
                           description: Indicates at what level the email matched to the input individual. "Individual" means the email matched the full name and postal address. "Household" means the email matched postal address and the last name.
-                example:
-                  email_append:
+              examples:
+                email_append:
+                  summary: Success
+                  value:
+                    email_append:
                     - email_match_type: Individual
                       email: sample@atdata.com
+                unmatched_request:
+                  summary: Un-matched Request
+                  value: {}
+                not_a_real_physical_address:
+                  summary: Not a Real Physical Address
+                  value:
+                    error_code: 400
+                    error_msg: "Invalid United States postal address."
   /v5/eppend?:
     get:
       summary: Postal Append
