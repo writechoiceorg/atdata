@@ -38,7 +38,6 @@ paths:
           schema:
             type: string
           description: Timeout value in seconds. (Default=10; MAX=30). Floating-point numbers (e.g. 4.9, 3.55) are permitted.
-          example: sales@atdata.com
       responses:
         '200':
           description: SafeToSend email
