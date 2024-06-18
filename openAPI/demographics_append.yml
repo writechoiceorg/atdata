@@ -23,7 +23,7 @@ paths:
           schema:
             type: string
           description: >-
-            The raw email address. It must be URL encoded.
+            The raw email address. It must be [URL encoded](https://www.w3schools.com/tags/ref_urlencode.ASP).
 
             <small>Example: demo+email@atdata.com encoded outputs to: demo%2Bemail%40atdata.com</small>
         - in: query
