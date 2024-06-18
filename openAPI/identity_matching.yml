@@ -8,6 +8,58 @@ info:
 servers:
 - url: https://api.atdata.com
 paths:
+  /ae:
+    get:
+      summary: Alternate Email
+      operationId: alternate-email
+      tags:
+      - Identity Matching
+      description: >-
+        AtData's "Alternate Email" service allows access via API for multiple email addresses to be returned from a single email address input.
+
+
+        If you have a large database of customer email addresses, either as a single database or disparately kept, the Alternate Email API allows you to create linkages between identities for improved accuracy and reach of your Identity Graph and attribution challenges. It's also handy for real-time use cases during new account origination.
+
+
+        AtData's U.S.-patented Alternate Email technology has been the authority of email address associations for over two decades, evolving from a simple "change of email address" solution to now acting as a core component for building an accurate and deep identity graph.
+      parameters:
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+          description: The input email address.
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+          description: Your AtData API key.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  alternate_email:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                          description: The alternate email address
+                        email_match_type:
+                          type: string
+                          description: The type of email match
+              example:
+                alternate_email:
+                  - email: cplackard@domain.com
+                    email_match_type: Individual
+                  - email: chris.plackard@domain2.com
+                    email_match_type: Individual
   /v5/eppend:
     get:
       summary: Email Append
@@ -15,7 +67,7 @@ paths:
       tags:
       - Identity Matching
       description: >-
-        Append additional information to an email address. AtData Email Append can match an email address to 20% - 35% of U.S. postal addresses. Use it to reach your postal customers via email or a Facebook custom audience.
+        AtData's [Email Append](https://atdata.com/identity/email-append/) can match an email address to 20% - 35% of U.S. postal addresses. Use it to reach your postal customers via email or a Facebook custom audience.
       parameters:
         - in: query
           name: first
@@ -89,7 +141,7 @@ paths:
       tags:
       - Identity Matching
       description: >-
-        Append additional information to a postal address. AtData Postal Append can match name and postal address to 35% - 50% of U.S. email addresses, enabling direct mail marketing to your email prospects or helping you link email subscribers with your catalog or in-store customers. Postal data is DPV certified and NCOA'd once per year.
+        AtData Postal Append, also known as [Reverse Email Append](https://atdata.com/identity/postal-append/), can match name and postal address to 35% - 50% of U.S. email addresses, enabling direct mail marketing to your email prospects or helping you link email subscribers with your catalog or in-store customers. Postal data is DPV certified and NCOA'd once per year.
       parameters:
         - in: query
           name: email
@@ -142,55 +194,4 @@ paths:
                     city: SAN FRANCISCO
                     state: CA
                     zip: 94133-1234
-  /ae:
-    get:
-      summary: Alternate Email
-      operationId: alternate-email
-      tags:
-      - Identity Matching
-      description: >-
-        AtData's "Alternate Email" service allows access via API for multiple email addresses to be returned from a single email address input.
-
-
-        If you have a large database of customer email addresses, either as a single database or disparately kept, the Alternate Email API allows you to create linkages between identities for improved accuracy and reach of your Identity Graph and attribution challenges. It's also handy for real-time use cases during new account origination.
-
-
-        AtData's U.S.-patented Alternate Email technology has been the authority of email address associations for over two decades, evolving from a simple "change of email address" solution to now acting as a core component for building an accurate and deep identity graph.
-      parameters:
-        - in: query
-          name: email
-          required: true
-          schema:
-            type: string
-          description: The input email address.
-        - in: query
-          name: api_key
-          required: true
-          schema:
-            type: string
-          description: Your AtData API key.
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  alternate_email:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        email:
-                          type: string
-                          description: The alternate email address
-                        email_match_type:
-                          type: string
-                          description: The type of email match
-              example:
-                alternate_email:
-                  - email: cplackard@domain.com
-                    email_match_type: Individual
-                  - email: chris.plackard@domain2.com
-                    email_match_type: Individual
+  
