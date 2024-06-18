@@ -14,14 +14,6 @@ paths:
       operationId: submitting-lists
       tags:
         - List API
-      description: >-
-        Submit a list of customers to be validated. There are two methods to submit a list:
-
-
-        - Multipart method: Set the `Content-Type` header to `Content-Type: multipart/form-data` and upload a text or compressed .zip file. This method is recommended as it's less likely to break when uploading large files.
-
-
-        - Text/CSV method: Set `Content-Type` header to `Content-Type: text/csv` and upload a text file.
       parameters:
         - in: header
           name: api_key
@@ -111,9 +103,7 @@ paths:
           headers:
             Location:
               description: >-
-                The URL that can be queried to [check the status of a file](ref:check-list-status).
-
-                <small>Example: https://api.atdata.com/v5/list/4321<small>
+                The URL that can be queried to check the status of a file.
               schema:
                 type: string
                 example: https://api.atdata.com/v5/list/4321
