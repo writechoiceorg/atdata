@@ -206,8 +206,6 @@ paths:
       operationId: bulk-demographics-append
       tags:
         - Demographics
-      description: >-
-        AtData’s Bulk Demographics Append endpoint allows you to synchronously query Email Intelligence for up to 5,000 people at a time.
       parameters:
         - in: query
           name: api_key
