@@ -15,7 +15,7 @@ paths:
       tags:
       - Identity Matching
       description: >-
-        AtData's "Alternate Email" service allows access via API for multiple email addresses to be returned from a single email address input.
+        AtData's [Alternate Email](https://atdata.com/identity/alternate-email/) service allows access via API for multiple email addresses to be returned from a single email address input.
 
 
         If you have a large database of customer email addresses, either as a single database or disparately kept, the Alternate Email API allows you to create linkages between identities for improved accuracy and reach of your Identity Graph and attribution challenges. It's also handy for real-time use cases during new account origination.
@@ -141,7 +141,7 @@ paths:
       tags:
       - Identity Matching
       description: >-
-        AtData Postal Append, also known as [Reverse Email Append](https://atdata.com/identity/postal-append/), can match name and postal address to 35% - 50% of U.S. email addresses, enabling direct mail marketing to your email prospects or helping you link email subscribers with your catalog or in-store customers. Postal data is DPV certified and NCOA'd once per year.
+        AtData's Postal Append, also known as [Reverse Email Append](https://atdata.com/identity/postal-append/), can match name and postal address to 35% - 50% of U.S. email addresses, enabling direct mail marketing to your email prospects or helping you link email subscribers with your catalog or in-store customers. Postal data is DPV certified and NCOA'd once per year.
       parameters:
         - in: query
           name: email
