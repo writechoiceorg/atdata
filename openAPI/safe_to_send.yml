@@ -14,10 +14,6 @@ paths:
       operationId: safe-to-send
       tags:
         - SafeToSend Email Verification
-      description: >-
-        The SafeToSend API verifies email addresses to filter out invalid and
-        high risk email addresses which results in higher open rates, clicks and
-        conversions.
       parameters:
         - in: query
           name: api_key
