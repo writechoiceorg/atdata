@@ -14,8 +14,6 @@ paths:
       operationId: demographics-append
       tags:
         - Demographics
-      description: >-
-        Retrieves data on a single person, using email and/or postal address.
       parameters:
         - in: query
           name: email
