@@ -128,6 +128,8 @@ paths:
               example:
                 list_id: 4321
                 size_bytes: 22709
+                headers:
+                  Location: https://api.atdata.com/v5/list/4321
         '500':
           description: Internal Server Error
           content:
