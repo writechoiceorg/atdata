@@ -108,6 +108,12 @@ paths:
       responses:
         '200':
           description: List submitted successfully
+          headers:
+            Location:
+              description: The URL to the resource
+              schema:
+                type: string
+                example: https://api.atdata.com/v5/list/4321
           content:
             application/json:
               schema:
