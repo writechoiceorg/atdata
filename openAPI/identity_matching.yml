@@ -164,19 +164,28 @@ paths:
           required: true
           schema:
             type: string
-          description: The email address to be appended.
+          description: >-
+            The raw email address. It must be [URL encoded](https://www.w3schools.com/tags/ref_urlencode.ASP).
+
+            <small>Example: demo+email@atdata.com encoded outputs to: demo%2Bemail%40atdata.com</small>
         - in: query
           name: sha1_email
           required: false
           schema:
             type: string
-          description: '[SHA-1](https://en.wikipedia.org/wiki/SHA-1) hashed email. The email must be lower case and stripped of white spaces before being hashed.'
+          description: >-
+            [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hashed email. The email must be lower case and stripped of white spaces before being hashed.
+
+            <small>Example: demo@atdata.com hashed outputs to: 1d604932232d089ab1a1cad148f20d942db666a7</small>
         - in: query
           name: md5_email
           required: false
           schema:
             type: string
-          description: '[MD5](https://en.wikipedia.org/wiki/MD5) hashed email. The email must be lower case and stripped of white spaces before being hashed.'
+          description: >-
+            [MD5](https://en.wikipedia.org/wiki/MD5) hashed email. The email must be lower case and stripped of white spaces before being hashed.
+
+            <small>Example: demo@atdata.com hashed outputs to: 3cf1e81405a4bdf4f7e3a2453cd441c3</small>
         - in: query
           name: api_key
           required: true
