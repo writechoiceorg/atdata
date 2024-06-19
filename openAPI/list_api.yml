@@ -405,13 +405,13 @@ paths:
               properties:
                 fields:
                   type: array
-                  description: Specifies which fields to purchase.
+                  description: Specify which match fields you wish to receive results on by listing them in the fields array. If you don't specify fields, all matched fields will be purchased.
                   items:
                     type: string
                   example: ["gender", "postal_address"]
                 options:
                   type: object
-                  description: Specifies which Individual email append matches to purchase.
+                  description: For Email Append, you can specify the type of match you want to receive.
                   properties:
                     email_append:
                       type: object
