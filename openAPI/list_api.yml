@@ -433,8 +433,6 @@ paths:
       operationId: retrieve-list-results
       tags:
         - List API
-      description: >-
-        Retrieves the results of a submitted list.
       parameters:
         - in: path
           name: list_id
@@ -449,10 +447,24 @@ paths:
             type: string
           description: Your AtData API key
       responses:
+        '200':
+          description: File retrieved successfully
+          headers:
+            Content-Disposition:
+              description: >
+                Indicates if the content is expected to be displayed inline in the browser, that is, as a Web page or as part of a Web page, or as an attachment, that is downloaded and saved locally.
+              schema:
+                type: string
+                example: attachment; filename={filename}-{list_id}-TowerData.{extension}
+            Content-Type:
+              description: The MIME type of the returned content.
+              schema:
+                type: string
+                example: application/zip
         '404':
           description: File not found
           content:
             text/plain:
               schema:
                 type: string
-                example: 'File not found'    
+                example: 'File not found'
