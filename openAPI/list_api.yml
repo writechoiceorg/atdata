@@ -155,8 +155,6 @@ paths:
       operationId: check-list-status
       tags:
         - List API
-      description: >-
-        Check the status of your uploaded list. You can poll the URL `https://api.atdata.com/v5/list/{list_id}` until your results are returned. Please wait 5 seconds between requests.
       parameters:
         - in: path
           name: list_id
@@ -172,7 +170,7 @@ paths:
           description: Your AtData API key
       responses:
         '200':
-          description: List submitted successfully
+          description: List status retrieved successfully
           content:
             application/json:
               schema:
@@ -209,201 +207,169 @@ paths:
                           completed_count:
                             type: integer
                             description: The number of completed validations
-                          reporting:
-                            type: object
-                            properties:
-                              statuses:
-                                type: object
-                                properties:
-                                  Valid:
-                                    type: integer
-                                  Invalid:
-                                    type: integer
-                                  Risky:
-                                    type: integer
-                                  Unknown:
-                                    type: integer
-                                  Unverifiable:
-                                    type: integer
-                                  Corrected:
-                                    type: integer
-                              invalid_categories:
-                                type: object
-                                properties:
-                                  Syntax Errors:
-                                    type: integer
-                                  Domain Errors:
-                                    type: integer
-                                  Mailbox Errors:
-                                    type: integer
-                                  Suppressions:
-                                    type: integer
-                              domain_type:
-                                type: object
-                                properties:
-                                  Disposable:
-                                    type: integer
-                                  Free ISP:
-                                    type: integer
-                                  Paid ISP:
-                                    type: integer
-                                  Wireless:
-                                    type: integer
-                                  Education:
-                                    type: integer
-                                  Government:
-                                    type: integer
-                                  Business:
-                                    type: integer
-                                  Non-profit:
-                                    type: integer
-                                  Parked:
-                                    type: integer
-                                  Privacy:
-                                    type: integer
-                              role_accounts:
-                                type: integer
-                              status_codes:
-                                type: object
-                                properties:
-                                  '10':
-                                    type: integer
-                                  '20':
-                                    type: integer
-                                  '45':
-                                    type: integer
-                                  '50':
-                                    type: integer
-                                  '100':
-                                    type: integer
-                                  '110':
-                                    type: integer
-                                  '115':
-                                    type: integer
-                                  '120':
-                                    type: integer
-                                  '125':
-                                    type: integer
-                                  '130':
-                                    type: integer
-                                  '140':
-                                    type: integer
-                                  '145':
-                                    type: integer
-                                  '150':
-                                    type: integer
-                                  '155':
-                                    type: integer
-                                  '200':
-                                    type: integer
-                                  '210':
-                                    type: integer
-                                  '215':
-                                    type: integer
-                                  '310':
-                                    type: integer
-                                  '325':
-                                    type: integer
-                                  '400':
-                                    type: integer
-                                  '410':
-                                    type: integer
-                                  '420':
-                                    type: integer
-                                  '500':
-                                    type: integer
-                                  '505':
-                                    type: integer
-                                  '510':
-                                    type: integer
-                                  '520':
-                                    type: integer
-                                  '525':
-                                    type: integer
-                                  '530':
-                                    type: integer
-                                  '5':
-                                    type: integer
-                                  '999':
-                                    type: integer
-                              trap_hits:
-                                type: object
-                                properties:
-                                  Trap Hits:
-                                    type: integer
                           status:
                             type: string
                             description: The status of the email validation
-              example:
-                list_id: 11754
-                name: lista.csv
-                status: Results
-                records: 145
-                size_bytes: 3271
-                created_at: "2023-08-16T10:39:40Z"
-                services:
-                  email_validation:
-                    input_count: 145
-                    completed_count: 145
-                    reporting:
-                      statuses:
-                        Valid: 0
-                        Invalid: 0
-                        Risky: 0
-                        Unknown: 145
-                        Unverifiable: 0
-                        Corrected: 0
-                      invalid_categories:
-                        Syntax Errors: 0
-                        Domain Errors: 0
-                        Mailbox Errors: 0
-                        Suppressions: 0
-                      domain_type:
-                        Disposable: 0
-                        Free ISP: 0
-                        Paid ISP: 0
-                        Wireless: 0
-                        Education: 0
-                        Government: 0
-                        Business: 0
-                        Non-profit: 0
-                        Parked: 0
-                        Privacy: 0
-                      role_accounts: 0
-                      status_codes:
-                        '10': 0
-                        '20': 0
-                        '45': 0
-                        '50': 0
-                        '100': 0
-                        '110': 0
-                        '115': 0
-                        '120': 0
-                        '125': 0
-                        '130': 0
-                        '140': 0
-                        '145': 0
-                        '150': 0
-                        '155': 0
-                        '200': 0
-                        '210': 0
-                        '215': 0
-                        '310': 0
-                        '325': 0
-                        '400': 0
-                        '410': 0
-                        '420': 0
-                        '500': 0
-                        '505': 0
-                        '510': 0
-                        '520': 0
-                        '525': 0
-                        '530': 0
-                        '5': 145
-                        '999': 0
-                      trap_hits:
-                        Trap Hits: 0
-                    status: Completed
+                      email_intelligence:
+                        type: object
+                        properties:
+                          input_count:
+                            type: integer
+                            description: The number of input emails
+                          completed_count:
+                            type: integer
+                            description: The number of completed intelligence checks
+                          status:
+                            type: string
+                            description: The status of the email intelligence
+                      alternate_email_append:
+                        type: object
+                        properties:
+                          input_count:
+                            type: integer
+                            description: The number of input emails
+                          completed_count:
+                            type: integer
+                            description: The number of completed append checks
+                          reporting:
+                            type: object
+                            properties:
+                              alternate_match_type:
+                                type: object
+                                properties:
+                                  "Individual match":
+                                    type: integer
+                                  "Household match":
+                                    type: integer
+                                  "2nd Individual match":
+                                    type: integer
+                                  "2nd Household match":
+                                    type: integer
+                                  "3rd Individual match":
+                                    type: integer
+                                  "3rd Household match":
+                                    type: integer
+                                  "4th Individual match":
+                                    type: integer
+                                  "4th Household match":
+                                    type: integer
+                                  "5th Individual match":
+                                    type: integer
+                                  "5th Household match":
+                                    type: integer
+                          status:
+                            type: string
+                            description: The status of the alternate email append
+                      email_append:
+                        type: object
+                        properties:
+                          input_count:
+                            type: integer
+                            description: The number of input emails
+                          completed_count:
+                            type: integer
+                            description: The number of completed append checks
+                          reporting:
+                            type: object
+                            properties:
+                              email_match_type:
+                                type: object
+                                properties:
+                                  "Individual match":
+                                    type: integer
+                                  "Household match":
+                                    type: integer
+                          status:
+                            type: string
+                            description: The status of the email append
+              examples:
+                processing:
+                  summary: Processing
+                  value:
+                    list_id: 4321
+                    name: customer_emails.csv
+                    status: Pending
+                    records: 1002
+                    size_bytes: 22709
+                    created_at: "2017-10-19T20:46:58Z"
+                    services:
+                      email_validation:
+                        input_count: 1002
+                        completed_count: 100
+                        status: Processing
+                      email_intelligence:
+                        input_count: 1002
+                        completed_count: 700
+                        status: Processing
+                alternate_email:
+                  summary: Alternate Email
+                  value:
+                    list_id: 14475
+                    name: myfile.txt
+                    status: Results
+                    records: 800
+                    size_bytes: 19168
+                    created_at: "2024-01-30T19:22:37Z"
+                    services:
+                      alternate_email_append:
+                        input_count: 800
+                        completed_count: 800
+                        reporting:
+                          alternate_match_type:
+                            "Individual match": 64
+                            "Household match": 25
+                            "2nd Individual match": 0
+                            "2nd Household match": 0
+                            "3rd Individual match": 0
+                            "3rd Household match": 0
+                            "4th Individual match": 0
+                            "4th Household match": 0
+                            "5th Individual match": 0
+                            "5th Household match": 0
+                        status: Completed
+                email_append:
+                  summary: Email Append
+                  value:
+                    list_id: 4321
+                    name: customer_addresses.csv
+                    created_at: "2017-10-19T20:46:58Z"
+                    status: Results
+                    records: 1002
+                    size_bytes: 22709
+                    services:
+                      email_append:
+                        status: Completed
+                        input_count: 1002
+                        completed_count: 1002
+                        reporting:
+                          email_match_type:
+                            "Individual match": 200
+                            "Household match": 50
+                email_intelligence:
+                  summary: Email Intelligence
+                  value:
+                    list_id: 4465
+                    name: emails.txt
+                    records: 130
+                    status: Processed
+                    size_bytes: 2786
+                    created_at: "2019-07-24T20:47:25Z"
+                    services:
+                      email_intelligence:
+                        status: Completed
+                        input_count: 130
+                        completed_count: 130
+                        reporting:
+                          age:
+                            "Total Count": 26
+                          marital_status:
+                            "Total Count": 19
+                          household_income:
+                            "Total Count": 19
+                          home_owner_status:
+                            "Total Count": 19
+                          home_market_value:
+                            "Total Count": 19
         '404':
           description: List not found
           content:
