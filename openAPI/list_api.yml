@@ -10,8 +10,8 @@ servers:
 paths:
   /v5/list:
     post:
-      summary: Submitting Lists
-      operationId: submitting-lists
+      summary: Submit Lists
+      operationId: Submit-lists
       tags:
         - List API
       parameters:
