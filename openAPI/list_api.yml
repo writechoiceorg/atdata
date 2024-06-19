@@ -26,6 +26,7 @@ paths:
           required: true
           schema:
             type: string
+            enum: [text/csv, multipart/form-data]
           description: Type of media to be sent.
         - in: header
           name: email_column
