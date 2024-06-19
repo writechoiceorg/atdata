@@ -383,14 +383,6 @@ paths:
       operationId: purchase-list-results
       tags:
         - List API
-      description: >-
-        By default, when using the List API, the service that your API key is configured for is automatically run to completion, and you will receive and be billed for the results. You can use the optional action=report parameter when submitting your list to only get a match report, without receiving data. This works for all of AtData's services except for Email Validation.
-
-
-        If you want to purchase the results of a service after reviewing the match report, submit a HTTP POST request to the URL shown to the right.
-
-
-        If you want to specify which of the match fields you wish to receive results on, you can list the fields you want to purchase in the body of the POST using the JSON format to the right. If you don't specify fields, all the fields that were matched will be purchased.
       parameters:
         - in: path
           name: list_id
@@ -404,6 +396,29 @@ paths:
           schema:
             type: string
           description: Your AtData API key
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: array
+                  description: Specifies which fields to purchase.
+                  items:
+                    type: string
+                  example: ["gender", "postal_address"]
+                options:
+                  type: object
+                  description: Specifies which Individual email append matches to purchase.
+                  properties:
+                    email_append:
+                      type: object
+                      properties:
+                        match_type:
+                          type: string
+                          example: "I"
       responses:
         '404':
           description: List not found
