@@ -1,0 +1,664 @@
+<style>
+  details {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .card p {
+    margin-left: 20px;
+  }
+
+  .card {
+    border: 1px solid #d7d7d7;
+    background: #f3f3f3ba;
+    margin: 1.5em 0;
+    border-radius: 5px;
+    border-left: 10px solid #353B96;
+    padding: 0.25em;
+  }
+
+  .card .card {
+    margin: 1.5em;
+  }
+
+  .card .no-border-card {
+    border: 1px solid #d7d7d7 !important;
+  }
+
+  .multi-column-list {
+    column-count: 4;
+    column-gap: 20px;
+    margin-left: 1em;
+  }
+
+  .multi-column-list-2 {
+    column-count: 2 !important;
+  }
+
+  .multi-column-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+
+  @media only screen and (max-width: 1300px) {
+    .multi-column-list {
+      column-count: 3;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .multi-column-list {
+      column-count: 2;
+    }
+  }
+
+  @media only screen and (max-width: 468px) {
+    .multi-column-list {
+      column-count: 1;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-mode="system"] .card {
+      background-color: #303b42;
+      border: 1px solid #4a5861;
+      border-left: 10px solid #353B96;
+    }
+
+    [data-color-mode="system"] .card .no-border-card {
+      border: 1px solid #4a5861 !important;
+    }
+  }
+
+  [data-color-mode="dark"] .card {
+    background-color: #303b42;
+    border: 1px solid #4a5861;
+    border-left: 10px solid #353B96;
+  }
+
+  [data-color-mode="dark"] .card .no-border-card {
+    border: 1px solid #4a5861 !important;
+  }
+</style>
+
+<div>
+
+  <div class="card">
+    <p><strong>age</strong> <small>string</small>
+      <br />The age range of the individual.
+      <br />
+      <small>
+        Possible Values:
+        <ul class="multi-column-list">
+          <li><code>18-20</code></li>
+          <li><code>21-24</code></li>
+          <li><code>25-34</code></li>
+          <li><code>35-44</code></li>
+          <li><code>45-54</code></li>
+          <li><code>55-64</code></li>
+          <li><code>65+</code></li>
+        </ul>
+      </small>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>Gender</strong> <small>string</small>
+      <br />The gender of the individual.
+      <br />
+      <small>
+        Possible Values: <code>Male</code>, <code>Female</code>
+      </small>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>zip</strong> <small>string</small>
+      <br />The ZIP code of the individual's address.
+      <br />
+      <small>
+        Example: <code>94105</code>
+      </small>
+    </p>
+  </div>
+
+  <details class="card">
+    <summary><strong>interests</strong> <small>object</small>
+      <br />
+      <p>The interest and purchase data features the categories below. The returned value <code>true</code> means the
+        individual has displayed that interest or purchased in that category. If the field name is absent,
+        we have not seen that behavior.</p>
+    </summary>
+    <div>
+      <div class="card">
+        <p><strong>arts_and_crafts</strong> <small>boolean</small>
+          <br />Purchases of arts and crafts products.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>automotive</strong> <small>boolean</small>
+          <br />Purchases of automotive products.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>baby_product_buyer</strong> <small>boolean</small>
+          <br />Purchases of baby products.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>beauty</strong> <small>boolean</small>
+          <br />Purchases of beauty products and interest in beauty.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>blogging</strong> <small>boolean</small>
+          <br />Interest in blogging and related activities.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>books</strong> <small>boolean</small>
+          <br />Purchases of books and interest in reading.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>business</strong> <small>boolean</small>
+          <br />Interest in business.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>charitable_donors</strong> <small>boolean</small>
+          <br />Indicates the likelihood of being a charitable donor.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>cooking</strong> <small>boolean</small>
+          <br />Purchases of cooking magazines and interest in cooking.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>discount_shopper</strong> <small>boolean</small>
+          <br />Interest in discount shopping and bargain hunting.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>health_and_wellness</strong> <small>boolean</small>
+          <br />Purchases of healthy lifestyle products; interest in health and wellness.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>high_end_brand_buyer</strong> <small>boolean</small>
+          <br />Purchases of high-end brand products.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>home_and_garden</strong> <small>boolean</small>
+          <br />Purchases of home and garden products.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>home_improvement</strong> <small>boolean</small>
+          <br />Purchases of home improvement products and services.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>luxury_goods</strong> <small>boolean</small>
+          <br />Purchases of luxury goods.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>magazine_buyer</strong> <small>boolean</small>
+          <br />Purchases of magazine subscriptions.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>movies</strong> <small>boolean</small>
+          <br />Interest in movies.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>music</strong> <small>boolean</small>
+          <br />Interest in music.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>news_and_current_events</strong> <small>boolean</small>
+          <br />Purchases of subscriptions for news and current events.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>outdoor_and_adventure</strong> <small>boolean</small>
+          <br />Interest in outdoor activities and adventure.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>pets</strong> <small>boolean</small>
+          <br />Interest in pets and pet-related purchases.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>sports</strong> <small>boolean</small>
+          <br />Interest in sports and sporting goods.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>technology</strong> <small>boolean</small>
+          <br />Interest in technology products and services.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>travel</strong> <small>boolean</small>
+          <br />Interest in travel.
+        </p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><strong>eam</strong> <small>object</small>
+      <br />
+      <p>Provide information about the age and activity of an email address based on over a billion activity events
+        AtData observes each month across its publisher network and client base. This data can be used to evaluate the
+        legitimacy of an email address or compare its activity relative to other emails.
+      </p>
+    </summary>
+    <div>
+      <div class="card">
+        <p><strong>date_first_seen</strong> <small>string</small>
+          <br />The date the email address first appeared in AtData's records. The value <code>now</code> will
+          be returned if the email address is new to AtData.
+          <br /><small> Format: YYYY-MM-DD</small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>longevity</strong> <small>integer</small>
+          <br />A score from 0 to 3 indicating how long the email has been known, with 3 representing a longer period.
+          <br /><small> Possible values:
+            <ul>
+              <li><code>0</code>: AtData has not encountered this email address before.</li>
+              <li><code>1</code>: AtData first encountered this email within the last month.</li>
+              <li><code>2</code>: AtData first encountered this email within the last year.</li>
+              <li><code>3</code>: AtData first encountered this email over a year ago.</li>
+            </ul>
+          </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>velocity</strong> <small>integer</small>
+          <br />A score from 0 (no activity) to 10 (most active), reflecting the activity of the email address over the
+          last 6 months.
+          <br /><small> Example: 10 </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>popularity</strong> <small>integer</small>
+          <br />A score from 0 (no sources in 12 months) to 10 (most sources) gauging the popularity of the email
+          address over the last 12 months based on the number of sources from which AtData has received the address.
+          <br /><small> Example: 10 </small>
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>month_last_open</strong> <small>string</small>
+          <br />The year and month AtData last detected an open by the email address in a rolling 12-month period.
+          <br /><small> Format: YYYY-MM </small>
+        </p>
+      </div>
+    </div>
+  </details>
+
+  <div class="card">
+    <p><strong>education</strong> <small>string</small>
+      <br />Indicates the highest known level of education completed in the household.
+      <br />
+    <details class="card no-border-card">
+      <summary><strong><small>Possible Values</small></strong>
+      </summary>
+      <div>
+        <ul class="multi-column-list multi-column-list-2">
+          <li><code>Attended College</code></li>
+          <li><code>Attended Vocational/Technical School</code></li>
+          <li><code>Completed College</code></li>
+          <li><code>Completed Graduate School</code></li>
+          <li><code>Completed High School</code></li>
+        </ul>
+      </div>
+    </details>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>occupation</strong> <small>string</small>
+      <br />The occupation of the primary person in the household.
+      <br />
+    <details class="card no-border-card">
+      <summary><strong><small>Possible Values</small></strong></summary>
+      <div>
+        <ul class="multi-column-list">
+          <li><code>Blue Collar Worker</code></li>
+          <li><code>Business Owner</code></li>
+          <li><code>Civil Service</code></li>
+          <li><code>Executive/Upper Management</code></li>
+          <li><code>Health Services</code></li>
+          <li><code>Homemaker</code></li>
+          <li><code>Middle Management</code></li>
+          <li><code>Military Personnel</code></li>
+          <li><code>Nurse</code></li>
+          <li><code>Part Time</code></li>
+          <li><code>Professional</code></li>
+          <li><code>Retired</code></li>
+          <li><code>Secretary</code></li>
+          <li><code>Student</code></li>
+          <li><code>Teacher</code></li>
+          <li><code>Technology</code></li>
+          <li><code>White Collar Worker</code></li>
+        </ul>
+      </div>
+    </details>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>household_income</strong> <small>string</small>
+      <br />Income of head of household by range.
+      <br />
+    <details class="card no-border-card">
+      <summary><strong><small>Possible Values</small></strong></summary>
+      <div>
+        <ul class="multi-column-list">
+          <li><code>0-15k</code></li>
+          <li><code>15k-25k</code></li>
+          <li><code>25k-35k</code></li>
+          <li><code>35k-50k</code></li>
+          <li><code>50k-75k</code></li>
+          <li><code>75k-100k</code></li>
+          <li><code>100k-150k</code></li>
+          <li><code>150k-175k</code></li>
+          <li><code>175k-200k</code></li>
+          <li><code>200k-250k</code></li>
+          <li><code>250k+</code></li>
+        </ul>
+      </div>
+    </details>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>marital_status</strong> <small>string</small>
+      <br />The marital status of the primary occupants of the household.
+      <br />
+      <small>
+        Possible Values: <code>Single</code>, <code>Married</code>
+      </small>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>presence_of_children</strong> <small>string</small>
+      <br />Indicates whether there are one or more children in the household.
+      <br />
+      <small>
+        Possible Values: <code>Yes</code>, <code>No</code>
+      </small>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>home_owner_status</strong> <small>string</small>
+      <br />The household owns or rents its home.
+      <br />
+      <small>
+        Possible Values: <code>Own</code>, <code>Rent</code>
+      </small>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>life_stage_segment</strong> <small>string</small>
+      <br /><a href="https://docs.atdata.com/TowerData-LifeStage-And-Financial-Fields.pdf" target="_blank"
+        rel="noopener noreferrer">70 life-stage-based household-level consumer segments</a> based on demographic and
+      consumer behavioral data.
+      <br />
+    <details class="card no-border-card">
+      <summary><strong><small>Possible Values</small></strong></summary>
+      <div>
+        <ul class="multi-column-list">
+          <li><code>Active & Involved</code></li>
+          <li><code>Active Lifestyles</code></li>
+          <li><code>Busy Schedules</code></li>
+          <li><code>Career Building</code></li>
+          <li><code>Career Centered</code></li>
+          <li><code>Careers & Travel</code></li>
+          <li><code>Carving Out Time</code></li>
+          <li><code>Casual Comfort</code></li>
+          <li><code>Children First</code></li>
+          <li><code>City Life</code></li>
+          <li><code>City Mixers</code></li>
+          <li><code>Climbing the Ladder</code></li>
+          <li><code>Clubs & Causes</code></li>
+          <li><code>Collegiate Crowd</code></li>
+          <li><code>Community Life</code></li>
+          <li><code>Community Pillars</code></li>
+          <li><code>Comfortable Cornerstones</code></li>
+          <li><code>Corporate Connected</code></li>
+          <li><code>Country Comfort</code></li>
+          <li><code>Country Enthusiasts</code></li>
+          <li><code>Country Ways</code></li>
+          <li><code>Creative Variety</code></li>
+          <li><code>Established Elite</code></li>
+          <li><code>Farm & Home</code></li>
+          <li><code>Favorably Frugal</code></li>
+          <li><code>Firm Foundations</code></li>
+          <li><code>Firmly Established</code></li>
+          <li><code>Getting Established</code></li>
+          <li><code>Good Neighbors</code></li>
+          <li><code>Great Outdoors</code></li>
+          <li><code>Helping Hands</code></li>
+          <li><code>Hobbies & Shopping</code></li>
+          <li><code>Home & Garden</code></li>
+          <li><code>Metro Active</code></li>
+          <li><code>Metro Mix</code></li>
+          <li><code>Metro Strivers</code></li>
+          <li><code>Mid-Americana</code></li>
+          <li><code>Military Personnel</code></li>
+          <li><code>Mobile Mixers</code></li>
+          <li><code>Movies & Sports</code></li>
+          <li><code>Occupational Mix</code></li>
+          <li><code>Offices & Entertainment</code></li>
+          <li><code>On the Go</code></li>
+          <li><code>Open Houses</code></li>
+          <li><code>Out & About</code></li>
+          <li><code>Outdoor Fervor</code></li>
+          <li><code>Outward Bound</code></li>
+          <li><code>Persistent & Productive</code></li>
+          <li><code>Practical & Careful</code></li>
+          <li><code>Productive Havens</code></li>
+          <li><code>Role Models</code></li>
+          <li><code>Rural Adventure</code></li>
+          <li><code>Rural & Active</code></li>
+          <li><code>Rural & Mobile</code></li>
+          <li><code>Rural Community</code></li>
+          <li><code>Rural Parents</code></li>
+          <li><code>Schools & Shopping</code></li>
+          <li><code>Setting Goals</code></li>
+          <li><code>Solid Surroundings</code></li>
+          <li><code>Staying Healthy</code></li>
+          <li><code>Staying Home</code></li>
+          <li><code>Student</code></li>
+          <li><code>Stylish & Striving</code></li>
+          <li><code>Summit Estates</code></li>
+          <li><code>Tenured Proprietors</code></li>
+          <li><code>Top Professionals</code></li>
+          <li><code>Urban Diversity</code></li>
+          <li><code>Work & Causes</code></li>
+          <li><code>Work & Outdoors</code></li>
+          <li><code>Work & Play</code></li>
+          <li><code>Working & Active</code></li>
+        </ul>
+      </div>
+    </details>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>life_stage_group</strong> <small>string</small>
+      <br /><a href="https://docs.atdata.com/TowerData-LifeStage-And-Financial-Fields.pdf" target="_blank"
+        rel="noopener noreferrer">21 higher-level aggregate life-stage groups</a> that roll up life-stage segments with
+      similar characteristics.
+      <br />
+    <details class="card no-border-card">
+      <summary><strong><small>Possible Values</small></strong></summary>
+      <div>
+        <ul class="multi-column-list">
+          <li><code>Affluent Households</code></li>
+          <li><code>Bargain Hunters</code></li>
+          <li><code>Busy Households</code></li>
+          <li><code>Career Oriented</code></li>
+          <li><code>Comfortable Households</code></li>
+          <li><code>Comfortable Independence</code></li>
+          <li><code>Community Minded</code></li>
+          <li><code>Diverging Paths</code></li>
+          <li><code>Large Households</code></li>
+          <li><code>Leisure Seekers</code></li>
+          <li><code>Living Well</code></li>
+          <li><code>Rural-Metro Mix</code></li>
+          <li><code>Settling Down</code></li>
+          <li><code>Social Connectors</code></li>
+          <li><code>Solid Prestige</code></li>
+          <li><code>Starting Out</code></li>
+          <li><code>Taking Hold</code></li>
+          <li><code>Thrifty and Active</code></li>
+          <li><code>Top Wealth</code></li>
+          <li><code>Working & Studying</code></li>
+          <li><code>Working Households</code></li>
+        </ul>
+      </div>
+    </details>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>financial_segment</strong> <small>string</small>
+      <br /><a href="https://docs.atdata.com/TowerData-LifeStage-And-Financial-Fields.pdf" target="_blank"
+        rel="noopener noreferrer">54 segments based on consumers' financial propensities</a>, grouping households by
+      similar likelihood for financial behaviors, regardless of demographic characteristics.
+      <br />
+    <details class="card no-border-card">
+      <summary><strong><small>Possible Values</small></strong></summary>
+      <div>
+        <ul class="multi-column-list">
+          <li><code>Active Savers</code></li>
+          <li><code>Adventurous Investors</code></li>
+          <li><code>Asking Advice</code></li>
+          <li><code>Balance Vigilant</code></li>
+          <li><code>Brand Variety</code></li>
+          <li><code>Branded Influence</code></li>
+          <li><code>Budget Optimists</code></li>
+          <li><code>Civic Centered</code></li>
+          <li><code>Collectors Clubs</code></li>
+          <li><code>Comfort Zone</code></li>
+          <li><code>Comfortable Borrowers</code></li>
+          <li><code>Coupon Cutters</code></li>
+          <li><code>Daily Demands</code></li>
+          <li><code>Deal Seekers</code></li>
+          <li><code>Eye on the Economy</code></li>
+          <li><code>Financial Freewheelers</code></li>
+          <li><code>Fluent Advisors</code></li>
+          <li><code>Future Fundamentals</code></li>
+          <li><code>Hearth and Home</code></li>
+          <li><code>In the Moment</code></li>
+          <li><code>Independent Investors</code></li>
+          <li><code>Informed Control</code></li>
+          <li><code>Informed Shoppers</code></li>
+          <li><code>Involved Investors</code></li>
+          <li><code>Investing in Collections</code></li>
+          <li><code>Learn and Prepare</code></li>
+          <li><code>Limited Risk Traditionalists</code></li>
+          <li><code>Naturally Organized</code></li>
+          <li><code>Online Automation</code></li>
+          <li><code>Online Connectors</code></li>
+          <li><code>Online Financiers</code></li>
+          <li><code>Online Influencers</code></li>
+          <li><code>Online Leaders</code></li>
+          <li><code>Online Learners</code></li>
+          <li><code>Online Managers</code></li>
+          <li><code>Personal Service</code></li>
+          <li><code>Prestige Seekers</code></li>
+          <li><code>Quality Conscious</code></li>
+          <li><code>Quality over Price</code></li>
+          <li><code>Real Life Recommendations</code></li>
+          <li><code>Solid Investments</code></li>
+          <li><code>Sophisticated Environmentalists</code></li>
+          <li><code>Spontaneous Spenders</code></li>
+          <li><code>Studied Purchasers</code></li>
+          <li><code>Technology Trenders</code></li>
+          <li><code>Temperate Technology</code></li>
+          <li><code>Thrill of the Ride</code></li>
+          <li><code>Traction for Today</code></li>
+          <li><code>Traditional Moderation</code></li>
+          <li><code>Traditional Savers</code></li>
+          <li><code>Trust Triumphs</code></li>
+          <li><code>Value Shoppers</code></li>
+          <li><code>Worth the Risk</code></li>
+          <li><code>Work and Save</code></li>
+        </ul>
+      </div>
+    </details>
+    </p>
+  </div>
+
+  <div class="card">
+    <p><strong>financial_group</strong> <small>string</small>
+      <br /><a href="https://docs.atdata.com/TowerData-LifeStage-And-Financial-Fields.pdf" target="_blank"
+        rel="noopener noreferrer">13 higher-level aggregate financial groups</a>
+      that roll up financial segments with similar characteristics.
+      <br />
+    <details class="card no-border-card">
+      <summary><strong><small>Possible Values</small></strong></summary>
+      <div>
+        <ul class="multi-column-list">
+          <li><code>Career Conscious</code></li>
+          <li><code>City Spotlight</code></li>
+          <li><code>Conservative Wealth</code></li>
+          <li><code>Conservatively Rural</code></li>
+          <li><code>Current Consumers</code></li>
+          <li><code>Digital Financiers</code></li>
+          <li><code>Financial Futures</code></li>
+          <li><code>Market Watchers</code></li>
+          <li><code>Rural Trust</code></li>
+          <li><code>Specific Savers</code></li>
+          <li><code>Stable Influentials</code></li>
+          <li><code>Trendy Inclinations</code></li>
+          <li><code>Tried and True</code></li>
+        </ul>
+      </div>
+    </details>
+    </p>
+  </div>
+
+</div>
