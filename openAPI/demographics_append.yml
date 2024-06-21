@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Demographics
+  title: Demographics API
   description: >-
     AtData API's help you improve the quality and depth of your customer data by
     enabling you to quickly and securely verify and enhance email addresses.
