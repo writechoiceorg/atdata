@@ -18,6 +18,7 @@ paths:
         - in: query
           name: email
           required: false
+          example: sample@atdata.com
           schema:
             type: string
           description: >-
