@@ -24,6 +24,7 @@ paths:
         - in: query
           name: api_key
           required: true
+          example: <YOUR_API_KEY>
           schema:
             type: string
           description: Your AtData API key.
