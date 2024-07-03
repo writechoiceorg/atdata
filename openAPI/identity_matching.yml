@@ -65,6 +65,7 @@ paths:
           schema:
             type: string
           description: First name of person.
+          example: Joe
         - in: query
           name: middle
           required: false
@@ -77,33 +78,39 @@ paths:
           schema:
             type: string
           description: Last name of person.
+          example: Bloggs
         - in: query
           name: street
           required: true
           schema:
             type: string
           description: Street name.
+          example: 123 Main St
         - in: query
           name: city
           required: true
+          example: New York
           schema:
             type: string
           description: Name of city.
         - in: query
           name: state
           required: true
+          example: NY
           schema:
             type: string
           description: Two letter state abbreviation.
         - in: query
           name: zip
           required: true
+          example: '38067'
           schema:
             type: string
           description: Five-digit zip code, optionally followed by a four-digit extension separated by a dash.
         - in: query
           name: api_key
           required: true
+          example: <YOUR_API_KEY>
           schema:
             type: string
           description: Your AtData API key.
@@ -188,6 +195,7 @@ paths:
             <small>Example: demo@atdata.com hashed outputs to: 3cf1e81405a4bdf4f7e3a2453cd441c3</small>
         - in: query
           name: api_key
+          example: <YOUR_API_KEY>
           required: true
           schema:
             type: string
