@@ -17,7 +17,7 @@ paths:
       parameters:
         - in: query
           name: email
-          required: true
+          required: false
           schema:
             type: string
           description: >-
