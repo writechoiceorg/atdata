@@ -26,7 +26,10 @@ paths:
           required: true
           schema:
             type: string
-          description: The email address to be validated (and optionally corrected). ⚠️ [URL encoding](https://www.w3schools.com/tags/ref_urlencode.ASP) required ⚠️
+          description: >-
+            The email address to be validated (and optionally corrected). It must be [URL encoded](https://www.w3schools.com/tags/ref_urlencode.ASP).
+
+            <small>Example: demo+email@atdata.com encoded outputs to: demo%2Bemail%40atdata.com</small>
           example: sales@atdata.com
         - in: query
           name: timeout
