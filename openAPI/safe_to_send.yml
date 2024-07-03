@@ -26,7 +26,7 @@ paths:
           required: true
           schema:
             type: string
-          description: The email address to be validated (and optionally corrected).
+          description: The email address to be validated (and optionally corrected). ⚠️ [URL encoding](https://www.w3schools.com/tags/ref_urlencode.ASP) required ⚠️
           example: sales@atdata.com
         - in: query
           name: timeout
@@ -45,21 +45,21 @@ paths:
                   safe_to_send:
                     type: object
                     properties:
+                      status:
+                        type: string
+                        description: A string describing the category of the email validation result. Refer to the [Email Status](/reference/email-status) page to check the possible values.
+                      status_code:
+                        type: integer
+                        description: A range from 5-999 will always be returned and describes the detailed results of the validation within the status categorization. Refer to the [Status Codes](/reference/status-codes-safe-to-send) page to check the possible status values.
                       domain_type:
                         type: string
                         description: An optional field, domain_type indicates the type of the domain including, “disposable”, “freeisp”, etc.
-                      status_code:
-                        type: integer
-                        description: A range from 5-999 will always be returned and describes the detailed results of the validation within the "status" categorization.
                       address:
                         type: string
                         description: The email address you queried with in a standardized format.
                       role_account:
                         type: boolean
                         description: An optional field, role_account is returned if the email address is identified as the role related email account. A role account is an email address for a business job role or a group of people in a company such as sales, info, support, marketing or customer service (e.g. info@abc.com). Because role accounts are not intended for a single person, commercial emails are usually flagged as spam. For improved deliverability, we recommend only sending transactional emails to role accounts.
-                      status:
-                        type: string
-                        description: A string describing the category of the email validation result.
                       email_corrections:
                         type: array
                         description: An optional field, if your API key is configured for corrections, and the input address has a syntax or spelling error, we may suggest one or more corrected forms of the address. The returned value is a JSON array of possible corrected email addresses.
