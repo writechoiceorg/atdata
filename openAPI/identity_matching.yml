@@ -8,73 +8,6 @@ info:
 servers:
 - url: https://api.atdata.com
 paths:
-  /ae:
-    get:
-      summary: Alternate Email
-      operationId: alternate-email
-      tags:
-      - Identity Matching
-      parameters:
-        - in: query
-          name: email
-          required: false
-          example: sample@atdata.com
-          schema:
-            type: string
-          description: >-
-            The input email address. It must be [URL encoded](https://www.w3schools.com/tags/ref_urlencode.ASP).
-
-            <small>Example: demo+email@atdata.com encoded outputs to: demo%2Bemail%40atdata.com</small>
-        - in: query
-          name: sha1_email
-          required: false
-          schema:
-            type: string
-          description: >-
-            [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hashed email. The email must be lower case and stripped of white spaces before being hashed.
-
-            <small>Example: demo@atdata.com hashed outputs to: 1d604932232d089ab1a1cad148f20d942db666a7</small>
-        - in: query
-          name: md5_email
-          required: false
-          schema:
-            type: string
-          description: >-
-            [MD5](https://en.wikipedia.org/wiki/MD5) hashed email. The email must be lower case and stripped of white spaces before being hashed.
-
-            <small>Example: demo@atdata.com hashed outputs to: 3cf1e81405a4bdf4f7e3a2453cd441c3</small>
-        - in: query
-          name: api_key
-          required: true
-          example: <YOUR_API_KEY>
-          schema:
-            type: string
-          description: Your AtData API key.
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  alternate_email:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        email:
-                          type: string
-                          description: The alternate email address
-                        email_match_type:
-                          type: string
-                          description: The type of email match
-              example:
-                alternate_email:
-                  - email: cplackard@domain.com
-                    email_match_type: Individual
-                  - email: chris.plackard@domain2.com
-                    email_match_type: Individual
   /v5/eppend:
     get:
       summary: Email Append
@@ -166,22 +99,23 @@ paths:
                 unmatched_request:
                   summary: Un-matched Request
                   value: {}
+                missing_parameters:
+                  summary: Missing Parameters
+                  value: 
+                    error_code: 400
+                    error_msg: Missing required input parameter for email append.
+                invalid_postal:
+                  summary: Invalid Parameter
+                  value: 
+                    error_code: 400
+                    error_msg: Invalid United States postal address.
         '400':
-          description: Bad Request. Some part of the request was invalid.
+          description: Bad Request
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                properties:
-                  error_code:
-                    type: integer
-                    description: The error code.
-                  error_msg:
-                    type: string
-                    description: The error message.
-              example:
-                error_code: 400
-                error_msg: "Invalid United States postal address."
+                type: string
+                example: Missing query parameter(s).
   /v5/eppend?:
     get:
       summary: Postal Append
@@ -263,4 +197,77 @@ paths:
                     city: SAN FRANCISCO
                     state: CA
                     zip: 94133-1234
-  
+  /ae:
+    get:
+      summary: Alternate Email
+      operationId: alternate-email
+      tags:
+      - Identity Matching
+      parameters:
+        - in: query
+          name: email
+          required: false
+          example: sample@atdata.com
+          schema:
+            type: string
+          description: >-
+            The input email address. It must be [URL encoded](https://www.w3schools.com/tags/ref_urlencode.ASP).
+
+            <small>Example: demo+email@atdata.com encoded outputs to: demo%2Bemail%40atdata.com</small>
+        - in: query
+          name: sha1_email
+          required: false
+          schema:
+            type: string
+          description: >-
+            [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hashed email. The email must be lower case and stripped of white spaces before being hashed.
+
+            <small>Example: demo@atdata.com hashed outputs to: 1d604932232d089ab1a1cad148f20d942db666a7</small>
+        - in: query
+          name: md5_email
+          required: false
+          schema:
+            type: string
+          description: >-
+            [MD5](https://en.wikipedia.org/wiki/MD5) hashed email. The email must be lower case and stripped of white spaces before being hashed.
+
+            <small>Example: demo@atdata.com hashed outputs to: 3cf1e81405a4bdf4f7e3a2453cd441c3</small>
+        - in: query
+          name: api_key
+          required: true
+          example: <YOUR_API_KEY>
+          schema:
+            type: string
+          description: Your AtData API key.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  alternate_email:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                          description: The alternate email address
+                        email_match_type:
+                          type: string
+                          description: The type of email match
+              example:
+                alternate_email:
+                  - email: cplackard@domain.com
+                    email_match_type: Individual
+                  - email: chris.plackard@domain2.com
+                    email_match_type: Individual
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Invalid identifier
