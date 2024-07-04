@@ -200,6 +200,19 @@ paths:
                   life_stage_group: "Taking Hold"
                   financial_segment: "Spontaneous Spenders"
                   financial_group: "City Spotlight"
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                missing_parameters:
+                  summary: Missing parameters
+                  value: Missing query parameter(s).
+                invalid_email:
+                  summary: Invalid email
+                  value: Value of parameter 'email' is invalid.
   /v5/ei/bulk:
     post:
       summary: Bulk Demographics Append
