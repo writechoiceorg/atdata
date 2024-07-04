@@ -85,7 +85,7 @@ def safeToSend():
     headers = create_headers()
     api_key = os.getenv(request.upper())
 
-    data = {"api_key": api_key, "email": "demo@atdata.com"}
+    data = {"api_key": api_key}
 
     encoded_params = urllib.parse.urlencode(data)
     full_url = f"{endpoint}{encoded_params}"
@@ -140,7 +140,7 @@ def postal_append():
 
     data = {
         "api_key": api_key,
-        "email": "postal_sample1@atdata.com",
+        "email": "pos@atdata.com",
     }
 
     encoded_params = urllib.parse.urlencode(data)
@@ -151,7 +151,7 @@ def postal_append():
 
 
 if __name__ == "__main__":
-    # safeToSend()
+    safeToSend()
     # alternate_email()
     # email_append()
-    postal_append()
+    # postal_append()

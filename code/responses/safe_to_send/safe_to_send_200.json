@@ -16,5 +16,12 @@
             "role_account": true,
             "status": "valid"
         }
+    },
+    {
+        "safe_to_send": {
+            "status_code": 150,
+            "address": "com",
+            "status": "invalid"
+        }
     }
 ]
