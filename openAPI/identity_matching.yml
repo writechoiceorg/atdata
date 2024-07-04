@@ -72,7 +72,7 @@ paths:
           description: Your AtData API key.
       responses:
         '200':
-          description: Successful Response
+          description: Success
           content:
             application/json:
               schema:
@@ -160,7 +160,7 @@ paths:
           description: Your AtData API key.
       responses:
         '200':
-          description: Successful Response
+          description: Success
           content:
             application/json:
               schema:
@@ -203,6 +203,13 @@ paths:
                 unmatched_request:
                   summary: Un-matched Request
                   value: {}
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Value of parameter 'email' is invalid.
   /ae:
     get:
       summary: Alternate Email
@@ -247,7 +254,7 @@ paths:
           description: Your AtData API key.
       responses:
         '200':
-          description: Successful Response
+          description: Success
           content:
             application/json:
               schema:
