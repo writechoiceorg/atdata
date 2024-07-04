@@ -230,6 +230,7 @@ paths:
       parameters:
         - in: query
           name: api_key
+          example: <YOUR_API_KEY>
           required: true
           schema:
             type: string
