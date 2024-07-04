@@ -14,8 +14,8 @@ routes = {
     "alternate_email": "/ae?",
     "email_append": "/v5/eppend?",
     "postal_append": "/v5/eppend?",
-    "demographics": "/v5/td",
-    "bulk_demo": "/v5/ei/bulk",
+    "demographics_append": "/v5/td?",
+    "bulk_demo": "/v5/ei/bulk?",
 }
 
 
@@ -118,11 +118,11 @@ def email_append():
     data = {
         "api_key": api_key,
         "first": "Joe",
-        # "last": "Bloggs",
-        # "street": "123 Main St",
-        # "city": "New York",
-        # "state": "NY",
-        # "zip": "38067",
+        "last": "Bloggs",
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "zip": "38067",
     }
 
     encoded_params = urllib.parse.urlencode(data)
@@ -150,8 +150,33 @@ def postal_append():
     save_response(response, request)
 
 
+def demographics_append():
+    request = "demographics_append"
+    endpoint = f"{url}{routes[request]}"
+    headers = create_headers()
+    api_key = os.getenv(request.upper())
+
+    data = {
+        "api_key": api_key,
+        "email": "demo@atdata.com",
+        # "first": "Tower",
+        # "last": "Data ",
+        # "street": "33 Irving Pl Ste 4048",
+        # "city": "New York",
+        # "state": "NY",
+        # "zip": "10003",
+    }
+
+    encoded_params = urllib.parse.urlencode(data)
+    full_url = f"{endpoint}{encoded_params}"
+
+    response = requests.get(full_url, headers=headers)
+    save_response(response, request)
+
+
 if __name__ == "__main__":
     # safeToSend()
     # alternate_email()
-    email_append()
+    # email_append()
     # postal_append()
+    demographics_append()
