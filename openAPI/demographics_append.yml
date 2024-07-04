@@ -86,7 +86,7 @@ paths:
           description: Two-letter state abbreviation.
         - in: query
           name: zip
-          example: 10003
+          example: "10003"
           required: false
           schema:
             type: string
@@ -110,6 +110,7 @@ paths:
         - in: query
           name: api_key
           required: true
+          example: <YOUR_API_KEY>
           schema:
             type: string
           description: Your AtData API key.
@@ -245,17 +246,21 @@ paths:
                   email:
                     type: string
                     description: The email address of the person
+                    example: demo@atdata.com
                   first:
                     type: string
                     description: First name of the person
+                    example: Tower
                   last:
                     type: string
                     description: Last name of the person
+                    example: Data
                   middle:
                     type: string
                     description: Middle name of the person (optional)
                   street:
                     type: string
+                    example: 33 Irving Pl Ste 4048
                     description: Street number & name
                   city:
                     type: string
@@ -263,8 +268,10 @@ paths:
                   state:
                     type: string
                     description: Two-letter state abbreviation
+                    example: New York
                   zip:
                     type: string
+                    example: "10003"
                     description: >
                       Five-digit zip code, optionally followed by a four-digit extension separated by a dash
               example:
