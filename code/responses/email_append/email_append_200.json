@@ -1,3 +1,7 @@
 [
-    {}
+    {},
+    {
+        "error_code": 400,
+        "error_msg": "Missing required input parameter for email append."
+    }
 ]

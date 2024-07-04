@@ -118,11 +118,11 @@ def email_append():
     data = {
         "api_key": api_key,
         "first": "Joe",
-        "last": "Bloggs",
-        "street": "123 Main St",
-        "city": "New York",
-        "state": "NY",
-        "zip": "38067",
+        # "last": "Bloggs",
+        # "street": "123 Main St",
+        # "city": "New York",
+        # "state": "NY",
+        # "zip": "38067",
     }
 
     encoded_params = urllib.parse.urlencode(data)
@@ -151,7 +151,7 @@ def postal_append():
 
 
 if __name__ == "__main__":
-    safeToSend()
+    # safeToSend()
     # alternate_email()
-    # email_append()
+    email_append()
     # postal_append()
