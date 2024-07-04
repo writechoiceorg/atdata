@@ -97,14 +97,14 @@ paths:
           example: Mozilla/5.0
       responses:
         '200':
-          description: Successful Response
+          description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/FraudRetrieveResponse'
               examples:
                 example1:
-                  summary: Successful Response
+                  summary: Success
                   value:
                     eam:
                       longevity: 2
@@ -138,6 +138,18 @@ paths:
                         zip_match: "no_match"
                         city_match: "match"
                         street_match: "no_match"
+                      phone:
+                        line_type: mobile
+                        carrier: AT&T Wireless
+                        status: live
+                        prepaid: false
+                        owner:
+                          first_name_match: match
+                          last_name_match: match
+                          street_match: match
+                          city_match: match
+                          zip_match: match
+                          type: person
                     email_validation:
                       domain_type: "biz"
                       status_code: 50
@@ -298,11 +310,7 @@ components:
                   format: double
                   description: Geographical longitude of the identified IP location, expressed as a floating point number with range of -180 to 180, with positive numbers representing East and negative numbers representing West.
                   example: -77.03651
-            domain:
-              type: object
-              description: Information pertaining to the domain of the email used in the query, providing a risk assessment of the domain itself.
-              properties:
-                domain_risk_score:
+            domain_risk_score:
                   type: integer
                   description: A score from 0 to 10 assessing the risk associated with the email domain, with higher scores indicating higher risk.
                   example: 5
@@ -342,6 +350,54 @@ components:
                   type: string
                   description: Describes the type of the address provided, such as Street, PO Box, Rural Route, etc.
                   example: "Street"
+            phone:
+              type: object
+              description: Details about the phone number information provided in the query and its correlation with the email address data.
+              properties:
+                line_type:
+                  type: string
+                  description: The type of the phone line (e.g., mobile, landline).
+                  example: mobile
+                carrier:
+                  type: string
+                  description: The carrier or service provider of the phone number.
+                  example: AT&T Wireless
+                status:
+                  type: string
+                  description: The current status of the phone number (e.g., live, disconnected).
+                  example: live
+                prepaid:
+                  type: boolean
+                  description: Indicates if the phone number is prepaid.
+                  example: false
+                owner:
+                  type: object
+                  description: Information about the owner of the phone number.
+                  properties:
+                    first_name_match:
+                      type: string
+                      description: Indicates if the provided first name matches the owner's first name.
+                      example: match
+                    last_name_match:
+                      type: string
+                      description: Indicates if the provided last name matches the owner's last name.
+                      example: match
+                    street_match:
+                      type: string
+                      description: Indicates if the provided street address matches the owner's street address.
+                      example: match
+                    city_match:
+                      type: string
+                      description: Indicates if the provided city matches the owner's city.
+                      example: match
+                    zip_match:
+                      type: string
+                      description: Indicates if the provided ZIP code matches the owner's ZIP code.
+                      example: match
+                    type:
+                      type: string
+                      description: The type of the owner (e.g., person, business).
+                      example: person
         eam:
           type: object
           description: Email Activity Metrics, which evaluate the history and usage patterns of the email address.
