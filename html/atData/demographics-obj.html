@@ -9,16 +9,28 @@
   }
 
   .card {
-    border: 1px solid #353b9637;
-    background: #f9f9f9da;
+    border: 1px solid #eeeeee;
+    background: #FAFAFA;
     margin: 1.5em 0;
-    border-radius: 5px;
-    border-left: 8px solid #353B96;
+    border-radius: 3px;
+    border-left: 4px solid #00AEEF;
     padding: 0.25em;
   }
 
   .card .card {
     margin: 1.5em;
+  }
+
+  .card p {
+    margin-bottom: 0;
+  }
+
+  .card .type {
+    color: #6C6C6C;
+    font-family: "DM Mono";
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
   }
 
   .card .no-border-card {
@@ -60,31 +72,39 @@
 
   @media (prefers-color-scheme: dark) {
     [data-color-mode="system"] .card {
-      background-color: #303b42;
+      background-color: #2B353C;
       border: 1px solid #4a5861;
-      border-left: 10px solid #353B96;
+      border-left: 4px solid #00AEEF;
     }
 
     [data-color-mode="system"] .card .no-border-card {
       border: 1px solid #4a5861 !important;
     }
+
+    [data-color-mode="system"] .card .type {
+      color: #f7f7f7;
+    }
   }
 
   [data-color-mode="dark"] .card {
-    background-color: #303b42;
+    background-color: #2B353C;
     border: 1px solid #4a5861;
-    border-left: 10px solid #353B96;
+    border-left: 4px solid #00AEEF;
   }
 
   [data-color-mode="dark"] .card .no-border-card {
     border: 1px solid #4a5861 !important;
+  }
+
+  [data-color-mode="dark"] .card .type {
+    color: #f7f7f7;
   }
 </style>
 
 <div>
 
   <div class="card">
-    <p><strong>age</strong> <small>string</small>
+    <p><strong>age</strong> <small class="type">string</small>
       <br />The age range of the individual.
       <br />
       <small>
@@ -103,7 +123,7 @@
   </div>
 
   <div class="card">
-    <p><strong>gender</strong> <small>string</small>
+    <p><strong>gender</strong> <small class="type">string</small>
       <br />The gender of the individual.
       <br />
       <small>
@@ -113,7 +133,7 @@
   </div>
 
   <div class="card">
-    <p><strong>zip</strong> <small>string</small>
+    <p><strong>zip</strong> <small class="type">string</small>
       <br />The ZIP code of the individual's address.
       <br />
       <small>
@@ -123,7 +143,7 @@
   </div>
 
   <div class="card">
-    <p><strong>household_income</strong> <small>string</small>
+    <p><strong>household_income</strong> <small class="type">string</small>
       <br />Income of head of household by range.
       <br />
     <details class="card no-border-card">
@@ -148,7 +168,7 @@
   </div>
 
   <div class="card">
-    <p><strong>household_income</strong> <small>string</small>
+    <p><strong>household_income</strong> <small class="type">string</small>
       <br />Income of head of household by range.
       <br />
     <details class="card no-border-card">
@@ -174,7 +194,7 @@
   </div>
 
   <div class="card">
-    <p><strong>net_worth</strong> <small>string</small>
+    <p><strong>net_worth</strong> <small class="type">string</small>
       <br />The approximate net worth of the household.
       <br />
     <details class="card no-border-card">
@@ -198,7 +218,7 @@
   </div>
 
   <div class="card">
-    <p><strong>home_market_value</strong> <small>string</small>
+    <p><strong>home_market_value</strong> <small class="type">string</small>
       <br />Market value of household's home.
       <br />
     <details class="card no-border-card">
@@ -225,7 +245,7 @@
   </div>
 
   <div class="card">
-    <p><strong>home_owner_status</strong> <small>string</small>
+    <p><strong>home_owner_status</strong> <small class="type">string</small>
       <br />The household owns or rents its home.
       <br />
       <small>
@@ -235,7 +255,7 @@
   </div>
 
   <div class="card">
-    <p><strong>length_of_residence</strong> <small>string</small>
+    <p><strong>length_of_residence</strong> <small class="type">string</small>
       <br />Number of years household has spent in the current residence.
       <br />
     <details class="card no-border-card">
@@ -264,7 +284,7 @@
   </div>
 
   <div class="card">
-    <p><strong>marital_status</strong> <small>string</small>
+    <p><strong>marital_status</strong> <small class="type">string</small>
       <br />The marital status of the primary occupants of the household.
       <br />
       <small>
@@ -274,7 +294,7 @@
   </div>
 
   <div class="card">
-    <p><strong>presence_of_children</strong> <small>string</small>
+    <p><strong>presence_of_children</strong> <small class="type">string</small>
       <br />Indicates whether there are one or more children in the household.
       <br />
       <small>
@@ -284,7 +304,7 @@
   </div>
 
   <div class="card">
-    <p><strong>education</strong> <small>string</small>
+    <p><strong>education</strong> <small class="type">string</small>
       <br />Indicates the highest known level of education completed in the household.
       <br />
     <details class="card no-border-card">
@@ -304,7 +324,7 @@
   </div>
 
   <div class="card">
-    <p><strong>occupation</strong> <small>string</small>
+    <p><strong>occupation</strong> <small class="type">string</small>
       <br />The occupation of the primary person in the household.
       <br />
     <details class="card no-border-card">
@@ -335,34 +355,34 @@
   </div>
 
   <div class="card">
-    <p><strong>rfm_offline_avg_days</strong> <small>string</small>
+    <p><strong>rfm_offline_avg_days</strong> <small class="type">string</small>
       <br />Recency, Frequency & Monetary Value - The average number of days between offline purchases for this
       household as an integer value.
     </p>
   </div>
 
   <div class="card">
-    <p><strong>rfm_online_avg_days</strong> <small>string</small>
+    <p><strong>rfm_online_avg_days</strong> <small class="type">string</small>
       <br />Recency, Frequency & Monetary Value - The average number of days between online purchases for this household
       as an integer value.
     </p>
   </div>
 
   <div class="card">
-    <p><strong>rfm_avg_dollars</strong> <small>string</small>
+    <p><strong>rfm_avg_dollars</strong> <small class="type">string</small>
       <br />Recency, Frequency & Monetary Value - The average dollar amount the household spends per order as an integer
       value.
     </p>
   </div>
 
   <div class="card">
-    <p><strong>rfm_last_order</strong> <small>string</small>
+    <p><strong>rfm_last_order</strong> <small class="type">string</small>
       <br />Recency, Frequency & Monetary Value - The date of the last order made by the household in YYYY-MM-DD format.
     </p>
   </div>
 
   <div class="card">
-    <p><strong>life_stage_segment</strong> <small>string</small>
+    <p><strong>life_stage_segment</strong> <small class="type">string</small>
       <br /><a href="https://docs.atdata.com/TowerData-LifeStage-And-Financial-Fields.pdf" target="_blank"
         rel="noopener noreferrer">70 life-stage-based household-level consumer segments</a> based on demographic and
       consumer behavioral data.
@@ -449,7 +469,7 @@
   </div>
 
   <div class="card">
-    <p><strong>life_stage_group</strong> <small>string</small>
+    <p><strong>life_stage_group</strong> <small class="type">string</small>
       <br /><a href="https://docs.atdata.com/TowerData-LifeStage-And-Financial-Fields.pdf" target="_blank"
         rel="noopener noreferrer">21 higher-level aggregate life-stage groups</a> that roll up life-stage segments with
       similar characteristics.
@@ -486,7 +506,7 @@
   </div>
 
   <div class="card">
-    <p><strong>financial_segment</strong> <small>string</small>
+    <p><strong>financial_segment</strong> <small class="type">string</small>
       <br /><a href="https://docs.atdata.com/TowerData-LifeStage-And-Financial-Fields.pdf" target="_blank"
         rel="noopener noreferrer">54 segments based on consumers' financial propensities</a>, grouping households by
       similar likelihood for financial behaviors, regardless of demographic characteristics.
@@ -556,7 +576,7 @@
   </div>
 
   <div class="card">
-    <p><strong>financial_group</strong> <small>string</small>
+    <p><strong>financial_group</strong> <small class="type">string</small>
       <br /><a href="https://docs.atdata.com/TowerData-LifeStage-And-Financial-Fields.pdf" target="_blank"
         rel="noopener noreferrer">13 higher-level aggregate financial groups</a>
       that roll up financial segments with similar characteristics.
@@ -585,7 +605,7 @@
   </div>
 
   <details class="card">
-    <summary><strong>interests</strong> <small>object</small>
+    <summary><strong>interests</strong> <small class="type">object</small>
       <br />
       <p>The interest and purchase data features the categories below. The returned value <code>true</code> means the
         individual has displayed that interest or purchased in that category. If the field name is absent,
@@ -593,145 +613,145 @@
     </summary>
     <div>
       <div class="card">
-        <p><strong>arts_and_crafts</strong> <small>boolean</small>
+        <p><strong>arts_and_crafts</strong> <small class="type">boolean</small>
           <br />Purchases of arts and crafts products.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>automotive</strong> <small>boolean</small>
+        <p><strong>automotive</strong> <small class="type">boolean</small>
           <br />Purchases of automotive products.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>baby_product_buyer</strong> <small>boolean</small>
+        <p><strong>baby_product_buyer</strong> <small class="type">boolean</small>
           <br />Purchases of baby products.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>beauty</strong> <small>boolean</small>
+        <p><strong>beauty</strong> <small class="type">boolean</small>
           <br />Purchases of beauty products and interest in beauty.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>blogging</strong> <small>boolean</small>
+        <p><strong>blogging</strong> <small class="type">boolean</small>
           <br />Interest in blogging and related activities.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>books</strong> <small>boolean</small>
+        <p><strong>books</strong> <small class="type">boolean</small>
           <br />Purchases of books and interest in reading.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>business</strong> <small>boolean</small>
+        <p><strong>business</strong> <small class="type">boolean</small>
           <br />Interest in business.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>charitable_donors</strong> <small>boolean</small>
+        <p><strong>charitable_donors</strong> <small class="type">boolean</small>
           <br />Indicates the likelihood of being a charitable donor.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>cooking</strong> <small>boolean</small>
+        <p><strong>cooking</strong> <small class="type">boolean</small>
           <br />Purchases of cooking magazines and interest in cooking.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>discount_shopper</strong> <small>boolean</small>
+        <p><strong>discount_shopper</strong> <small class="type">boolean</small>
           <br />Interest in discount shopping and bargain hunting.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>health_and_wellness</strong> <small>boolean</small>
+        <p><strong>health_and_wellness</strong> <small class="type">boolean</small>
           <br />Purchases of healthy lifestyle products; interest in health and wellness.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>high_end_brand_buyer</strong> <small>boolean</small>
+        <p><strong>high_end_brand_buyer</strong> <small class="type">boolean</small>
           <br />Purchases of high-end brand products.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>home_and_garden</strong> <small>boolean</small>
+        <p><strong>home_and_garden</strong> <small class="type">boolean</small>
           <br />Purchases of home and garden products.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>home_improvement</strong> <small>boolean</small>
+        <p><strong>home_improvement</strong> <small class="type">boolean</small>
           <br />Purchases of home improvement products and services.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>luxury_goods</strong> <small>boolean</small>
+        <p><strong>luxury_goods</strong> <small class="type">boolean</small>
           <br />Purchases of luxury goods.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>magazine_buyer</strong> <small>boolean</small>
+        <p><strong>magazine_buyer</strong> <small class="type">boolean</small>
           <br />Purchases of magazine subscriptions.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>movies</strong> <small>boolean</small>
+        <p><strong>movies</strong> <small class="type">boolean</small>
           <br />Interest in movies.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>music</strong> <small>boolean</small>
+        <p><strong>music</strong> <small class="type">boolean</small>
           <br />Interest in music.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>news_and_current_events</strong> <small>boolean</small>
+        <p><strong>news_and_current_events</strong> <small class="type">boolean</small>
           <br />Purchases of subscriptions for news and current events.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>outdoor_and_adventure</strong> <small>boolean</small>
+        <p><strong>outdoor_and_adventure</strong> <small class="type">boolean</small>
           <br />Interest in outdoor activities and adventure.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>pets</strong> <small>boolean</small>
+        <p><strong>pets</strong> <small class="type">boolean</small>
           <br />Interest in pets and pet-related purchases.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>sports</strong> <small>boolean</small>
+        <p><strong>sports</strong> <small class="type">boolean</small>
           <br />Interest in sports and sporting goods.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>technology</strong> <small>boolean</small>
+        <p><strong>technology</strong> <small class="type">boolean</small>
           <br />Interest in technology products and services.
         </p>
       </div>
 
       <div class="card">
-        <p><strong>travel</strong> <small>boolean</small>
+        <p><strong>travel</strong> <small class="type">boolean</small>
           <br />Interest in travel.
         </p>
       </div>

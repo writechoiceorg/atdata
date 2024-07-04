@@ -9,16 +9,28 @@
   }
 
   .card {
-    border: 1px solid #353b9637;
-    background: #f9f9f9da;
+    border: 1px solid #eeeeee;
+    background: #FAFAFA;
     margin: 1.5em 0;
-    border-radius: 5px;
-    border-left: 8px solid #353B96;
+    border-radius: 3px;
+    border-left: 4px solid #00AEEF;
     padding: 0.25em;
   }
 
   .card .card {
     margin: 1.5em;
+  }
+
+  .card p {
+    margin-bottom: 0;
+  }
+
+  .card .type {
+    color: #6C6C6C;
+    font-family: "DM Mono";
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
   }
 
   .card .no-border-card {
@@ -60,31 +72,39 @@
 
   @media (prefers-color-scheme: dark) {
     [data-color-mode="system"] .card {
-      background-color: #303b42;
+      background-color: #2B353C;
       border: 1px solid #4a5861;
-      border-left: 10px solid #353B96;
+      border-left: 4px solid #00AEEF;
     }
 
     [data-color-mode="system"] .card .no-border-card {
       border: 1px solid #4a5861 !important;
     }
+
+    [data-color-mode="system"] .card .type {
+      color: #f7f7f7;
+    }
   }
 
   [data-color-mode="dark"] .card {
-    background-color: #303b42;
+    background-color: #2B353C;
     border: 1px solid #4a5861;
-    border-left: 10px solid #353B96;
+    border-left: 4px solid #00AEEF;
   }
 
   [data-color-mode="dark"] .card .no-border-card {
     border: 1px solid #4a5861 !important;
+  }
+
+  [data-color-mode="dark"] .card .type {
+    color: #f7f7f7;
   }
 </style>
 
 <div>
 
   <div class="card">
-    <p><strong>list_id</strong> <small>string</small>
+    <p><strong>list_id</strong> <small class="type">string</small>
       <br />The AtData numeric identifier for the list.
       <br />
       <small>
@@ -94,7 +114,7 @@
   </div>
 
   <div class="card">
-    <p><strong>name</strong> <small>string</small>
+    <p><strong>name</strong> <small class="type">string</small>
       <br />The name of the list.
       <br />
       <small>
@@ -104,7 +124,7 @@
   </div>
 
   <div class="card">
-    <p><strong>name</strong> <small>string</small>
+    <p><strong>name</strong> <small class="type">string</small>
       <br />The name of the list.
       <br />
       <small>
@@ -114,7 +134,7 @@
   </div>
 
   <div class="card">
-    <p><strong>status</strong> <small>string</small>
+    <p><strong>status</strong> <small class="type">string</small>
       <br />The status of the list. See the table below for possible values.
       <br />
       <small>
@@ -131,7 +151,7 @@
   </div>
 
   <div class="card">
-    <p><strong>records</strong> <small>integer</small>
+    <p><strong>records</strong> <small class="type">integer</small>
       <br />The quantity of non-blank records in the file that have data to be processed. Header records will not be
       included in this count.
       <br />
@@ -142,7 +162,7 @@
   </div>
 
   <div class="card">
-    <p><strong>size_bytes</strong> <small>integer</small>
+    <p><strong>size_bytes</strong> <small class="type">integer</small>
       <br />The number of bytes of data that was originally contained in the list.
       <br />
       <small>
@@ -152,7 +172,7 @@
   </div>
 
   <div class="card">
-    <p><strong>created_at</strong> <small>string</small>
+    <p><strong>created_at</strong> <small class="type">string</small>
       <br />The date and time the list was submitted in ISO 8601 format. At all times, use the UTC zone.
       <br />
       <small>
@@ -162,7 +182,7 @@
   </div>
 
   <details class="card">
-    <summary><strong>services</strong> <small>object</small>
+    <summary><strong>services</strong> <small class="type">object</small>
       <br />
       <p>An object containing child objects for each service run on the list, such as <code>email_validation</code>.
       </p>
@@ -170,7 +190,7 @@
     <div>
 
       <div class="card">
-        <p><strong>input_count</strong> <small>integer</small>
+        <p><strong>input_count</strong> <small class="type">integer</small>
           <br />The quantity of input records for the current service.
           <br />
           <small>
@@ -180,7 +200,7 @@
       </div>
 
       <div class="card">
-        <p><strong>completed_count</strong> <small>integer</small>
+        <p><strong>completed_count</strong> <small class="type">integer</small>
           <br />The number of records processed for the current service. To gauge your response progress, compare the
           completed_count value to the input_count value.
           <br />
@@ -191,7 +211,7 @@
       </div>
 
       <div class="card">
-        <p><strong>status</strong> <small>string</small>
+        <p><strong>status</strong> <small class="type">string</small>
           <br />The status of each service being processed. See the table below for possible values.
           <br />
           <small>

@@ -9,16 +9,28 @@
   }
 
   .card {
-    border: 1px solid #353b9637;
-    background: #f9f9f9da;
+    border: 1px solid #eeeeee;
+    background: #FAFAFA;
     margin: 1.5em 0;
-    border-radius: 5px;
-    border-left: 8px solid #353B96;
+    border-radius: 3px;
+    border-left: 4px solid #00AEEF;
     padding: 0.25em;
   }
 
   .card .card {
     margin: 1.5em;
+  }
+
+  .card p {
+    margin-bottom: 0;
+  }
+
+  .card .type {
+    color: #6C6C6C;
+    font-family: "DM Mono";
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
   }
 
   .card .no-border-card {
@@ -60,38 +72,46 @@
 
   @media (prefers-color-scheme: dark) {
     [data-color-mode="system"] .card {
-      background-color: #303b42;
+      background-color: #2B353C;
       border: 1px solid #4a5861;
-      border-left: 10px solid #353B96;
+      border-left: 4px solid #00AEEF;
     }
 
     [data-color-mode="system"] .card .no-border-card {
       border: 1px solid #4a5861 !important;
     }
+
+    [data-color-mode="system"] .card .type {
+      color: #f7f7f7;
+    }
   }
 
   [data-color-mode="dark"] .card {
-    background-color: #303b42;
+    background-color: #2B353C;
     border: 1px solid #4a5861;
-    border-left: 10px solid #353B96;
+    border-left: 4px solid #00AEEF;
   }
 
   [data-color-mode="dark"] .card .no-border-card {
     border: 1px solid #4a5861 !important;
+  }
+
+  [data-color-mode="dark"] .card .type {
+    color: #f7f7f7;
   }
 </style>
 
 <div>
 
   <details class="card">
-    <summary><strong>risk</strong> <small>object</small>
+    <summary><strong>risk</strong> <small class="type">object</small>
       <br />
       <p>The AtData risk fields leverage our historical database and the billions of email events we see each month to
         assess the correlation of the input email to fraud.</p>
     </summary>
     <div>
       <div class="card">
-        <p><strong>score</strong> <small>integer</small>
+        <p><strong>score</strong> <small class="type">integer</small>
           <br />A machine learning-based score from 0 to 100 using AtData's metadata, of which the API
           response is only a part, to identify high risk and fraudulent profiles. A score of 0 being low
           risk and 100 being very high risk. The average risk threshold is from 70 to 80 but depends on
@@ -100,7 +120,7 @@
         </p>
       </div>
       <div class="card">
-        <p><strong>tumbling_risk</strong> <small>integer</small>
+        <p><strong>tumbling_risk</strong> <small class="type">integer</small>
           <br />A score from 0 to 3 indicating multiple variations of the same email address (e.g. jondoe@gmail.com
           and jon.doe+123@gmail.com are identical to gmail). Tumbling is evaluated across AtData's entire network, not
           just your own activity.
@@ -113,7 +133,7 @@
         </p>
       </div>
       <div class="card">
-        <p><strong>query_id</strong> <small>string</small>
+        <p><strong>query_id</strong> <small class="type">string</small>
           <br />AtData's unique identifier for the response provided. Can be used with our Feedback API or
           for troubleshooting.
           <br /><small> Example: 2744dd5d0acb475b81687d366fff4c48 </small>
@@ -121,7 +141,7 @@
       </div>
 
       <details class="card">
-        <summary><strong>ip</strong> <small>object</small>
+        <summary><strong>ip</strong> <small class="type">object</small>
           <br />
           <p>Information related to the IP address associated with the email query.
             <br /><small>⚠️ IP object will appear in response only if IP address is provided. ⚠️</small>
@@ -130,7 +150,7 @@
         <div>
 
           <div class="card">
-            <p><strong>routing_type</strong> <small>string</small>
+            <p><strong>routing_type</strong> <small class="type">string</small>
               <br />The IP Routing Type (IPRT) specifies how the connection is routed through the Internet
               and can be used to determine how close the user is to the public IP address. For example,
               a user connecting through a fixed connection is likely very close to the connection. A user
@@ -170,7 +190,7 @@
           </div>
 
           <div class="card">
-            <p><strong>organization</strong> <small>string</small>
+            <p><strong>organization</strong> <small class="type">string</small>
               <br />Registering Organizations include many types of entities, including corporate, government,
               or educational entities, and ISPs managing the allocation and use of network blocks.
               <br /><small> Example: atdata </small>
@@ -178,7 +198,7 @@
           </div>
 
           <div class="card">
-            <p><strong>proxy_type</strong> <small>string</small>
+            <p><strong>proxy_type</strong> <small class="type">string</small>
               <br />The network or protocol utilized by the server to proxy the user connection is identified.
               Proxy type classifications include the use of http, Tor, web and SOCKS.
               <br /><small> Possible results:
@@ -197,7 +217,7 @@
           </div>
 
           <div class="card">
-            <p><strong>hosting_facility</strong> <small>boolean</small>
+            <p><strong>hosting_facility</strong> <small class="type">boolean</small>
               <br />Hosting facility includes the following type of service providers: colocation, cloud
               computing, dedicated hosting, virtual private servers and web hosting.
               A value of <b>true</b> indicates that the IP address is associated with a hosting facility;
@@ -212,7 +232,7 @@
           </div>
 
           <div class="card">
-            <p><strong>latitude</strong> <small>float</small>
+            <p><strong>latitude</strong> <small class="type">float</small>
               <br />Latitude of the identified location, expressed as a floating point number with range of - 90
               to 90, with positive numbers representing North and negative numbers representing South.
               <br /><small> Example: 38.89768 </small>
@@ -220,7 +240,7 @@
           </div>
 
           <div class="card">
-            <p><strong>longitude</strong> <small>float</small>
+            <p><strong>longitude</strong> <small class="type">float</small>
               <br />Longitude of the identified location, expressed as a floating point number with range of -180
               to 180, with positive numbers representing East and negative numbers representing West.
               <br /><small> Example: -77.03651 </small>
@@ -230,7 +250,7 @@
       </details>
 
       <div class="card">
-        <p><strong>domain_risk_score</strong> <small>integer</small>
+        <p><strong>domain_risk_score</strong> <small class="type">integer</small>
           <br />The domain risk score ranges from 0 (no risk associated with the domain) to 10 (significant threat
           due to multiple variables) and allows users to identify high risk email domains the
           moment
@@ -241,7 +261,7 @@
       </div>
 
       <details class="card">
-        <summary><strong>postal</strong> <small>object</small>
+        <summary><strong>postal</strong> <small class="type">object</small>
           <br />
           <p>Contains information related to the postal data provided in the API request and its validation results.
             <br /><small>⚠️ Postal object will appear in response only if name or postal fields are provided. ⚠️</small>
@@ -249,7 +269,7 @@
         </summary>
         <div>
           <div class="card">
-            <p><strong>first_name_match</strong> <small>string</small>
+            <p><strong>first_name_match</strong> <small class="type">string</small>
               <br />Indicates if the first name matches with previously known data.
               <br /><small>⚠️ If first field is not provided in the request, first_name_mach will return no_data. ⚠️
               </small>
@@ -265,7 +285,7 @@
           </div>
 
           <div class="card">
-            <p><strong>last_name_match</strong> <small>string</small>
+            <p><strong>last_name_match</strong> <small class="type">string</small>
               <br />Indicates if the last name matches with previously known data.
               <br /><small>⚠️ If last field is not provided in the request, last_name_mach will return no_data. ⚠️
               </small>
@@ -281,7 +301,7 @@
           </div>
 
           <div class="card">
-            <p><strong>street_match</strong> <small>string</small>
+            <p><strong>street_match</strong> <small class="type">string</small>
               <br />Indicates if street data is available and matches with known records.
               <br /><small>⚠️ If street field is not provided in the request, street_mach will return no_data. ⚠️
               </small>
@@ -297,7 +317,7 @@
           </div>
 
           <div class="card">
-            <p><strong>city_match</strong> <small>string</small>
+            <p><strong>city_match</strong> <small class="type">string</small>
               <br />Indicates if city data is available and matches with known records.
               <br /><small>⚠️ If no postal fields are provided in the request, city_mach will return no_data. ⚠️
               </small>
@@ -313,7 +333,7 @@
           </div>
 
           <div class="card">
-            <p><strong>zip_match</strong> <small>string</small>
+            <p><strong>zip_match</strong> <small class="type">string</small>
               <br />Indicates if zip code data is available and matches with known records.
               <br /><small>⚠️ If no postal fields are provided in the request, zip_mach will return no_data. ⚠️ </small>
               <br /><small> Possible results:
@@ -328,7 +348,7 @@
           </div>
 
           <div class="card">
-            <p><strong>address_type</strong> <small>string</small>
+            <p><strong>address_type</strong> <small class="type">string</small>
               <br />Indicates the type of address, such as Street, PO Box, etc.
               <br /><small>⚠️ The address_type field will appear in response only if a valid US postal address is
                 provided.
@@ -348,7 +368,7 @@
           </div>
 
           <div class="card">
-            <p><strong>deliverability</strong> <small>string</small>
+            <p><strong>deliverability</strong> <small class="type">string</small>
               <br />Indicates the deliverability status of the postal address according to the US Postal Service.
               <br /><small>⚠️ The deliverability field will appear in response only if US postal fields are provided.
                 ⚠️</small>
@@ -364,7 +384,7 @@
           </div>
 
           <div class="card">
-            <p><strong>deliverability_substatus</strong> <small>string</small>
+            <p><strong>deliverability_substatus</strong> <small class="type">string</small>
               <br />Provides more details on the primary reason for the deliverability status.
               <br /><small>⚠️ The deliverability_substatus field will appear in response only if US postal fields are
                 provided. ⚠️</small>
@@ -485,13 +505,13 @@
 
       <details class="card">
         <summary>
-          <strong>phone</strong> <small>object</small>
+          <strong>phone</strong> <small class="type">object</small>
           <br />
           <p>Details of the phone number associated with the shipment.</p>
         </summary>
         <div>
           <div class="card">
-            <p><strong>line_type</strong> <small>Type: string</small>
+            <p><strong>line_type</strong> <small class="type">string</small>
               <br />The type of phone line.
               <br />
               <small>
@@ -509,13 +529,13 @@
             </p>
           </div>
           <div class="card">
-            <p><strong>carrier</strong> <small>Type: string</small>
+            <p><strong>carrier</strong> <small class="type">string</small>
               <br />Telephone number network operator.
               <br /><small> Example: AT&T Wireless </small>
             </p>
           </div>
           <div class="card">
-            <p><strong>status</strong> <small>Type: string</small>
+            <p><strong>status</strong> <small class="type">string</small>
               <br />The status of the phone number.
               <br /><small>Possible Values:
                 <ul>
@@ -530,20 +550,20 @@
             </p>
           </div>
           <div class="card">
-            <p><strong>prepaid</strong> <small>Type: boolean</small>
+            <p><strong>prepaid</strong> <small class="type">boolean</small>
               <br />Telephone number is for a prepaid phone (US only).
               <br /><small> Example: false </small>
             </p>
           </div>
           <details class="card">
             <summary>
-              <strong>owner</strong> <small>object</small>
+              <strong>owner</strong> <small class="type">object</small>
               <br />
               <p>Details of the phone number owner.</p>
             </summary>
             <div>
               <div class="card">
-                <p><strong>first_name_match</strong> <small>Type: string</small>
+                <p><strong>first_name_match</strong> <small class="type">string</small>
                   <br />Indicates if the first name matches with previously known data.
                   <br /><small> Possible results:
                     <ul>
@@ -558,7 +578,7 @@
                 </p>
               </div>
               <div class="card">
-                <p><strong>last_name_match</strong> <small>Type: string</small>
+                <p><strong>last_name_match</strong> <small class="type">string</small>
                   <br />Indicates if the last name matches with previously known data.
                   <br /><small> Possible results:
                     <ul>
@@ -573,7 +593,7 @@
                 </p>
               </div>
               <div class="card">
-                <p><strong>street_match</strong> <small>Type: string</small>
+                <p><strong>street_match</strong> <small class="type">string</small>
                   <br />Indicates if street data is available and matches with known records.
                   <br /><small> Possible results:
                     <ul>
@@ -588,7 +608,7 @@
                 </p>
               </div>
               <div class="card">
-                <p><strong>city_match</strong> <small>Type: string</small>
+                <p><strong>city_match</strong> <small class="type">string</small>
                   <br />Indicates if city data is available and matches with known records.
                   <br /><small> Possible results:
                     <ul>
@@ -603,7 +623,7 @@
                 </p>
               </div>
               <div class="card">
-                <p><strong>zip_match</strong> <small>Type: string</small>
+                <p><strong>zip_match</strong> <small class="type">string</small>
                   <br />Indicates if ZIP/postal code data is available and matches with known records.
                   <br /><small> Possible results:
                     <ul>
@@ -618,7 +638,7 @@
                 </p>
               </div>
               <div class="card">
-                <p><strong>type</strong> <small>Type: string</small>
+                <p><strong>type</strong> <small class="type">string</small>
                   <br />Type of entity assigned to the phone number.
                   <br /><small> Possible results:
                     <ul>
@@ -637,7 +657,7 @@
   </details>
 
   <details class="card">
-    <summary><strong>eam</strong> <small>object</small>
+    <summary><strong>eam</strong> <small class="type">object</small>
       <br />
       <p>The origin of AtData's fraud solution is our Email Activity Metrics, which are used by all the leading
         antifraud solutions that evaluate email addresses. Through our broad client base, our extensive partner network
@@ -651,7 +671,7 @@
     </summary>
     <div>
       <div class="card">
-        <p><strong>date_first_seen</strong> <small>string</small>
+        <p><strong>date_first_seen</strong> <small class="type">string</small>
           <br />The date the email address first appeared in AtData's records. The value <b>now</b> will
           be returned if the email address is new to AtData
           <br /><small> Example: 2016-08-09 </small>
@@ -659,7 +679,7 @@
       </div>
 
       <div class="card">
-        <p><strong>longevity</strong> <small>integer</small>
+        <p><strong>longevity</strong> <small class="type">integer</small>
           <br />A score from 0 to 3 indicating how long the email has been known, with 3 representing a longer period.
           <br /><small> Possible values:
             <ul>
@@ -673,7 +693,7 @@
       </div>
 
       <div class="card">
-        <p><strong>velocity</strong> <small>integer</small>
+        <p><strong>velocity</strong> <small class="type">integer</small>
           <br />A score from 0 (no activity) to 10 (most active), reflecting the activity of the email address over the
           last 6 months.
           <br /><small> Example: 10 </small>
@@ -681,7 +701,7 @@
       </div>
 
       <div class="card">
-        <p><strong>popularity</strong> <small>integer</small>
+        <p><strong>popularity</strong> <small class="type">integer</small>
           <br />A score from 0 (no sources in 12 months) to 10 (most sources) gauging the popularity of the email
           address over the last 12 months based on the number of sources from which AtData has received the address.
           <br /><small> Example: 10 </small>
@@ -691,7 +711,7 @@
   </details>
 
   <details class="card">
-    <summary><strong>dam</strong> <small>object</small>
+    <summary><strong>dam</strong> <small class="type">object</small>
       <br />
       <p>Similar to the EAM fields, the Domain Activity Metrics reflect activity at the domain level. Again, new or
         recent domains are more risky.
@@ -699,7 +719,7 @@
     </summary>
     <div>
       <div class="card">
-        <p><strong>date_first_seen</strong> <small>string</small>
+        <p><strong>date_first_seen</strong> <small class="type">string</small>
           <br />The date the domain first appeared in AtData's records. The value <b>now</b> will be
           returned if the domain is new to our database.
           <br /><small> Example: 2002-11-09 </small>
@@ -707,14 +727,14 @@
       </div>
 
       <div class="card">
-        <p><strong>longevity</strong> <small>integer</small>
+        <p><strong>longevity</strong> <small class="type">integer</small>
           <br />A score from 0 to 3 indicating when AtData first encountered the domain.
           <br /><small> Example: 3 </small>
         </p>
       </div>
 
       <div class="card">
-        <p><strong>velocity</strong> <small>integer</small>
+        <p><strong>velocity</strong> <small class="type">integer</small>
           <br />A score reflecting the activity of the domain over the last 6 months, from 0 (no
           activity) to 10 (most active).
           <br /><small> Example: 10 </small>
@@ -722,7 +742,7 @@
       </div>
 
       <div class="card">
-        <p><strong>popularity</strong> <small>integer</small>
+        <p><strong>popularity</strong> <small class="type">integer</small>
           <br />A score gauging the popularity of the domain over the last 12 months based on
           the number of sources from which AtData has received the address, from 0 (no
           sources in 12 months) to 10 (most sources).
@@ -733,7 +753,7 @@
   </details>
 
   <details class="card">
-    <summary><strong>email_validation</strong> <small>object</small>
+    <summary><strong>email_validation</strong> <small class="type">object</small>
       <br />
       <p>AtData's industry-leading email validation service is used by retailers, data companies and marketing platforms
         to verify whether an address can receive email or not and whether mailing to that address will affect the
@@ -751,13 +771,13 @@
     </summary>
     <div>
       <div class="card">
-        <p><strong>address</strong> <small>string</small>
+        <p><strong>address</strong> <small class="type">string</small>
           <br />Contains the standardized email address.
           <br /><small> Example: email@example.com</small>
         </p>
       </div>
       <div class="card">
-        <p><strong>status</strong> <small>string</small>
+        <p><strong>status</strong> <small class="type">string</small>
           <br />The summary status of the email validation result.
           <br /><small> Possible values:
             <ul>
@@ -778,7 +798,7 @@
       </div>
 
       <div class="card">
-        <p><strong>status_code</strong> <small>integer</small>
+        <p><strong>status_code</strong> <small class="type">integer</small>
           <br />A range from 5-999 will always be returned and describes the detailed results of the
           validation within the <b>status</b> categorization. For a full list of possible values, go to the <a
             href="/reference/status-codes">Status Codes</a> page.
@@ -787,7 +807,7 @@
       </div>
 
       <div class="card">
-        <p><strong>domain_type</strong> <small>string</small>
+        <p><strong>domain_type</strong> <small class="type">string</small>
           <br />An optional field, indicates the type of the domain.
           <br /><small> Possible values:
             <ul>
@@ -810,7 +830,7 @@
       </div>
 
       <div class="card">
-        <p><strong>role_account</strong> <small>boolean</small>
+        <p><strong>role_account</strong> <small class="type">boolean</small>
           <br />An optional field, <b>role_account</b> is returned if the email address is identified as the
           role related email account. A role account is an email address for a business job
           role or a group of people in a company such as sales, info, support, marketing or
