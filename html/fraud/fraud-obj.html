@@ -229,27 +229,19 @@
         </div>
       </details>
 
-      <details class="card">
-        <summary><strong>domain</strong> <small>object</small>
-          <br />
-          <p>Details about the domain of the email address.</p>
-        </summary>
-        <div>
-          <div class="card">
-            <p><strong>domain_risk_score</strong> <small>integer</small>
-              <br />The domain risk score ranges from 0 (no risk associated with the domain) to 10 (significant threat
-              due to multiple variables) and allows users to identify high risk email domains the
-              moment
-              they first appear rather than waiting for industry classification. It encompasses
-              different types of risky domains and their behaviour derived from the AtData network.
-              <br /><small>Example: 7</small>
-            </p>
-          </div>
-        </div>
-      </details>
+      <div class="card">
+        <p><strong>domain_risk_score</strong> <small>integer</small>
+          <br />The domain risk score ranges from 0 (no risk associated with the domain) to 10 (significant threat
+          due to multiple variables) and allows users to identify high risk email domains the
+          moment
+          they first appear rather than waiting for industry classification. It encompasses
+          different types of risky domains and their behaviour derived from the AtData network.
+          <br /><small>Example: 7</small>
+        </p>
+      </div>
 
       <details class="card">
-        <summary><strong>postal</strong><small>object</small>
+        <summary><strong>postal</strong> <small>object</small>
           <br />
           <p>Contains information related to the postal data provided in the API request and its validation results.
             <br /><small>⚠️ Postal object will appear in response only if name or postal fields are provided. ⚠️</small>
@@ -490,6 +482,157 @@
           </div>
         </div>
       </details>
+
+      <details class="card">
+        <summary>
+          <strong>phone</strong> <small>object</small>
+          <br />
+          <p>Details of the phone number associated with the shipment.</p>
+        </summary>
+        <div>
+          <div class="card">
+            <p><strong>line_type</strong> <small>Type: string</small>
+              <br />The type of phone line.
+              <br />
+              <small>
+                Possible Values:
+                <div>
+                  <ul class="multi-column-list">
+                    <li><code>mobile</code></li>
+                    <li><code>landline</code></li>
+                    <li><code>voip</code></li>
+                    <li><code>toll_free</code></li>
+                    <li><code>other</code></li>
+                  </ul>
+                </div>
+              </small>
+            </p>
+          </div>
+          <div class="card">
+            <p><strong>carrier</strong> <small>Type: string</small>
+              <br />Telephone number network operator.
+              <br /><small> Example: AT&T Wireless </small>
+            </p>
+          </div>
+          <div class="card">
+            <p><strong>status</strong> <small>Type: string</small>
+              <br />The status of the phone number.
+              <br /><small>Possible Values:
+                <ul>
+                  <li><b>valid</b>: = structure/syntax of number is valid but AtData could not determine if it is in
+                    use.</li>
+                  <li><b>invalid</b>: Structure/syntax of number is invalid.</li>
+                  <li><b>dead</b>: Phone number structure is valid but number is disconnected/not in use.</li>
+                  <li><b>live</b>: Number is currently connected to a network and in use.</li>
+                  <li><b>unknown</b>: Number is currently connected to a network and in use.</li>
+                </ul>
+              </small>
+            </p>
+          </div>
+          <div class="card">
+            <p><strong>prepaid</strong> <small>Type: boolean</small>
+              <br />Telephone number is for a prepaid phone (US only).
+              <br /><small> Example: false </small>
+            </p>
+          </div>
+          <details class="card">
+            <summary>
+              <strong>owner</strong> <small>object</small>
+              <br />
+              <p>Details of the phone number owner.</p>
+            </summary>
+            <div>
+              <div class="card">
+                <p><strong>first_name_match</strong> <small>Type: string</small>
+                  <br />Indicates if the first name matches with previously known data.
+                  <br /><small> Possible results:
+                    <ul>
+                      <li><b>match</b>: First name supplied matches first name previously associated with phone number.
+                      </li>
+                      <li><b>no_match</b>: First name supplied does NOT match first name previously associated with
+                        phone number.
+                      </li>
+                      <li><b>no_data</b>: No first name records associated with that phone number.</li>
+                    </ul>
+                  </small>
+                </p>
+              </div>
+              <div class="card">
+                <p><strong>last_name_match</strong> <small>Type: string</small>
+                  <br />Indicates if the last name matches with previously known data.
+                  <br /><small> Possible results:
+                    <ul>
+                      <li><b>match</b>: Last name supplied matches last name previously associated with phone number.
+                      </li>
+                      <li><b>no_match</b>: Last name supplied does NOT match last name previously associated with
+                        phone number.
+                      </li>
+                      <li><b>no_data</b>: No last name records associated with that phone number.</li>
+                    </ul>
+                  </small>
+                </p>
+              </div>
+              <div class="card">
+                <p><strong>street_match</strong> <small>Type: string</small>
+                  <br />Indicates if street data is available and matches with known records.
+                  <br /><small> Possible results:
+                    <ul>
+                      <li><b>match</b>: Street supplied matches street previously associated with phone number.
+                      </li>
+                      <li><b>no_match</b>: Street supplied does NOT match street previously associated with
+                        phone number.
+                      </li>
+                      <li><b>no_data</b>: No street records associated with that phone number.</li>
+                    </ul>
+                  </small>
+                </p>
+              </div>
+              <div class="card">
+                <p><strong>city_match</strong> <small>Type: string</small>
+                  <br />Indicates if city data is available and matches with known records.
+                  <br /><small> Possible results:
+                    <ul>
+                      <li><b>match</b>: City supplied matches city previously associated with phone number.
+                      </li>
+                      <li><b>no_match</b>: City supplied does NOT match city previously associated with
+                        phone number.
+                      </li>
+                      <li><b>no_data</b>: No city records associated with that phone number.</li>
+                    </ul>
+                  </small>
+                </p>
+              </div>
+              <div class="card">
+                <p><strong>zip_match</strong> <small>Type: string</small>
+                  <br />Indicates if ZIP/postal code data is available and matches with known records.
+                  <br /><small> Possible results:
+                    <ul>
+                      <li><b>match</b>: ZIP supplied matches ZIP previously associated with phone number.
+                      </li>
+                      <li><b>no_match</b>: ZIP supplied does NOT match ZIP previously associated with
+                        phone number.
+                      </li>
+                      <li><b>no_data</b>: No ZIP records associated with that phone number.</li>
+                    </ul>
+                  </small>
+                </p>
+              </div>
+              <div class="card">
+                <p><strong>type</strong> <small>Type: string</small>
+                  <br />Type of entity assigned to the phone number.
+                  <br /><small> Possible results:
+                    <ul>
+                      <li><b>person</b>: An individual person.</li>
+                      <li><b>business</b>: A business entity.</li>
+                    </ul>
+                  </small>
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+
     </div>
   </details>
 
