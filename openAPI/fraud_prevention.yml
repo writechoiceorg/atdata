@@ -127,8 +127,7 @@ paths:
                         proxy_type: ''
                         hosting_facility: false
                         longitude: 126.98265
-                      domain:
-                        domain_risk_score: 0
+                      domain_risk_score: 0
                       postal:
                         deliverability: "deliverable"
                         address_type: "Street"
