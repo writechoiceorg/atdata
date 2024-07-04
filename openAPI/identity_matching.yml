@@ -189,14 +189,20 @@ paths:
                         description: >-
                           The five-digit zip code, optionally followed by a 
                           four-digit extension separated by a dash.
-                example:
-                  postal_address:
-                    first_name: CAITLIN
-                    last_name: PLACKARD
-                    address: 789 CHESTNUT ST
-                    city: SAN FRANCISCO
-                    state: CA
-                    zip: 94133-1234
+              examples:
+                email_append:
+                  summary: Success
+                  value:
+                    postal_address:
+                      first_name: CAITLIN
+                      last_name: PLACKARD
+                      address: 789 CHESTNUT ST
+                      city: SAN FRANCISCO
+                      state: CA
+                      zip: 94133-1234
+                unmatched_request:
+                  summary: Un-matched Request
+                  value: {}
   /ae:
     get:
       summary: Alternate Email
