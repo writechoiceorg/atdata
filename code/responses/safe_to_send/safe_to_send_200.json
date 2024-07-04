@@ -1,0 +1,20 @@
+[
+    {
+        "safe_to_send": {
+            "domain_type": "biz",
+            "status_code": 50,
+            "address": "sample@atdata.com",
+            "engagement": 6,
+            "status": "safetosend"
+        }
+    },
+    {
+        "safe_to_send": {
+            "domain_type": "biz",
+            "status_code": 45,
+            "address": "demo@atdata.com",
+            "role_account": true,
+            "status": "valid"
+        }
+    }
+]
