@@ -135,6 +135,13 @@ paths:
                       address: sales@atdata.com
                       status: safetosend
                       role_account: true
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Missing query parameter(s).
         '401':
           description: Invalid API Key
           content:
