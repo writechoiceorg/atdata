@@ -17,6 +17,7 @@ paths:
       parameters:
         - in: query
           name: email
+          example: demo@atdata.com
           required: false
           schema:
             type: string
@@ -44,6 +45,7 @@ paths:
             <small>Example: demo@atdata.com hashed outputs to: 3cf1e81405a4bdf4f7e3a2453cd441c3</small>
         - in: query
           name: first
+          example: Tower
           required: false
           schema:
             type: string
@@ -56,30 +58,35 @@ paths:
           description: Middle name of the person (optional).
         - in: query
           name: last
+          example: Data
           required: false
           schema:
             type: string
           description: Last name of the person.
         - in: query
           name: street
+          example: 33 Irving Pl Ste 4048
           required: false
           schema:
             type: string
           description: Street number & name.
         - in: query
           name: city
+          example: New York
           required: false
           schema:
             type: string
           description: Name of the city.
         - in: query
           name: state
+          example: NY
           required: false
           schema:
             type: string
           description: Two-letter state abbreviation.
         - in: query
           name: zip
+          example: 10003
           required: false
           schema:
             type: string
@@ -108,7 +115,7 @@ paths:
           description: Your AtData API key.
       responses:
         '200':
-          description: Successful Response
+          description: Success
           content:
             application/json:
               schema:
