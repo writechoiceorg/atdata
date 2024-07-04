@@ -116,7 +116,7 @@ paths:
           description: Your AtData API key.
       responses:
         '200':
-          description: Success
+          description: Success. Find detailed information about the [Demographics Response Object here](/reference/demographics-response-object).
           content:
             application/json:
               schema:
@@ -285,7 +285,7 @@ paths:
                 - email: NOT_AN_EMAIL_ADDRESS
       responses:
         '200':
-          description: Success
+          description: Success. Find detailed information about the [Demographics Response Object here](/reference/demographics-response-object).
           content:
             application/json:
               schema:
