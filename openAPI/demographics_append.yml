@@ -128,52 +128,48 @@ paths:
                   gender:
                     type: string
                     description: The gender of the person.
-                  interests:
-                    type: object
-                    properties:
-                      automotive:
-                        type: boolean
-                        description: Indicates interest in automotive.
-                      books:
-                        type: boolean
-                        description: Indicates interest in books.
-                  eam:
-                    type: object
-                    properties:
-                      date_first_seen:
-                        type: string
-                        format: date
-                        description: The date the email address was first seen.
-                      month_last_open:
-                        type: string
-                        description: The month the email was last opened.
-                      velocity:
-                        type: integer
-                        description: The velocity of email engagement.
-                      popularity:
-                        type: integer
-                        description: The popularity of the email address.
-                      longevity:
-                        type: integer
-                        description: The longevity of the email address.
-                  education:
+                  zip:
                     type: string
-                    description: The education level of the person.
-                  occupation:
-                    type: string
-                    description: The occupation of the person.
+                    description: The ZIP code of the person's address.
                   household_income:
                     type: string
                     description: The household income range of the person.
+                  net_worth:
+                    type: string
+                    description: The approximate net worth of the household.
+                  home_market_value:
+                    type: string
+                    description: Market value of household's home.
+                  home_owner_status:
+                    type: string
+                    description: The home ownership status of the person.
+                  length_of_residence:
+                    type: string
+                    description: Number of years household has spent in the current residence.
                   marital_status:
                     type: string
                     description: The marital status of the person.
                   presence_of_children:
                     type: string
                     description: Indicates if there are children present in the household.
-                  home_owner_status:
+                  education:
                     type: string
-                    description: The home ownership status of the person.
+                    description: The education level of the person.
+                  occupation:
+                    type: string
+                    description: The occupation of the person.
+                  rfm_offline_avg_days:
+                    type: string
+                    description: Recency, Frequency & Monetary Value - The average number of days between offline purchases for this household.
+                  rfm_online_avg_days:
+                    type: string
+                    description: Recency, Frequency & Monetary Value - The average number of days between online purchases for this household.
+                  rfm_avg_dollars:
+                    type: string
+                    description: Recency, Frequency & Monetary Value - The average dollar amount the household spends per order.
+                  rfm_last_order:
+                    type: string
+                    description: Recency, Frequency & Monetary Value - The date of the last order made by the household in YYYY-MM-DD format.
                   life_stage_segment:
                     type: string
                     description: The life stage segment of the person.
@@ -186,28 +182,33 @@ paths:
                   financial_group:
                     type: string
                     description: The financial group of the person.
+                  interests:
+                    type: object
+                    description: Interest and purchase data features. See full list of available values in the [Demographics Response Object](/reference/demographics-response-object) page.
                 example:
                   age: "25-34"
                   gender: "Female"
-                  interests:
-                    automotive: true
-                    books: true
-                  eam:
-                    date_first_seen: "2017-11-16"
-                    month_last_open: "2017-12"
-                    velocity: 0
-                    popularity: 3
-                    longevity: 2
-                  education: "Completed Graduate School"
-                  occupation: "White Collar Worker"
+                  zip: "94105"
                   household_income: "25k-35k"
+                  net_worth: "50k-100k"
+                  home_market_value: "100k-150k"
+                  home_owner_status: "Rent"
+                  length_of_residence: "2 Years"
                   marital_status: "Single"
                   presence_of_children: "No"
-                  home_owner_status: "Rent"
+                  education: "Completed Graduate School"
+                  occupation: "White Collar Worker"
+                  rfm_offline_avg_days: "30"
+                  rfm_online_avg_days: "15"
+                  rfm_avg_dollars: "100"
+                  rfm_last_order: "2022-12-01"
                   life_stage_segment: "Career Building"
                   life_stage_group: "Taking Hold"
                   financial_segment: "Spontaneous Spenders"
                   financial_group: "City Spotlight"
+                  interests:
+                    automotive: true
+                    books: true
         '400':
           description: Bad Request
           content:
@@ -292,16 +293,95 @@ paths:
                 items:
                   type: object
                   properties:
+                    age:
+                      type: string
+                      description: The age range of the person.
                     gender:
                       type: string
-                    error_code:
-                      type: integer
-                    error_msg:
+                      description: The gender of the person.
+                    zip:
                       type: string
+                      description: The ZIP code of the person's address.
+                    household_income:
+                      type: string
+                      description: The household income range of the person.
+                    net_worth:
+                      type: string
+                      description: The approximate net worth of the household.
+                    home_market_value:
+                      type: string
+                      description: Market value of household's home.
+                    home_owner_status:
+                      type: string
+                      description: The home ownership status of the person.
+                    length_of_residence:
+                      type: string
+                      description: Number of years household has spent in the current residence.
+                    marital_status:
+                      type: string
+                      description: The marital status of the person.
+                    presence_of_children:
+                      type: string
+                      description: Indicates if there are children present in the household.
+                    education:
+                      type: string
+                      description: The education level of the person.
+                    occupation:
+                      type: string
+                      description: The occupation of the person.
+                    rfm_offline_avg_days:
+                      type: string
+                      description: Recency, Frequency & Monetary Value - The average number of days between offline purchases for this household.
+                    rfm_online_avg_days:
+                      type: string
+                      description: Recency, Frequency & Monetary Value - The average number of days between online purchases for this household.
+                    rfm_avg_dollars:
+                      type: string
+                      description: Recency, Frequency & Monetary Value - The average dollar amount the household spends per order.
+                    rfm_last_order:
+                      type: string
+                      description: Recency, Frequency & Monetary Value - The date of the last order made by the household in YYYY-MM-DD format.
+                    life_stage_segment:
+                      type: string
+                      description: The life stage segment of the person.
+                    life_stage_group:
+                      type: string
+                      description: The life stage group of the person.
+                    financial_segment:
+                      type: string
+                      description: The financial segment of the person.
+                    financial_group:
+                      type: string
+                      description: The financial group of the person.
+                    interests:
+                      type: object
+                      description: Interest and purchase data features. See full list of available values in the [Demographics Response Object](/reference/demographics-response-object) page.
                 example:
-                  - gender: Female
-                  - {}
+                  - age: "25-34"
+                    gender: "Female"
+                    zip: "94105"
+                    household_income: "25k-35k"
+                    net_worth: "50k-100k"
+                    home_market_value: "100k-150k"
+                    home_owner_status: "Rent"
+                    length_of_residence: "2 Years"
+                    marital_status: "Single"
+                    presence_of_children: "No"
+                    education: "Completed Graduate School"
+                    occupation: "White Collar Worker"
+                    rfm_offline_avg_days: "30"
+                    rfm_online_avg_days: "15"
+                    rfm_avg_dollars: "100"
+                    rfm_last_order: "2022-12-01"
+                    life_stage_segment: "Career Building"
+                    life_stage_group: "Taking Hold"
+                    financial_segment: "Spontaneous Spenders"
+                    financial_group: "City Spotlight"
+                    interests:
+                      automotive: true
+                      books: true
                   - gender: Male
+                  - {}
                   - error_code: 400
                     error_msg: Invalid identifier
   
