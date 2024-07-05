@@ -1,5 +1,8 @@
 <style>
   :root {
+    --icon-height: 18px;
+    --icon-width: 18px;
+
     /* Info Callout Colors */
     --info-light-bg: #DEF6FF;
     --info-light-border: #00AEEF;
@@ -71,8 +74,9 @@
 
   .callout .callout-icon {
     display: inline-block;
-    width: 18px;
-    height: 18px;
+    width: var(--icon-width);
+    height: var(--icon-height);
+    ;
   }
 
   .callout .callout-heading p {
