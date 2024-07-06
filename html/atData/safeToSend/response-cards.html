@@ -1,0 +1,137 @@
+<style>
+  body {
+    .cards_container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin: 10px auto;
+      width: 100%;
+      justify-content: center;
+
+      .card {
+        border: 1px solid #D9D9D9;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 1;
+        align-items: flex-start;
+        transition: all 0.3s ease, border 0.1s ease;
+        border-radius: 7px;
+        background: #FFF;
+        text-decoration: none !important;
+        width: 100%;
+
+        .card_image {
+          height: 120px;
+          flex-shrink: 0;
+          width: 100%;
+          background-position: center;
+          background-size: cover;
+          border-radius: 7px 7px 0 0;
+        }
+
+        .card_content {
+          padding: 20px 14px;
+
+          h3 {
+            color: #363636;
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family: Inter;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 18px;
+            margin: 0;
+            transition: all 0.3s ease, border 0.1s ease;
+          }
+        }
+
+        .image1 {
+          background-image: url('https://raw.githubusercontent.com/writechoiceorg/atdata-docs/main/html/atData/safeToSend/imgs/card1.png');
+        }
+
+        .image2 {
+          background-image: url('https://raw.githubusercontent.com/writechoiceorg/atdata-docs/main/html/atData/safeToSend/imgs/card2.png');
+        }
+
+        .image3 {
+          background-image: url('https://raw.githubusercontent.com/writechoiceorg/atdata-docs/main/html/atData/safeToSend/imgs/card3.png');
+        }
+
+      }
+
+      .card:hover {
+        cursor: pointer;
+        border: 1px solid #00AEEF;
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.13);
+        transform: translateY(-1px);
+
+        .card_content {
+          h3 {
+            color: #00AEEF;
+          }
+        }
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-mode="system"] .card {
+      border: 1px solid #556974;
+      background: #242E34;
+
+      .card_content {
+        h3 {
+          color: #FFF;
+        }
+      }
+    }
+  }
+
+  [data-color-mode="dark"] .card {
+    border: 1px solid #556974;
+    background: #242E34;
+
+    .card_content {
+      h3 {
+        color: #FFF;
+      }
+    }
+  }
+
+  @media (max-width: 300px) {
+    body {
+      .cards_container {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  }
+</style>
+
+<body>
+  <div class="cards_container">
+    <a class="card" href="/reference/email-status">
+      <div class="card_image image1">
+      </div>
+      <div class="card_content">
+        <h3>Email Status</h3>
+      </div>
+    </a>
+
+    <a class="card" href="/reference/status-codes-safe-to-send">
+      <div class="card_image image2">
+      </div>
+      <div class="card_content">
+        <h3>Status Codes</h3>
+      </div>
+    </a>
+
+    <a class="card" href="/reference/domain-types">
+      <div class="card_image image3">
+      </div>
+      <div class="card_content">
+        <h3>Domain Types</h3>
+      </div>
+    </a>
+
+  </div>
+</body>
