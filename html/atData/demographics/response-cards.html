@@ -67,25 +67,45 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    [data-color-mode="system"] .card {
-      border: 1px solid #556974;
-      background: #242E34;
+    [data-color-mode="system"] body {
+      .cards_container {
+        .card {
+          border: 1px solid #556974;
+          background: #242E34;
 
-      .card_content {
-        h3 {
-          color: #FFF;
+          .card_content {
+            h3 {
+              color: #FFF;
+            }
+          }
+        }
+
+        .card:hover {
+          h3 {
+            color: #00AEEF;
+          }
         }
       }
     }
   }
 
-  [data-color-mode="dark"] .card {
-    border: 1px solid #556974;
-    background: #242E34;
+  [data-color-mode="dark"] body {
+    .cards_container {
+      .card {
+        border: 1px solid #556974;
+        background: #242E34;
 
-    .card_content {
-      h3 {
-        color: #FFF;
+        .card_content {
+          h3 {
+            color: #FFF;
+          }
+        }
+      }
+
+      .card:hover {
+        h3 {
+          color: #00AEEF;
+        }
       }
     }
   }

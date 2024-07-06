@@ -88,6 +88,45 @@
       }
     }
   }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-mode="system"] .card {
+      border: 1px solid #556974;
+
+      .card_content {
+
+        h3,
+        p {
+          color: #FFF;
+        }
+      }
+    }
+
+    [data-color-mode="system"] .card:hover {
+      h3 {
+        color: #00AEEF !important;
+      }
+    }
+  }
+
+  [data-color-mode="dark"] .card {
+    border: 1px solid #556974;
+    background: #242E34;
+
+    .card_content {
+
+      h3,
+      p {
+        color: #FFF;
+      }
+    }
+  }
+
+  [data-color-mode="dark"] .card:hover {
+    h3 {
+      color: #00AEEF !important;
+    }
+  }
 </style>
 
 <body>
