@@ -118,6 +118,10 @@
           border: 1px solid #00AEEF;
           box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.13);
           transform: translateY(-1px);
+
+          h3 {
+            color: #00AEEF;
+          }
         }
 
         .image1 {
@@ -126,6 +130,66 @@
 
         .image2 {
           background-image: url('https://raw.githubusercontent.com/writechoiceorg/atdata-docs/main/html/home/imgs/card2.png')
+        }
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-color-mode="system"] main {
+        .card_container {
+          .card {
+            background-color: #242E34;
+            border: 1px solid #556974;
+            transition: all 0.3s ease, border 0.1s ease;
+
+            .card_content {
+              h3 {
+                color: #FFF !important;
+              }
+
+              p {
+                color: #FFF !important;
+              }
+            }
+          }
+
+          .card:hover {
+            border: 1px solid #00AEEF;
+            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.13);
+
+            h3 {
+              color: #00AEEF !important;
+            }
+          }
+        }
+      }
+    }
+
+    [data-color-mode="dark"] main {
+      .card_container {
+        .card {
+          background-color: #242E34;
+          border: 1px solid #556974;
+          transition: all 0.3s ease, border 0.1s ease;
+
+          .card_content {
+            h3 {
+              color: #FFF !important;
+            }
+
+            p {
+              color: #FFF !important;
+            }
+          }
+        }
+
+        .card:hover {
+          border: 1px solid #00AEEF;
+          box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.13);
+
+          h3 {
+            color: #00AEEF !important;
+          }
         }
       }
     }
@@ -345,7 +409,7 @@
   </header>
   <main>
     <div class="card_container">
-      <a class="card" href="/">
+      <a class="card" href="/reference/overview">
         <div class="card_image image1">
         </div>
         <div class="card_content">
@@ -353,7 +417,7 @@
           <p>Unlock Insights About the Person Behind the Email Address</p>
         </div>
       </a>
-      <a class="card" href="/">
+      <a class="card" href="https://atdata-fraud.readme.io/reference/overview">
         <div class="card_image image2">
         </div>
         <div class="card_content">
