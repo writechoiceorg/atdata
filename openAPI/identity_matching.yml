@@ -21,7 +21,7 @@ paths:
           schema:
             type: string
           description: First name of person.
-          example: Joe
+          example: caitlin
         - in: query
           name: middle
           required: false
@@ -34,32 +34,32 @@ paths:
           schema:
             type: string
           description: Last name of person.
-          example: Bloggs
+          example: plackard
         - in: query
           name: street
           required: true
           schema:
             type: string
           description: Street name.
-          example: 123 Main St
+          example: 789 CHESTNUT ST
         - in: query
           name: city
           required: true
-          example: New York
+          example: SAN FRANCISCO
           schema:
             type: string
           description: Name of city.
         - in: query
           name: state
           required: true
-          example: NY
+          example: CA
           schema:
             type: string
           description: Two letter state abbreviation.
         - in: query
           name: zip
           required: true
-          example: '38067'
+          example: '94133'
           schema:
             type: string
           description: Five-digit zip code, optionally followed by a four-digit extension separated by a dash.
