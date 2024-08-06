@@ -271,7 +271,7 @@
           <div class="card">
             <p><strong>first_name_match</strong> <small class="type">string</small>
               <br />Indicates if the first name matches with previously known data.
-              <br /><small>⚠️ If first field is not provided in the request, first_name_mach will return no_data. ⚠️
+              <br /><small>⚠️ If first field is not provided in the request, first_name_match will return no_data. ⚠️
               </small>
               <br /><small> Possible results:
                 <ul>
@@ -287,7 +287,7 @@
           <div class="card">
             <p><strong>last_name_match</strong> <small class="type">string</small>
               <br />Indicates if the last name matches with previously known data.
-              <br /><small>⚠️ If last field is not provided in the request, last_name_mach will return no_data. ⚠️
+              <br /><small>⚠️ If last field is not provided in the request, last_name_match will return no_data. ⚠️
               </small>
               <br /><small> Possible results:
                 <ul>
@@ -303,7 +303,7 @@
           <div class="card">
             <p><strong>street_match</strong> <small class="type">string</small>
               <br />Indicates if street data is available and matches with known records.
-              <br /><small>⚠️ If street field is not provided in the request, street_mach will return no_data. ⚠️
+              <br /><small>⚠️ If street field is not provided in the request, street_match will return no_data. ⚠️
               </small>
               <br /><small> Possible results:
                 <ul>
@@ -319,7 +319,7 @@
           <div class="card">
             <p><strong>city_match</strong> <small class="type">string</small>
               <br />Indicates if city data is available and matches with known records.
-              <br /><small>⚠️ If no postal fields are provided in the request, city_mach will return no_data. ⚠️
+              <br /><small>⚠️ If no postal fields are provided in the request, city_match will return no_data. ⚠️
               </small>
               <br /><small> Possible results:
                 <ul>
@@ -335,7 +335,8 @@
           <div class="card">
             <p><strong>zip_match</strong> <small class="type">string</small>
               <br />Indicates if zip code data is available and matches with known records.
-              <br /><small>⚠️ If no postal fields are provided in the request, zip_mach will return no_data. ⚠️ </small>
+              <br /><small>⚠️ If no postal fields are provided in the request, zip_match will return no_data. ⚠️
+              </small>
               <br /><small> Possible results:
                 <ul>
                   <li><b>match</b>: Zip supplied matches zip previously associated with email.</li>
@@ -508,7 +509,7 @@
               <br /><small>Possible results:
                 <ul><b>
                     <li>
-                      < 5 miles</li>
+                    <li>5 miles</li>
                     <li>5-100 miles</li>
                     <li>100-500 miles</li>
                     <li>500-1000 miles</li>
@@ -523,7 +524,12 @@
       <details class="card">
         <summary><strong>phone</strong> <small class="type">object</small>
           <br />
-          <p>Details of the phone number associated with the shipment.</p>
+          <p>Contains information related to the phone number provided in the API request.
+            <br />
+            <small>⚠️ Phone object will appear in response only if phone number is provided and
+              your account is configured for it. ⚠️</small>
+          </p>
+
         </summary>
         <div>
           <div class="card">
@@ -555,12 +561,12 @@
               <br />The status of the phone number.
               <br /><small>Possible Values:
                 <ul>
-                  <li><b>valid</b>: = structure/syntax of number is valid but AtData could not determine if it is in
+                  <li><b>valid</b>: structure/syntax of number is valid but AtData could not determine if it is in
                     use.</li>
                   <li><b>invalid</b>: Structure/syntax of number is invalid.</li>
                   <li><b>dead</b>: Phone number structure is valid but number is disconnected/not in use.</li>
                   <li><b>live</b>: Number is currently connected to a network and in use.</li>
-                  <li><b>unknown</b>: Number is currently connected to a network and in use.</li>
+                  <li><b>unknown</b>: The status of the phone number could not be determined.</li>
                 </ul>
               </small>
             </p>
