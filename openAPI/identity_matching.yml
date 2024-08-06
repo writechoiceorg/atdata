@@ -21,7 +21,7 @@ paths:
           schema:
             type: string
           description: First name of person.
-          example: caitlin
+          example: Caitlin
         - in: query
           name: middle
           required: false
@@ -34,18 +34,18 @@ paths:
           schema:
             type: string
           description: Last name of person.
-          example: plackard
+          example: Plackard
         - in: query
           name: street
           required: true
           schema:
             type: string
           description: Street name.
-          example: 789 CHESTNUT ST
+          example: 789 Chestnut St
         - in: query
           name: city
           required: true
-          example: SAN FRANCISCO
+          example: San Francisco
           schema:
             type: string
           description: Name of city.
