@@ -500,12 +500,28 @@
               </small>
             </p>
           </div>
+
+          <div class="card">
+            <p><strong>ip_postal_distance</strong> <small class="type">string</small>
+              <br />Distance in miles between the IP location and the postal address.
+              <br /><small>ip_postal_distance will appear in response only if ip and zip fields are provided.</small>
+              <br /><small>Possible results:
+                <ul><b>
+                    <li>
+                      < 5 miles</li>
+                    <li>5-100 miles</li>
+                    <li>100-500 miles</li>
+                    <li>500-1000 miles</li>
+                    <li>> 1000 miles</li>
+                </ul></b>
+              </small>
+            </p>
+          </div>
         </div>
       </details>
 
       <details class="card">
-        <summary>
-          <strong>phone</strong> <small class="type">object</small>
+        <summary><strong>phone</strong> <small class="type">object</small>
           <br />
           <p>Details of the phone number associated with the shipment.</p>
         </summary>
@@ -801,7 +817,7 @@
         <p><strong>status_code</strong> <small class="type">integer</small>
           <br />A range from 5-999 will always be returned and describes the detailed results of the
           validation within the <b>status</b> categorization. For a full list of possible values, go to the <a
-            href="/reference/status-codes">Status Codes</a> page.
+            href="/page/status-codes">Email Validation Status Codes</a> page.
           <br /><small> Example: 50 </small>
         </p>
       </div>
