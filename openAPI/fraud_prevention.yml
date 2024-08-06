@@ -449,7 +449,7 @@ components:
               example: "valid"
             status_code:
               type: integer
-              description: A detailed status code providing more specific results of the email validation.
+              description: A detailed status code providing more specific results of the email validation. For a full list of possible values, go to the [Status Codes](/page/status-codes) page.
               example: 50
             domain_type:
               type: string
