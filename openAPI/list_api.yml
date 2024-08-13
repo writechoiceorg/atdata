@@ -103,7 +103,7 @@ paths:
             schema:
               type: object
               properties:
-                customer_emails:
+                file:
                   type: string
                   format: binary
                   description: File with list of customers to be validated.
