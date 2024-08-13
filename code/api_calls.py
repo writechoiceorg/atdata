@@ -200,6 +200,3 @@ if __name__ == "__main__":
     # postal_append()
     # demographics_append()
     submit_list()
-
-
-curl -X POST --url 'https://api.atdata.com/v5/list?email_column=1&header=true&delimiter=%2C&action=process&name=file.csv' --header 'Content-Type: multipart/form-data' --header 'accept: application/json' --header 'api_key: e52801ad8346287ef4ddd4231fc487ad' --form customer_emails='@file.csv'
