@@ -28,7 +28,7 @@ paths:
             type: string
             enum: [text/csv, multipart/form-data]
           description: Type of media to be sent.
-        - in: header
+        - in: query
           name: email_column
           required: false
           schema:
@@ -36,7 +36,7 @@ paths:
           description: >-
             If email address is in the file, the index of the column containing
             it, starting at 1.
-        - in: header
+        - in: query
           name: header
           required: false
           schema:
@@ -44,7 +44,7 @@ paths:
           description: >-
             Used to indicate the presence of a header line with a value of true
             or false; default=false. Must be used for non-email fields.
-        - in: header
+        - in: query
           name: delimiter
           required: false
           schema:
@@ -53,7 +53,7 @@ paths:
           description: >-
             The character used to separate multiple columns within the file;
             default variable is tab (\\t).
-        - in: header
+        - in: query
           name: action
           required: false
           schema:
@@ -63,7 +63,7 @@ paths:
             Choose between processing the data, or generating a report from it:
             - `process`: Processes the data to purchase it.
             - `report`: Generates a report from the data without purchasing it.
-        - in: header
+        - in: query
           name: name
           required: false
           schema:
@@ -73,7 +73,7 @@ paths:
             `.zip`.
             
             Default value: myfile.csv
-        - in: header
+        - in: query
           name: fields
           required: false
           schema:
@@ -81,7 +81,7 @@ paths:
           description: >-
             A comma-separated list of the data fields you want returned. By
             default, all available fields are returned.
-        - in: header
+        - in: query
           name: callback_url
           required: false
           schema:
