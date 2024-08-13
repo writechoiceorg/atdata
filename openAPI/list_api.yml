@@ -66,8 +66,8 @@ paths:
               - report
           description: |
             Choose between processing the data, or generating a report from it:
-            - `process`: Processes the data to purchase it.
-            - `report`: Generates a report from the data without purchasing it.
+            - `process`: Processes the data to purchase it. This option already purchases the results.
+            - `report`: Generates a report from the data without purchasing it. To purchase the results you need to use the [Purchase List Results](ref:purchase-list-results) endpoint.
         - in: query
           name: name
           required: false
@@ -108,7 +108,7 @@ paths:
                   format: binary
                   description: File with list of customers to be validated.
       responses:
-        '200':
+        '202':
           description: List submitted successfully
           headers:
             Location:
@@ -477,4 +477,14 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: 'File not found'
+              examples:
+                fileNotFound:
+                  summary: File Not Found
+                  value:
+                    error: "FileNotFound"
+                    message: "The requested file does not exist."
+                reportOnly:
+                  summary: File is report-only
+                  value:
+                    error: "reportOnly"
+                    message: "File is report-only."
