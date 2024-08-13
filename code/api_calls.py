@@ -16,6 +16,7 @@ routes = {
     "postal_append": "/v5/eppend?",
     "demographics_append": "/v5/td?",
     "bulk_demo": "/v5/ei/bulk?",
+    "list": "/v5/list",
 }
 
 
@@ -174,9 +175,31 @@ def demographics_append():
     save_response(response, request)
 
 
+def submit_list():
+    request = "list"
+    endpoint = f"{url}{routes[request]}"
+    headers = {
+        "accept": "application/json",
+        "api_key": "e52801ad8346287ef4ddd4231fc487ad",
+        "email_column": "1",
+        "header": "true",
+        "delimiter": ",",
+    }
+
+    files = {"customer_emails": ("myfile.csv", open("myfile.csv", "rb"), "text/csv")}
+
+    response = requests.post(endpoint, files=files, headers=headers)
+
+    save_response(response, request)
+
+
 if __name__ == "__main__":
     # safeToSend()
     # alternate_email()
     # email_append()
     # postal_append()
-    demographics_append()
+    # demographics_append()
+    submit_list()
+
+
+curl -X POST --url 'https://api.atdata.com/v5/list?email_column=1&header=true&delimiter=%2C&action=process&name=file.csv' --header 'Content-Type: multipart/form-data' --header 'accept: application/json' --header 'api_key: e52801ad8346287ef4ddd4231fc487ad' --form customer_emails='@file.csv'
