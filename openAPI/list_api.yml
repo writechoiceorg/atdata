@@ -58,7 +58,10 @@ paths:
           required: false
           schema:
             default: process
-            type: boolean
+            type: string
+            enum:
+              - process
+              - report
           description: |
             Choose between processing the data, or generating a report from it:
             - `process`: Processes the data to purchase it.
