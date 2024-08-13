@@ -40,19 +40,21 @@ paths:
           name: header
           required: false
           schema:
+            default: false
             type: boolean
           description: >-
             Used to indicate the presence of a header line with a value of true
-            or false; default=false. Must be used for non-email fields.
+            or false. Must be used for non-email fields.
         - in: query
           name: delimiter
           required: false
           schema:
+            default: \\t
             type: string
             enum: [',', '|', '\\t']
           description: >-
-            The character used to separate multiple columns within the file;
-            default variable is tab (\\t).
+            The character used to separate multiple columns within the file.
+            Default variable is tab (\\t).
         - in: query
           name: action
           required: false
@@ -71,11 +73,10 @@ paths:
           required: false
           schema:
             type: string
+            default: myfile.csv
           description: >-
             File name, which must use one of these file extensions: `.txt`, `.csv` or
-            `.zip`.
-            
-            Default value: myfile.csv
+            `.zip`. Default value: `myfile.csv`.
         - in: query
           name: fields
           required: false
