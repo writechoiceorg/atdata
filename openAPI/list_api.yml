@@ -54,13 +54,15 @@ paths:
             The character used to separate multiple columns within the file;
             default variable is tab (\\t).
         - in: header
-          name: report
+          name: action
           required: false
           schema:
+            default: process
             type: boolean
-          description: >-
-            For all services except validation, only produce a match report and
-            do not purchase data.
+          description: |
+            Choose between processing the data, or generating a report from it:
+            - `process`: Processes the data to purchase it.
+            - `report`: Generates a report from the data without purchasing it.
         - in: header
           name: name
           required: false
