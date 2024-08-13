@@ -90,6 +90,8 @@ paths:
             A valid webhook/callback URL with a max length of 512 characters,
             that can accept POST requests with a JSON payload and uses **https** or
             **http** (AtData recommends using https).
+
+            ⚠️ <small>[URL Encoding](https://www.w3schools.com/tags/ref_urlencode.ASP) required.</small> ⚠️ 
       requestBody:
         required: true
         content:
