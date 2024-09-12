@@ -1,0 +1,169 @@
+<style>
+  details {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .card p {
+    margin-left: 20px;
+  }
+
+  .card {
+    border: 1px solid #eeeeee;
+    background: #FAFAFA;
+    margin: 1.5em 0;
+    border-radius: 3px;
+    border-left: 4px solid #00AEEF;
+    padding: 0.25em;
+  }
+
+  .card .card {
+    margin: 1.5em;
+  }
+
+  .card p {
+    margin-bottom: 0;
+  }
+
+  .card .type {
+    color: #6C6C6C;
+    font-family: "DM Mono";
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .card .no-border-card {
+    border: 1px solid #353b9637 !important;
+  }
+
+  .multi-column-list {
+    column-count: 4;
+    column-gap: 20px;
+    margin-left: 1em;
+  }
+
+  .multi-column-list-2 {
+    column-count: 2 !important;
+  }
+
+  .multi-column-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+
+  @media only screen and (max-width: 1300px) {
+    .multi-column-list {
+      column-count: 3;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .multi-column-list {
+      column-count: 2;
+    }
+  }
+
+  @media only screen and (max-width: 468px) {
+    .multi-column-list {
+      column-count: 1;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-mode="system"] .card {
+      background-color: #2B353C;
+      border: 1px solid #4a5861;
+      border-left: 4px solid #00AEEF;
+    }
+
+    [data-color-mode="system"] .card .no-border-card {
+      border: 1px solid #4a5861 !important;
+    }
+
+    [data-color-mode="system"] .card .type {
+      color: #f7f7f7;
+    }
+  }
+
+  [data-color-mode="dark"] .card {
+    background-color: #2B353C;
+    border: 1px solid #4a5861;
+    border-left: 4px solid #00AEEF;
+  }
+
+  [data-color-mode="dark"] .card .no-border-card {
+    border: 1px solid #4a5861 !important;
+  }
+
+  [data-color-mode="dark"] .card .type {
+    color: #f7f7f7;
+  }
+</style>
+
+<div>
+
+  <details class="card">
+    <summary><strong>phone_verification</strong> <small class="type">object</small>
+      <br />
+      <p>This object contains detailed information about the verified phone number, including its type, carrier, status,
+        and more.</p>
+    </summary>
+    <div>
+      <div class="card">
+        <p><strong>phone_number</strong> <small class="type">string</small>
+          <br />The phone number that was verified.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>line_type</strong> <small class="type">string</small>
+          <br />The type of phone line (e.g., voip, mobile, landline).
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>carrier</strong> <small class="type">string</small>
+          <br />The carrier associated with the phone number (e.g., Verizon Wireless).
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>status</strong> <small class="type">string</small>
+          <br />The status of the phone number (e.g., live, disconnected).
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>prepaid</strong> <small class="type">boolean</small>
+          <br />Indicates if the phone number is for a prepaid account. Applicable only for U.S. phone numbers.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>connected_score</strong> <small class="type">integer</small>
+          <br />A score from 0 to 100 indicating whether the phone is connected or not. A score of 70 or more means
+          there is high confidence the phone is connected and dialable. A score of 30 or lower means there is high
+          confidence the phone is disconnected or no one will answer. Applicable only for U.S. phone numbers.
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>country_code</strong> <small class="type">string</small>
+          <br />The <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank"
+            rel="noopener noreferrer">ISO-3166 alpha-2 country code</a> of the phone number (e.g., US).
+        </p>
+      </div>
+
+      <div class="card">
+        <p><strong>country_calling_code</strong> <small class="type">integer</small>
+          <br />The <a href="https://en.wikipedia.org/wiki/List_of_country_calling_codes" target="_blank"
+            rel="noopener noreferrer">prefix</a> for dialing the country (e.g., 1 for the US).
+        </p>
+      </div>
+
+    </div>
+  </details>
+
+
+</div>
