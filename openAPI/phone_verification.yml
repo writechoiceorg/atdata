@@ -8,7 +8,7 @@ servers:
 paths:
   /pv:
     get:
-      summary: Verify Phone Number
+      summary: Phone Verification
       description: Verifies a phone number and returns information about the phone line, carrier, status, and more.
       parameters:
         - in: query
