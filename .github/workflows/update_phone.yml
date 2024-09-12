@@ -4,7 +4,7 @@ name: Sync API definition to ReadMe
 on:
   push:
     paths:
-      - "openAPI/demographics_append.yml"
+      - "openAPI/phone_verification.yml"
 
 jobs:
   sync-readme-api-definition:
@@ -19,4 +19,4 @@ jobs:
         # Docs: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#example-using-versioned-actions
         uses: readmeio/rdme@v8
         with:
-          rdme: openapi ./openAPI/demographics_append.yml --key=${{ secrets.README_API_KEY_2 }} --id=${{ secrets.PHONE_ID }}
+          rdme: openapi ./openAPI/phone_verification.yml --key=${{ secrets.README_API_KEY_2 }} --id=${{ secrets.PHONE_ID }}
