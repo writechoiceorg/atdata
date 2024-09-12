@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Phone Verification API
+  description: API for verifying phone numbers.
+  version: 1.0.0
+servers:
+  - url: https://api.atdata.com
+paths:
+  /pv:
+    get:
+      summary: Verify Phone Number
+      description: Verifies a phone number and returns information about the phone line, carrier, status, and more.
+      parameters:
+        - in: query
+          name: api_key
+          required: true
+          example: <YOUR_API_KEY>
+          schema:
+            type: string
+          description: Your AtData API key.
+        - name: phone
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The phone number to be verified.
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The [ISO-3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the phone number.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  phone_verification:
+                    type: object
+                    properties:
+                      phone_number:
+                        type: string
+                        description: The phone number that was verified.
+                      line_type:
+                        type: string
+                        description: The type of the phone line (e.g., mobile, landline).
+                        example: mobile
+                      carrier:
+                        type: string
+                        description: The carrier or service provider of the phone number.
+                        example: AT&T Wireless
+                      status:
+                        type: string
+                        description: The current status of the phone number (e.g., live, disconnected).
+                        example: live
+                      prepaid:
+                        type: boolean
+                        description: Indicates if the phone number is for a prepaid account. Only for U.S. phone numbers.
+                      connected_score:
+                        type: integer
+                        description: |
+                          A score from 0 to 100 indicating whether the phone is connected or not. Only for U.S. phone numbers.
+
+                          - **> 70**: High confidence the phone is connected and dialable.
+                          - **< 30**: High confidence the phone is disconnected or no one will answer.
+                      country_code:
+                        type: string
+                        description: The [ISO-3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the phone number.
+                      country_calling_code:
+                        type: integer
+                        description: The prefix for dialing the country.
+              examples:
+                example1:
+                  summary: AtData Phone Number
+                  value:
+                    phone_verification:
+                      phone_number: "+13322454415"
+                      line_type: "voip"
+                      carrier: "Bandwidth/15 - Bandwidth.com - SVR"
+                      status: "live"
+                      prepaid: false
+                      connected_score: 75
+                      country_code: "US"
+                      country_calling_code: 1
+                live:
+                  summary: Live Phone Number
+                  value:
+                    phone_verification:
+                      phone_number: "+18002752273"
+                      line_type: toll_free
+                      carrier: Zipwhip - Toll-Free - SVR
+                      status: live
+                      prepaid: false
+                      connected_score: 100
+                      country_code: US
+                      country_calling_code: 1
+                disconnected:
+                  summary: Disconnected Phone Number
+                  value:
+                    phone_verification:
+                      phone_number: "2125551234"
+                      line_type: "mobile"
+                      carrier: "Verizon Wireless"
+                      status: "disconnected"
+                      prepaid: false
+                      connected_score: 20
+                      country_code: "US"
+                      country_calling_code: 1
+                europe:
+                  summary: Phone Number outside US
+                  value:
+                    phone_verification:
+                      phone_number: "+33155553030"
+                      line_type: "landline"
+                      carrier: "Orange"
+                      status: "valid"
+                      country_code: "FR"
+                      country_calling_code: 33
+                invalid:
+                  summary: Invalid Phone Number
+                  value:
+                    phone_verification:
+                      phone_number: "5541999128316"
+                      status: "invalid"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: string
+              example: "Error performing phone verification"
