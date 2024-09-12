@@ -9,6 +9,7 @@ paths:
   /pv:
     get:
       summary: Phone Verification
+      operationId: phone-verification
       description: Verifies a phone number and returns information about the phone line, carrier, status, and more.
       parameters:
         - in: query
