@@ -118,25 +118,50 @@
 
       <div class="card">
         <p><strong>line_type</strong> <small class="type">string</small>
-          <br />The type of phone line (e.g., voip, mobile, landline).
+          <br />The type of phone line.
+          <br />
+          <small>
+            Possible Values:
+            <div>
+              <ul class="multi-column-list">
+                <li><code>mobile</code></li>
+                <li><code>landline</code></li>
+                <li><code>voip</code></li>
+                <li><code>toll_free</code></li>
+                <li><code>other</code></li>
+              </ul>
+            </div>
+          </small>
         </p>
       </div>
 
       <div class="card">
         <p><strong>carrier</strong> <small class="type">string</small>
-          <br />The carrier associated with the phone number (e.g., Verizon Wireless).
+          <br />Telephone number network operator.
+          <br /><small> Example: AT&T Wireless </small>
         </p>
       </div>
 
       <div class="card">
         <p><strong>status</strong> <small class="type">string</small>
-          <br />The status of the phone number (e.g., live, disconnected).
+          <br />The status of the phone number.
+          <br /><small>Possible Values:
+            <ul>
+              <li><b>valid</b>: structure/syntax of number is valid but AtData could not determine if it is in
+                use.</li>
+              <li><b>invalid</b>: Structure/syntax of number is invalid.</li>
+              <li><b>dead</b>: Phone number structure is valid but number is disconnected/not in use.</li>
+              <li><b>live</b>: Number is currently connected to a network and in use.</li>
+              <li><b>unknown</b>: The status of the phone number could not be determined.</li>
+            </ul>
+          </small>
         </p>
       </div>
 
       <div class="card">
         <p><strong>prepaid</strong> <small class="type">boolean</small>
-          <br />Indicates if the phone number is for a prepaid account. Applicable only for U.S. phone numbers.
+          <br />Telephone number is for a prepaid phone (US only).
+          <br /><small> Example: false </small>
         </p>
       </div>
 
@@ -144,13 +169,13 @@
         <p><strong>connected_score</strong> <small class="type">integer</small>
           <br />A score from 0 to 100 indicating whether the phone is connected or not.
           <br />Applicable only for U.S. phone numbers.
-          <br />
-          <br />
-        <ul>
-          <li>A score of 70 or more means there is high confidence the phone is connected and dialable.</li>
-          <li>A score of 30 or lower means there is high confidence the phone is disconnected or no one will answer.
-          </li>
-        </ul>
+          <br /><small>
+            <ul>
+              <li>A score of 70 or more means there is high confidence the phone is connected and dialable.</li>
+              <li>A score of 30 or lower means there is high confidence the phone is disconnected or no one will answer.
+              </li>
+            </ul>
+          </small>
         </p>
       </div>
 
@@ -170,6 +195,5 @@
 
     </div>
   </details>
-
 
 </div>
