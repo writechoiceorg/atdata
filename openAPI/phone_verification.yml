@@ -27,7 +27,6 @@ paths:
           description: The phone number to be verified.
         - name: country
           in: query
-          required: true
           schema:
             type: string
           description: The [ISO-3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the phone number.
@@ -74,8 +73,8 @@ paths:
                         type: integer
                         description: The prefix for dialing the country.
               examples:
-                example1:
-                  summary: AtData Phone Number
+                live:
+                  summary: Live Phone Number
                   value:
                     phone_verification:
                       phone_number: "+13322454415"
@@ -86,11 +85,11 @@ paths:
                       connected_score: 75
                       country_code: "US"
                       country_calling_code: 1
-                live:
-                  summary: Live Phone Number
+                valid:
+                  summary: Valid Phone Number
                   value:
                     phone_verification:
-                      phone_number: "+18002752273"
+                      phone_number: "4156739798"
                       line_type: toll_free
                       carrier: Zipwhip - Toll-Free - SVR
                       status: live
