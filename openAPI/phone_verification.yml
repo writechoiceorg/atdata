@@ -77,7 +77,7 @@ paths:
                   summary: Live Phone Number
                   value:
                     phone_verification:
-                      phone_number: "+13322454415"
+                      phone_number: "13322454415"
                       line_type: "voip"
                       carrier: "Bandwidth/15 - Bandwidth.com - SVR"
                       status: "live"
@@ -90,12 +90,12 @@ paths:
                   value:
                     phone_verification:
                       phone_number: "4156739798"
-                      line_type: toll_free
-                      carrier: Zipwhip - Toll-Free - SVR
-                      status: live
+                      line_type: "landline"
+                      carrier: "Pacific Bell"
+                      status: "valid"
                       prepaid: false
-                      connected_score: 100
-                      country_code: US
+                      connected_score: 60
+                      country_code: "US"
                       country_calling_code: 1
                 disconnected:
                   summary: Disconnected Phone Number
@@ -113,7 +113,7 @@ paths:
                   summary: Phone Number outside US
                   value:
                     phone_verification:
-                      phone_number: "+33155553030"
+                      phone_number: "33155553030"
                       line_type: "landline"
                       carrier: "Orange"
                       status: "valid"
