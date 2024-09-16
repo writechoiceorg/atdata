@@ -25,11 +25,13 @@ paths:
           schema:
             type: string
           description: The phone number to be verified.
+          example: 33222454415
         - name: country
           in: query
           schema:
             type: string
           description: The [ISO-3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the phone number.
+          example: US
       responses:
         '200':
           description: Success
