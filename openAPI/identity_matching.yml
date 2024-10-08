@@ -220,7 +220,7 @@ paths:
         - in: query
           name: email
           required: false
-          example: sample@atdata.com
+          example: altemail@atdata.com
           schema:
             type: string
           description: >-
@@ -235,7 +235,7 @@ paths:
           description: >-
             [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hashed email. The email must be lower case and stripped of white spaces before being hashed.
 
-            <small>Example: demo@atdata.com hashed outputs to: 1d604932232d089ab1a1cad148f20d942db666a7</small>
+            <small>Example: altemail@atdata.com hashed outputs to: be854312df62674620f8d0fa547eb5e37732e0c1</small>
         - in: query
           name: md5_email
           required: false
@@ -244,7 +244,7 @@ paths:
           description: >-
             [MD5](https://en.wikipedia.org/wiki/MD5) hashed email. The email must be lower case and stripped of white spaces before being hashed.
 
-            <small>Example: demo@atdata.com hashed outputs to: 3cf1e81405a4bdf4f7e3a2453cd441c3</small>
+            <small>Example: altemail@atdata.com hashed outputs to: 7c4815a1fd6b129233b51fe0a30e659c</small>
         - in: query
           name: api_key
           required: true
@@ -273,10 +273,10 @@ paths:
                           description: The type of email match
               example:
                 alternate_email:
-                  - email: cplackard@domain.com
+                  - email: altemail_i@atdata.com
                     email_match_type: Individual
-                  - email: chris.plackard@domain2.com
-                    email_match_type: Individual
+                  - email: altemail_h@atdata.com
+                    email_match_type: Household
         '400':
           description: Bad Request
           content:
