@@ -58,9 +58,6 @@ paths:
                         type: string
                         description: The current status of the phone number (e.g., live, disconnected).
                         example: live
-                      prepaid:
-                        type: boolean
-                        description: Indicates if the phone number is for a prepaid account. Only for U.S. phone numbers.
                       connected_score:
                         type: integer
                         description: |
